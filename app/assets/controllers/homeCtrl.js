@@ -44,7 +44,6 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 			return true;
 		}
 	}
-
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
 		if(bool){
