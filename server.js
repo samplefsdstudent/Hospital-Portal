@@ -17,7 +17,7 @@
 	app.set('views', __dirname + '/app');
   	app.engine('html', require('ejs').renderFile);
 
-	app.get('/*', function(req, res, next) {
+	app.get('/app/*', function(req, res, next) {
     	res.render('index.html', { root: __dirname });
 	});
 
