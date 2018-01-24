@@ -1,4 +1,4 @@
-angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http', function($routeParams, $scope, RestaurantService, $http){
+angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url', function($routeParams, $scope, RestaurantService, $http,prefix_url){
 
 	$scope.filter = 'all';
 	$scope.reserveData = {
@@ -8,7 +8,7 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 
 	$scope.doReservation = function(data){
 		var name = data.name;
-		$http.post('http://localhost:3000/reservation', data).then(function(data){
+		$http.post(prefix_url + '/reservation', data).then(function(data){
 			alert('Hi ' + name + ' ,Booking is done!')
 		}, function(err){
 			alert('Error! Try after some time.')

@@ -77,7 +77,7 @@ var mongoose = require('mongoose'),
                 type : Number
             },
             expiry_date : [{
-                date : {
+                month : {
                     type : Number
                 },
                 year : {
