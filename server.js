@@ -13,7 +13,7 @@
 	app.use(bodyParser.urlencoded({extended : false}));
 	app.use(config);
   	app.use(compression());
-  	
+
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
 
@@ -21,7 +21,7 @@
 	app.set('views', __dirname + '/app');
   	app.engine('html', require('ejs').renderFile);
 
-	app.all('/*', function(req, res, next) {
+	app.get('/*', function(req, res, next) {
     	res.render('index.html', { root: __dirname });
 	});
 
