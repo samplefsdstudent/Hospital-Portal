@@ -13,11 +13,13 @@
 	app.use(config);
 	app.use(express.static(__dirname + '/app'));
   	app.use(compression());
+  	app.set('views', __dirname + '/app');
+  	app.engine('html', require('ejs').renderFile);
 
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
 
-	app.get('/:slag(^api)', function(req, res, next) {
+	app.all('/*', function(req, res, next) {
     	res.render('index.html', { root: __dirname });
 	});
 
