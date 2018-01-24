@@ -13,10 +13,6 @@
 	app.use(bodyParser.urlencoded({extended : false}));
 	app.use(config);
   	app.use(compression());
-
-	app.post('/api/reservation', reservationMiddleware);
-	app.post('/api/order', orderMiddleware);
-
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
   	app.engine('html', require('ejs').renderFile);
@@ -24,6 +20,9 @@
 	app.get('/*', function(req, res, next) {
     	res.render('index.html', { root: __dirname });
 	});
+
+	app.post('/api/reservation', reservationMiddleware);
+	app.post('/api/order', orderMiddleware);
 
 	app.listen(port, function(){
    		console.log(`Express Server is listening at Port : ${port}`);
