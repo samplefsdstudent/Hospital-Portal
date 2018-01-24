@@ -44,7 +44,7 @@ function order (req, res){
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.email,
                 subject: 'Confirmed! Your request for online order at Restaurant is successful.',
-                text: 'The Reservation ID is: ' + newOrder.ref_id +'.\n The order is placed on -' + newOrder.date.getDate() + ' at ' + newOrder.date.getTime() + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
+                text: 'The Reservation ID is: ' + newOrder.ref_id +'.\n The order is placed on -' + date + ' at ' + time + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
