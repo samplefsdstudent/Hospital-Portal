@@ -21,7 +21,6 @@ function order (req, res){
     for(let i = 0; i < req.body.products.length ; i++){
         orderList = req.body.products[i].name + ',';
     }
-
     orderList.substr(0, orderList.length - 1);
 
     var newOrder = new Order({
