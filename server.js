@@ -1,11 +1,12 @@
 	var reservationMiddleware = require('./middlewares/reservation'),
-    orderMiddleware = require('./middlewares/order'),
-    compression = require('compression'),
-    config = require('./config/config'),
-    mongoose = require('mongoose'),
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    app = express();
+    	orderMiddleware = require('./middlewares/order'),
+    	compression = require('compression'),
+    	config = require('./config/config'),
+    	mongoose = require('mongoose'),
+    	express = require('express'),
+    	bodyParser = require('body-parser'),
+    	app = express();
+    const port = process.env.PORT || 5000;
 
 	mongoose.connect('mongodb://samplefsd:ankit939@ds213118.mlab.com:13118/restaurant')
 	app.use(bodyParser.json());
@@ -23,8 +24,8 @@
     	res.render('index.html', { root: __dirname });
 	});
 
-	app.listen(3000, function(){
-   		console.log('Express Server is listening at Port:3000');
+	app.listen(port, function(){
+   		console.log(`Express Server is listening at Port : ${port}`);
 	});
 
 
