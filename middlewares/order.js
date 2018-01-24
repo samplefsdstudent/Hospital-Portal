@@ -24,13 +24,6 @@ function order (req, res){
 
     orderList.substr(0, orderList.length - 1);
 
-	var mailOptions = {
-        from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
-        to: req.body.email,
-        subject: 'Confirmed! Your request for online order at Restaurant is successful.',
-        text: 'The Reservation ID is: ' + req.body.ref_id +'.\n The order is placed on -' + req.body.date.getDate() + ' at ' + req.body.date.getTime() + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + req.body.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
-    };
-
     var newOrder = new Order({
         ref_id : Math.random().toString(36).substr(2, 9),
         date : req.body.date,
@@ -45,6 +38,12 @@ function order (req, res){
         if (err) {
             res.status(400).send(err)
         }else{
+            var mailOptions = {
+                from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
+                to: req.body.email,
+                subject: 'Confirmed! Your request for online order at Restaurant is successful.',
+                text: 'The Reservation ID is: ' + newOrder.ref_id +'.\n The order is placed on -' + req.body.date.getDate() + ' at ' + req.body.date.getTime() + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + req.body.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
+            };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 res.status(400).send(error)

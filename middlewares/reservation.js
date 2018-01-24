@@ -18,14 +18,6 @@ function reservation (req, res){
     });
 
     console.log('inside');
-
-	var mailOptions = {
-        from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
-        to: req.body.email,
-        subject: 'Confirmed! Your request for reservation at Restaurant is accepted.',
-        text: 'The Reservation ID is: ' + req.body.ref_id +'.\n The table is reserved on -' + req.body.date + ' at ' + req.body.time + 'for ' + req.body.preson_count + ' people.\n We are available to assist you for any queries.' 
-    };
-
     var newReservation = new Reservation({
         ref_id : Math.random().toString(36).substr(2, 9),
         name : req.body.name,
@@ -41,7 +33,13 @@ function reservation (req, res){
             res.status(400);
             res.send(err)
         }else{
-             transporter.sendMail(mailOptions, (error, info) => {
+             var mailOptions = {
+                from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
+                to: req.body.email,
+                subject: 'Confirmed! Your request for reservation at Restaurant is accepted.',
+                text: 'The Reservation ID is: ' + newReservation.ref_id +'.\n The table is reserved on -' + newReservation.body.date.getDate() + ' at ' + req.body.time.getTime() + 'for ' + newReservation.preson_count + ' people.\n We are available to assist you for any queries.' 
+            };
+            transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
                     res.status(400);
                     res.send(error)
