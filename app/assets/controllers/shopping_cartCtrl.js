@@ -37,10 +37,13 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope'
 
 	$scope.removeFromCart = function(data){
 		for(var i=0;i < RestaurantService.cart.length;i++){
-			if(angular.equals(RestaurantService.cart[i].name, data.name))
+			if(angular.equals(RestaurantService.cart[i].name, data.name)){
 				RestaurantService.cart.splice(i,1);
 				$scope.order.products.splice(i,1);
+				console.log($scope.order);
+				$scope.$apply();
 				break;
+			}
 		}
 		alert(`"${data.name}" is removed from your Cart!`);
 	}

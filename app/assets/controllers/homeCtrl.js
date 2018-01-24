@@ -37,9 +37,10 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 			return false;
 		}else{
 			for(var i=0;i < RestaurantService.cart.length;i++){
-				if(angular.equals(RestaurantService.cart[i].name, data.name))
+				if(angular.equals(RestaurantService.cart[i].name, data.name)){
 					RestaurantService.cart.splice(i,1);
 					break;
+				}
 			}
 			alert(`"${data.name}" is removed from your Cart!`);
 			console.log(RestaurantService.cart);
