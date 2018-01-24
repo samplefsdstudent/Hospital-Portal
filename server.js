@@ -12,11 +12,12 @@
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended : false}));
 	app.use(config);
-	app.use(express.static(__dirname + '/app'));
   	app.use(compression());
-
+  	
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
+
+	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
   	app.engine('html', require('ejs').renderFile);
 
