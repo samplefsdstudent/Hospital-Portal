@@ -33,7 +33,8 @@ function reservation (req, res){
             res.status(400);
             res.send(err)
         }else{
-             var mailOptions = {
+            console.log(newReservation);
+            var mailOptions = {
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.email,
                 subject: 'Confirmed! Your request for reservation at Restaurant is accepted.',
