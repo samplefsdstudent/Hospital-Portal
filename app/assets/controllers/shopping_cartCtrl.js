@@ -28,7 +28,7 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope'
 
 	$scope.takeOrder = function(data){
 		var name = data.contact_details.first_name + ' ' + data.contact_details.first_name;
-		$http.post(prefix_url + '/order', data).then(function(data){
+		$http.post(prefix_url + 'order', data).then(function(data){
 			alert('Hi ' + name + ' ,Order is successful!')
 		}, function(err){
 			alert('Error! Try after some time.')

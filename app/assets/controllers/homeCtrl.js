@@ -4,11 +4,12 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 	$scope.reserveData = {
 		person_count : 0
 	};
+	console.log(prefix_url);
 	$scope.recipes = RestaurantService.recipes;
 
 	$scope.doReservation = function(data){
 		var name = data.name;
-		$http.post(prefix_url + '/reservation', data).then(function(data){
+		$http.post(prefix_url + 'reservation', data).then(function(data){
 			alert('Hi ' + name + ' ,Booking is done!')
 		}, function(err){
 			alert('Error! Try after some time.')
