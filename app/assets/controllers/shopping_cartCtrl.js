@@ -36,13 +36,12 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope'
 	}
 
 	$scope.removeFromCart = function(data){
-			for(var i=0;i < RestaurantService.cart.length;i++){
-				if(angular.equals(RestaurantService.cart[i].name, data.name))
-					RestaurantService.cart.splice(i,1);
-					$scope.order.products.splice(i,1);
-					break;
-			}
-			alert(`"${data.name}" is removed from your Cart!`);
+		for(var i=0;i < RestaurantService.cart.length;i++){
+			if(angular.equals(RestaurantService.cart[i].name, data.name))
+				RestaurantService.cart.splice(i,1);
+				$scope.order.products.splice(i,1);
+				break;
 		}
+		alert(`"${data.name}" is removed from your Cart!`);
 	}
 }])
