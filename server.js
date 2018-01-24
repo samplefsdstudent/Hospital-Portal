@@ -15,7 +15,7 @@
 	app.post('/order', orderMiddleware);
 
 	app.get('/', function(req, res, next){
-		res.send('Your Express Server is Up and running');
+		res.end('Your Express Server is Up and running');
 	});
 
 	app.listen(3000, function(){
