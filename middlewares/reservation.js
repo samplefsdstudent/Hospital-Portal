@@ -32,11 +32,15 @@ function reservation (req, res){
             res.send(err)
         }else{
             console.log(newReservation);
+            var date = newReservation.date;
+            date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
+            var time = newReservation.time;
+            time = time.getHours() + ':' + time.getMinutes() + ' ISD GMT 5:30+';
             var mailOptions = {
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.email,
                 subject: 'Confirmed! Your request for reservation at Restaurant is accepted.',
-                text: 'The Reservation ID is: ' + newReservation.ref_id +'.\n The table is reserved on -' + newReservation.date.getDate() + ' at ' + newReservation.time.getTime() + 'for ' + newReservation.preson_count + ' people.\n We are available to assist you for any queries.' 
+                text: 'The Reservation ID is: ' + newReservation.ref_id +'.\n The table is reserved on -' + date + ' at ' + time + 'for ' + newReservation.preson_count + ' people.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
