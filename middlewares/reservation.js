@@ -2,7 +2,6 @@
 
 var nodemailer = require('nodemailer'); 
 var Reservation = require('../models/Reservation');
-
 function reservation (req, res){
 	let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
