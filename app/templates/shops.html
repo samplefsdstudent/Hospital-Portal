@@ -1,0 +1,231 @@
+<!-- banner start here -->
+<div class="banner">
+	<img src="../assets/images/shop/back.jpg" class="img-responsive bg" alt="banner-top" title="banner-top">
+	<div class="container">
+		<div class="matter">
+			<div class="crumb">
+				<h2>Our Shop</h2>
+				<ul class="list-inline">
+					<li><a href="/">HOME</a></li>
+					<li><a href="/shops">Our Shop</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-6 order col-sm-offset-3">
+				<form class="form-horizontal search-icon" method="post">
+					<fieldset>
+						<div class="form-group">
+							<input name="s" ng-model="filter" placeholder="Search keyword" class="form-control" type="text">
+						</div>
+						<button type="submit" value="submit" class="btn"><i class="icofont icofont-search"></i>search</button>
+					</fieldset>
+				</form>
+				<ul class="list-inline text-center">
+					<li>
+						<i class="icofont icofont-fast-food"></i>
+						<p>Select Food</p>
+					</li>
+					<li>
+						<i class="icofont icofont-food-basket"></i>
+						<p>Order Food</p>
+					</li>
+					<li>
+						<i class="icofont icofont-fast-delivery"></i>
+						<p>Delivery or Take Out</p>
+					</li>
+					
+				</ul>
+				<img src="../assets/images/shop/lines.png" alt="line" title="line" class="img-responsive">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- banner end here -->
+
+<!-- shop start here -->
+<div class="shop">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left">
+					<h4>SEARCH FILTERS</h4>
+					<div class="search">
+						<!-- search form start here -->
+						<form class="form-horizontal" method="post">
+							<fieldset>
+								<div class="form-group">
+									<input name="s" value="" ng-model="filter" class="form-control" placeholder="Search Your Fav Food" type="text">
+									<button type="submit" value="submit" class="btn"><i class="icofont icofont-search"></i></button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="food">
+						<h3>Food For</h3>
+						<ul class="list-inline">
+							<li>
+								<label class="check">
+									<input type="radio" ng-model="order_type" value="Delivery" name="payment" class="checkclass"/>
+									Delivery
+								</label>
+							</li>
+							<li>
+								<label class="check">
+									<input type="radio" ng-model="order_type" value="Pickup" name="payment" class="checkclass"/>
+									Pickup
+								</label>
+							</li>
+						</ul>
+					</div>
+					<div class="rating">
+						<h3>rating</h3>
+						<ul class="list-unstyled">
+							<li>
+								<label class="check">
+									<input type="radio" name="payment" class="checkclass"/>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+								</label>
+							</li>
+							<li>
+								<label class="check">
+									<input type="radio" name="payment" class="checkclass"/>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+								</label>
+							</li>
+							<li>
+								<label class="check">
+									<input type="radio" name="payment" class="checkclass"/>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+								</label>
+							</li>
+							<li>
+								<label class="check">
+									<input type="radio" name="payment" class="checkclass"/>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+								</label>
+							</li>
+							<li>
+								<label class="check">
+									<input type="radio" name="payment" class="checkclass"/>
+									<i class="icofont icofont-star" style="color:#FFA41F"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+									<i class="icofont icofont-star" style="color:#b2b2b2"></i>
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- search form end here -->
+			<div class="col-sm-9 mainpage">
+				<div class="row sort">
+					<div class="col-sm-2 list hidden-xs">
+						<div class="btn-group btn-group-sm">
+							<button type="button" ng-class="(grid) ? 'active' : ''" id="grid-view" ng-click="change(2)" class="btn btn-default btngrid" data-toggle="tooltip" title="Grid"><i class="icofont icofont-brand-microsoft"></i></button>
+							
+							<button  type="button" ng-class="(list) ? 'active' : ''" id="list-view" ng-click="change(1)" class="btn btn-default btngrid" data-toggle="tooltip" title="List"><i class="icofont icofont-listine-dots"></i></button>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group input-group input-group-sm">
+							<label class="input-group-addon" for="input-sort">Sort By :    </label>
+							<select id="input-sort" class="form-control selectpicker bs-select-hidden">
+								<option value="" selected="selected">Default</option>
+								<option value="">Name (A - Z)</option>
+								<option value="">Name (Z - A)</option>
+								<option value="">Price (Low &gt; High)</option>
+								<option value="">Price (High &gt; Low)</option>
+								<option value="">Rating (Highest)</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="form-group input-group input-group-sm">
+							<label class="input-group-addon" for="input-sort">Show :    </label>
+							<select id="input-show" class="form-control selectpicker bs-select-hidden">
+								<option value="" selected="selected">Default</option>
+								<option value="">1</option>
+								<option value="">5</option>
+								<option value="">15</option>
+								<option value="">20</option>
+								<option value="">25</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="product-layout product-grid" ng-class="class" ng-repeat="shop in shops track by $index">
+						<div class="product-thumb">
+							<div class="image">
+								<a href="/shop-details/{{$index + 1}}"><img ng-src="{{shop.image}}" alt="image" title="image" class="img-responsive" /></a>
+								<div class="hoverbox">
+									<button type="button" class="btn-primary" ng-click="location.href='shoppingcart.html'">order now</button>
+								</div>
+							</div>
+							<div class="caption">
+								<a href="shopdetail.html"><h4>{{shop.name}}</h4></a>
+								<div class="rating">
+									<i class="icofont icofont-star" ng-style="(shop.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(shop.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(shop.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(shop.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(shop.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+								</div>
+								<div class="price">${{shop.price}}</div>
+								<p>{{shop.description}}</p>
+								<button type="button" class="btn-primary" ng-click="location.href='/shop-details/{{$index + 1}}'">order now</button>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<ul class="list-inline pagination">
+					<li>
+						<a href="#" aria-label="Previous"><i class="icofont icofont-long-arrow-left"></i>Prev</a>
+					</li>
+					<li class="active">
+						<a href="#">01</a> 
+					</li>
+					<li>
+						<a href="#">02</a> 
+					</li>
+					<li>
+						<a href="#">03</a>
+					</li>
+					<li>
+						<a href="#">04</a>
+					</li>
+					<li>
+						<a href="#">...</a> 
+					</li>
+					<li>
+						<a href="#">18</a> 
+					</li>
+					<li>
+						<a href="#" aria-label="Next">Next<i class="icofont icofont-long-arrow-right"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- main container end here -->

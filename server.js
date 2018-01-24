@@ -1,5 +1,6 @@
 	var reservationMiddleware = require('./middlewares/reservation'),
     orderMiddleware = require('./middlewares/order'),
+    compression = require('compression'),
     config = require('./config/config'),
     mongoose = require('mongoose'),
     express = require('express'),
@@ -10,12 +11,14 @@
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended : false}));
 	app.use(config);
+	app.use(express.static(__dirname + '/app'));
+  	app.use(compression());
 
-	app.post('/reservation', reservationMiddleware);
-	app.post('/order', orderMiddleware);
+	app.post('/api/reservation', reservationMiddleware);
+	app.post('/api/order', orderMiddleware);
 
-	app.get('/', function(req, res, next){
-		res.end('Your Express Server is Up and running');
+	app.get('/:slag(^api)', function(req, res, next) {
+    	res.render('index.html', { root: __dirname });
 	});
 
 	app.listen(3000, function(){
