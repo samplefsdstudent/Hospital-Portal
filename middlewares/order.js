@@ -40,7 +40,7 @@ function order (req, res){
         }else{
             var date = newOrder.date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-            time = date.getHours() + ':' + date.getMinutes() + ' ISD GMT 5:30+';
+            var time = date.getHours() + ':' + date.getMinutes() + ' ISD GMT 5:30+';
             var mailOptions = {
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.email,
