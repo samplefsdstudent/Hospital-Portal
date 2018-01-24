@@ -14,6 +14,10 @@
 	app.post('/reservation', reservationMiddleware);
 	app.post('/order', orderMiddleware);
 
+	app.get('/', function(req, res, next){
+		res.send('Your Express Server is Up and running');
+	});
+
 	app.listen(3000, function(){
    		console.log('Express Server is listening at Port:3000');
 	});
