@@ -17,7 +17,6 @@ function reservation (req, res){
 		}
     });
 
-    console.log('inside');
     var newReservation = new Reservation({
         ref_id : Math.random().toString(36).substr(2, 9),
         name : req.body.name,
