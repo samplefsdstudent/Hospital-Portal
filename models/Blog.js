@@ -3,6 +3,11 @@ var mongoose = require('mongoose'),
 
     // create the Blog Schema
     blogSchema = new Schema({
+        id : {
+            type : Number,
+            required : true,
+            unique : true
+        },
     	title : {
     		type : String,
     		required : true,

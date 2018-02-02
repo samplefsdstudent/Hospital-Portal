@@ -27,7 +27,7 @@
 				<div class="tab-content">
 					<div class="tab-pane" id="tab-cart" ng-class="(filter == '1') ? 'active' : ''">
 						<form ng-submit="next(1)">
-							<h2>You have {{items.length}} items in your order.</h2>
+							<h2>You have {{order.products.length}} items in your order.</h2>
 							<div class="table-responsive">
 								<table class="table  table-bordered">
 									<thead>

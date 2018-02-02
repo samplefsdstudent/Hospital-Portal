@@ -58,7 +58,7 @@
   app.get('/api/blogs', blogMiddleware);
   app.get('/api/gallery', galleryMiddleware);
   app.get('/api/testimonials', testimonialMiddleware);
-  app.get('/api/comments/:id', commentMiddleware);
+  app.get('/api/comments/:blog_id', commentMiddleware);
   app.get('/api/members', testimonialMiddleware);
   app.get('/api/services', testimonialMiddleware);
 
