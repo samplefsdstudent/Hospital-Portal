@@ -4,7 +4,13 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 	$scope.reserveData = {
 		person_count : 0
 	};
-	console.log(prefix_url);
+
+	$http.get(prefix_url + 'menu').then(function(data){
+		$scope.recipes = data.data;
+	}, function(err){
+		console.log(err);
+	})
+
 	$scope.recipes = RestaurantService.recipes;
 
 	$scope.doReservation = function(data){
@@ -55,4 +61,22 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 			return (value) ? $scope.recipes[index].checked = false : $scope.recipes[index].checked = true
 		}
 	}
+
+	$scope.carouselInit = function() {
+		/*dish script code start here*/
+		$('.dish').owlCarousel({
+			items: 5,
+			itemsDesktop : [1199, 3],
+			itemsDesktopSmall : [979, 3],
+			itemsTablet : [768, 1],
+			itemsMobile : [479, 1],
+			navigation : false,
+			slideSpeed : 300,
+			paginationSpeed : 400,
+			singleItem : false,
+			navigationText: ['<i class="fa fa-angle-double-left fa1"></i>', '<i class="fa fa-angle-double-right fa2"></i>'],
+			pagination: false,
+		});
+		/*dish script code end here*/
+	};
 }])

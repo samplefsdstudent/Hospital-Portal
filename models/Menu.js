@@ -1,43 +1,47 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
 
-    // create the Reservation Schema
-    reservationSchema = new Schema({
-    	ref_id : {
+    // create the Menu Schema
+    menuSchema = new Schema({
+    	name : {
     		type : String,
     		required : true,
     		unique : true
     	},
-    	name : {
+    	image : {
     		type : String,
     		required : true
     	},
-    	email : {
+    	description : {
     		type : String,
     		required : true
     	},
-    	mobile_no : {
-    		type : String,
-    		required : true
-    	},
-    	date : {
-    		type : Date,
-    		required : true
-    	},
-    	time : {
-    		type : String,
-    		required : true
-    	},
-    	person_count : {
+        type : {
+            type : String,
+            required : true
+        },
+    	price : {
     		type : Number,
     		required : true
-    	}
+    	},
+    	number : {
+    		type : Number,
+    		required : true
+    	},
+    	rating : {
+    		type : Number,
+    		required : true
+    	},
+        checked : {
+            type : Boolean,
+            required : true
+        }
     })
 
     // we need to create a model using the Schema
-    Reservation = mongoose.model('Reservation', reservationSchema);
+    Menu = mongoose.model('Menu', menuSchema);
 
     // make this available to our users in our Express application
-    module.exports = Reservation;
+    module.exports = Menu;
 
 

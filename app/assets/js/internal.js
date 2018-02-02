@@ -31,23 +31,6 @@ $(document).on('ready',function(){
 	});
 	/*slideshow script code end here*/
 	
-	/*dish script code start here*/
-	$('.dish').owlCarousel({
-		items: 5,
-		itemsDesktop : [1199, 3],
-		itemsDesktopSmall : [979, 3],
-		itemsTablet : [768, 1],
-		itemsMobile : [479, 1],
-		navigation : false,
-		slideSpeed : 300,
-		paginationSpeed : 400,
-		singleItem : false,
-		navigationText: ['<i class="fa fa-angle-double-left fa1"></i>', '<i class="fa fa-angle-double-right fa2"></i>'],
-		pagination: false,
-	});
-	/*dish script code end here*/
-	
-	
 	/*testimonails script code start here*/
 	$('.testimonails').owlCarousel({
 		items: 1,

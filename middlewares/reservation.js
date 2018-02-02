@@ -1,5 +1,4 @@
 'use strict';
-
 var nodemailer = require('nodemailer'); 
 var Reservation = require('../models/Reservation');
 function reservation (req, res){
@@ -25,7 +24,6 @@ function reservation (req, res){
         time : req.body.time,
         person_count : req.body.person_count
     })
-
     newReservation.save(function(err) {
         if (err) {
             res.status(400);
@@ -50,5 +48,4 @@ function reservation (req, res){
         }
     });
 }
-
 module.exports = reservation;

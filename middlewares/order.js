@@ -1,8 +1,6 @@
 'use strict';
-
 var nodemailer = require('nodemailer');
 var Order = require('../models/Order');
-
 function order (req, res){
 	let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -16,13 +14,11 @@ function order (req, res){
 			rejectUnauthorized : false
 		}
     });
-
     var orderList = req.body.products
     for(let i = 0; i < req.body.products.length ; i++){
         orderList = req.body.products[i].name + ',';
     }
     orderList.substr(0, orderList.length - 1);
-
     var newOrder = new Order({
         ref_id : Math.random().toString(36).substr(2, 9),
         date : req.body.date,
@@ -32,7 +28,6 @@ function order (req, res){
         contact_details : req.body.contact_details,
         card_details : req.body.card_details
     })
-
     newOrder.save(function(err) {
         if (err) {
             res.status(400).send(err)
@@ -47,13 +42,10 @@ function order (req, res){
                 text: 'The Reservation ID is: ' + newOrder.ref_id +'.\n The order is placed on -' + date + ' at ' + time + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                res.status(400).send(error)
-            }
+            if (error) res.status(400).send(error);
             res.end('Success')
             });
         }
     });
 }
-
 module.exports = order;

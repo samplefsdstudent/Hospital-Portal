@@ -127,7 +127,13 @@
 									</div>
 									<div class="caption">
 										<h4>{{recipe.name}}</h4>
-										<p class="des">{{recipe.description}}</p>
+										<div class="rating">
+						<i class="icofont icofont-star" ng-style="(recipe.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(recipe.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(recipe.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(recipe.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+							<i class="icofont icofont-star" ng-style="(recipe.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+					</div>
 										<div class="price">${{recipe.price}}</div>
 										<div class="icon text-right">
 											<a class="cart" ng-click="switch(recipe.checked,recipe, $index);"><i ng-style="(recipe.checked) ? {color : '#8BC34A'} : {color : '#FFA41F'}" class="icofont icofont-cart-alt"></i></a>
@@ -211,7 +217,7 @@
 		
 	<div class="dish owl-carousel">
 		<!-- ng-repeat on recipes with filter 'dish' start here -->
-		<div class="item" ng-repeat="recipe in recipes | filter : {type : 'dish'} track by $index">
+		<div class="item" ng-repeat="recipe in recipes | filter : {type : 'dish'} track by $index" ng-repeat-owl-carousel carousel-init="carouselInit">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="box">
 					<a href="/shop"><img ng-src="{{recipe.image}}" alt="image" title="image" class="img-responsive" /></a>

@@ -1,12 +1,11 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
 
-    // create the Reservation Schema
-    reservationSchema = new Schema({
-    	ref_id : {
+    // create the Comment Schema
+    CommentSchema = new Schema({
+    	blog_id : {
     		type : String,
-    		required : true,
-    		unique : true
+    		required : true
     	},
     	name : {
     		type : String,
@@ -16,28 +15,20 @@ var mongoose = require('mongoose'),
     		type : String,
     		required : true
     	},
-    	mobile_no : {
+    	image : {
     		type : String,
     		required : true
     	},
     	date : {
     		type : Date,
     		required : true
-    	},
-    	time : {
-    		type : String,
-    		required : true
-    	},
-    	person_count : {
-    		type : Number,
-    		required : true
     	}
     })
 
     // we need to create a model using the Schema
-    Reservation = mongoose.model('Reservation', reservationSchema);
+    Comment = mongoose.model('Comment', CommentSchema);
 
     // make this available to our users in our Express application
-    module.exports = Reservation;
+    module.exports = Comment;
 
 

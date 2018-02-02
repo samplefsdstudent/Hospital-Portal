@@ -1,6 +1,10 @@
-angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','RestaurantService', function($routeParams,$scope,RestaurantService){
+angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url', function($routeParams,$scope,RestaurantService,$http,prefix_url){
 	$scope.filter = 'all';
-	$scope.recipes = RestaurantService.recipes;
+	$http.get(prefix_url + 'menu').then(function(data){
+		$scope.recipes = data.data;
+	}, function(err){
+		console.log(err);
+	})
 
 	$scope.addToCart = function(data, index){
 		if(!data.checked){
