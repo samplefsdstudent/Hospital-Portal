@@ -1,9 +1,8 @@
-angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll', function($routeParams, $scope, RestaurantService, $http,prefix_url,$anchorScroll){
+angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($routeParams, $scope, RestaurantService, $http,prefix_url,$anchorScroll,$location){
 
 	$scope.filter = 'all';
-	$scope.reserveData = {
-		person_count : 0
-	};
+	$scope.reserveData = {};
+	$scope.person_count = 0;
 
 	$http.get(prefix_url + 'menu').then(function(data){
 		$scope.recipes = data.data;
@@ -14,13 +13,13 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 	$scope.recipes = RestaurantService.recipes;
 
 	$scope.doReservation = function(data){
+		data.person_count = person_count;
 		var name = data.name;
 		$http.post(prefix_url + 'reservation', data).then(function(data){
 			alert('Hi ' + name + ' ,Booking is done! Please check your email for details.')
 			$anchorScroll();
-			$scope.reserveData = {
-				person_count : 0
-			}
+			$scope.reserveData = {}
+			$scope.person_count = 0;
 		}, function(err){
 			alert('Error! Try after some time.')
 		})
@@ -79,4 +78,9 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 		});
 		/*dish script code end here*/
 	};
+
+	$scope.navigator = function(flag){
+		if(flag == 0)
+			$location.path('/our-menu'); 
+	}
 }])

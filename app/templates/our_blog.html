@@ -23,8 +23,8 @@
 					<a href="/blog-details/{{$index + 1}}"><img ng-src="{{blog.image}}" class="img-responsive" alt="image" title="image" /></a>
 					<div class="caption">
 						<h4>{{blog.title}}</h4>
-						<p class="text">{{blog.date}} / By {{blog.uploaded_by}} / {{blog.comments.length}} Comments</p>
-						<p class="des">{{blog.description}}</p>
+						<p class="text">{{blog.date | date}} / By {{blog.uploaded_by}}</p>
+						<p class="des">{{blog.description | limitTo:100}}...</p>
 						<button type="button" class="btn-primary" ng-click="navigator($index + 1)">read more <i class="icofont icofont-curved-double-right"></i></button>
 					</div>
 				</div>	

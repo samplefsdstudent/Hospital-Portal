@@ -3,7 +3,7 @@ var Testimonial = require('../models/Testimonial');
 
 function testimonial(req, res){
     Testimonial.find({}, function (err, testimonials) {
-        if (err) return handleError(err);
+        if (err) return err;
         res.json(testimonials);
     })
 }

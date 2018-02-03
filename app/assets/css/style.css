@@ -299,6 +299,16 @@ header #logo{
 	text-transform: none;
 	border:1px solid #FFA41F;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button{
+    display: none;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-inner-spin-button{
+    display: none;
+}
 /*--------------------------------- 
 [ Slideshow / .slideshow ]
 ----------------------------------- */

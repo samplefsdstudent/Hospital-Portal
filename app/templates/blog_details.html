@@ -61,46 +61,16 @@
 						<!-- list of blogs end here-->
 					</div>
 				</div>
-				<div class="left-box">
-					<h6>GALLERY</h6>
-					<div class="gallery">
-						<ul class="list-inline">
-							<li><img src="../assets/images/blog-detail/galery1.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery2.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery3.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery4.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery5.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery6.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery7.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery8.jpg" alt="img" title="img" class="img-responsive" /></li>
-							<li><img src="../assets/images/blog-detail/galery9.jpg" alt="img" title="img" class="img-responsive" /></li>
-						</ul>
-					</div>
-				</div>
-				<div class="left-box">
-					<h6>TAGS</h6>
-					<div class="tag">
-						<ul class="list-inline">
-							<li><a href="#">Pizza</a></li>
-							<li><a href="#">Burger</a></li>
-							<li><a href="#">Breakfast</a></li>
-							<li><a href="#">Lunch</a></li>
-							<li><a href="#">Dinner</a></li>
-							<li><a href="#">Fast Food</a></li>
-							<li><a href="#">Tandoori Chicken</a></li>
-						</ul>
-					</div>
-				</div>
 			</div>
 			<!-- blog details are displayed using $scope.index as index in $scope.blogs -->
 			<div class="col-md-8 col-sm-8 col-lg-8 col-xs-12">
 				<div class="blogs owl-carousel">
 					<div class="item">
 						<div class="image">
-							<a href="#"><img ng-src="{{blogs[index].image}}" alt="blog-big" title="blog-big" class="img-responsive" /></a>
+							<a><img ng-src="{{blogs[index].image}}" alt="blog-big" title="blog-big" class="img-responsive" /></a>
 						</div>
 						<h4>{{blogs[index].title}}</h4>
-						<p class="text">{{blogs[index].date}} / By {{blogs[index].uploaded_by}} / {{blogs[index].comments.length}} comments</p>
+						<p class="text">{{blogs[index].date | date}} / By {{blogs[index].uploaded_by}} / {{comments.length}} comments</p>
 						<p class="des" ng-repeat="content in blogs[index].content track by $index" ng-if="$index < blogs[index].content.length - 1">{{content}}</p>
 						<p class="des2">{{blogs[index].highlight}}</p>
 						<p class="des">{{blogs[index].content[blogs[index].content.length - 1]}}</p>
@@ -134,20 +104,29 @@
 							<img ng-src="{{comment.image}}" alt="img" title="img" class="img-responsive">
 							<div class="caption">
 								<h5>{{comment.sender}}</h5>
-								<span>{{comment.date}}<a href="#" class="pull-right"><i class="icofont icofont-reply"></i> Reply</a></span>
+								<span>{{comment.date | date}} / {{comment.date | date:'hh:mm'}}</span>
 								<p>{{comment.content}}</p>
 							</div>
 						</li>	
 					</ul>
 					<h3>POST A COMMENT</h3>
-					<form class="form-horizontal" ng-submit="postComment(commentData)">
+					<form namg="form" class="form-horizontal" ng-submit="postComment(commentData)">
 						<fieldset>
 							<div class="form-group">
-								<div class="col-sm-6">
-									<input class="form-control" ng-model="commentData.name" placeholder="Name*" id="input-name" value="" name="jobname" required="" type="text" required/>
+								<div class="col-sm-7">
+									<div class="col-sm-12">
+										<input class="form-control" ng-model="commentData.name" placeholder="Name" id="input-name" name="jobname" required="" type="text" required/>
+									</div>
+									<div class="col-sm-12">
+										<input class="form-control" ng-model="commentData.email" id="input-email" placeholder="Email" name="email" required="" type="email" required/>
+									</div>
 								</div>
-								<div class="col-sm-6">
-									<input class="form-control" ng-model="commentData.email" id="input-email" placeholder="Email*" value="" name="email" required="" type="text" required/>
+								<div class="col-sm-5">
+									<div class="image" ng-if="commentData.image">
+										<a><img ng-src="{{'data:' + commentData.image[0].filetype + ';base64,' + commentData.image[0].base64}}" alt="img-big" title="img-big" class="img-responsive" /></a>
+									</div>
+									<input type="file" ng-model="commentData.image" name="files" multiple accept="image/*," maxsize="5000" required base-sixty-four-input>
+  									<span ng-show="form.commendData.files.$error.maxsize">Files must not exceed 5000 KB</span>
 								</div>
 							</div>
 							<div class="form-group">

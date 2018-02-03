@@ -53,14 +53,15 @@
 
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
+  app.post('/api/comments/:blog_id', commentMiddleware.post);
   
   app.get('/api/menu', menuMiddleware);
   app.get('/api/blogs', blogMiddleware);
   app.get('/api/gallery', galleryMiddleware);
   app.get('/api/testimonials', testimonialMiddleware);
-  app.get('/api/comments/:blog_id', commentMiddleware);
-  app.get('/api/members', testimonialMiddleware);
-  app.get('/api/services', testimonialMiddleware);
+  app.get('/api/comments/:blog_id', commentMiddleware.get);
+  app.get('/api/members', memberMiddleware);
+  app.get('/api/services', serviceMiddleware);
 
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');

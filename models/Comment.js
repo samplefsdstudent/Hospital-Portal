@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     // create the Comment Schema
     CommentSchema = new Schema({
     	blog_id : {
-    		type : String,
+    		type : Number,
     		required : true
     	},
     	name : {
