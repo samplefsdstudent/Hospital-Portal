@@ -412,7 +412,7 @@ input[type="time"]::-webkit-inner-spin-button{
 }
 .commontop hr{
 	border-top:2px solid #FFA41F;
-	margin:0 auto 50px;
+	margin:0 auto 0px;
 	width:100px;
 }
 /*--------------------------------- 
@@ -497,7 +497,7 @@ input[type="time"]::-webkit-inner-spin-button{
 ----------------------- */
 .menu .nav-tabs {
 	border:1px solid #E5E5E5;
-	margin:0 10% 47px;
+	margin:50px 10% 47px;
 	padding:20px 0;
 	text-align:center;
 }
@@ -1247,7 +1247,7 @@ footer .powered .social li a:hover i{
 	text-transform:uppercase;
 	height:45px;
 	color:#686868;
-	padding:0 0 0 20px;
+	padding:10px;
 }
 .contactus  form textarea{
 	height:190px ;

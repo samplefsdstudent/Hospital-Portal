@@ -36,18 +36,6 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
         templateUrl : 'templates/reservation.html',
         controller : 'reservationCtrl'
     })
-    .when('/search', {
-        templateUrl : 'templates/search.html',
-        controller : 'searchCtrl'
-    })
-    .when('/shops', {
-        templateUrl : 'templates/shops.html',
-        controller : 'shopCtrl'
-    })
-    .when('/shop-details/:id', {
-        templateUrl : 'templates/shop_details.html',
-        controller : 'shop_detailsCtrl'
-    })
     .when('/shopping-cart', {
         templateUrl : 'templates/shopping_cart.html',
         controller : 'shopping_cartCtrl'

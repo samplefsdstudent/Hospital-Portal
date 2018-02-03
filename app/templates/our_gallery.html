@@ -23,7 +23,7 @@
 				<hr>
 			</div>
 			<!-- ng-repeat on images start here -->
-			<div class="col-sm-4 galery" ng-repeat="image in images track by $index">
+			<div class="col-sm-4 galery" ng-repeat="image in images track by $index" style="margin-top:50px;">
 				<div class="product-thumb">
 					<div class="image">
 						<img ng-src="{{image.src}}" alt="image" title="image {{$index + 1}}" class="img-responsive" />
