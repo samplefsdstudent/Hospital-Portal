@@ -1227,8 +1227,8 @@ footer .powered .social li a:hover i{
 /*--------------------------------- 
 [ contactus / .contactus ]
 ----------------------------------- */
-.contactus{
-	margin:80px 0;
+.map{
+	margin-top:50px;
 }
 .contactus iframe{
 	width:100%;
