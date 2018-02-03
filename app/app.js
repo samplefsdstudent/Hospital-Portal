@@ -1,6 +1,6 @@
 'use strict';
 var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
-  .value('prefix_url','http://localhost:5000/api/')
+  .value('prefix_url','http://restaurant-express-server.herokuapp.com/api/')
 
   .config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
