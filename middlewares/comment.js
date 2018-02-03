@@ -2,24 +2,18 @@
 var Comment = require('../models/Comment');
 
 function getComment(req, res){
-    Comment.find({blog_id : req.params.blog_id}, function (err, comments) {
+	var blog_id = req.params.blog_id || req.body.blog_id;
+    Comment.find({blog_id : blog_id}, function (err, comments) {
         if (err) return err;
         res.json(comments);
     })
 }
 
-function postComment(req, res){
-    Comment.find({blog_id : req.params.blog_id}, function (err, comments) {
-        if (err) return err;
-        res.json(comments);
-    })
-
-    Comment.update(
-   		{ "blog_id": req.params.blog_id},
-   		{ "$push": { "comments": req.body.data } },
-   		function (err, comment) {
-       		if (err) return handleError(err);
-       		res.json(comment);
+function postComment(req, res, next){
+   	var comment = new Comment(req.body);
+    comment.save(function (err) {
+       	if (err) return console.log(err);
+       	next();
    	});
 }
 

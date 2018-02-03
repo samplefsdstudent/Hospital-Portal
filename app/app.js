@@ -63,9 +63,10 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
   }])
 
 .factory('RestaurantService', function() {
-return {
-    cart : []
-}
+    return {
+        cart : [],
+        recipes : []
+    }
 })
 
 .directive('ngConfirmClick', [

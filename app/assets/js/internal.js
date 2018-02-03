@@ -62,18 +62,4 @@ $(document).on('ready',function(){
 		pagination: false,
 	});
 	/*blogs script code end here*/
-
-	//quantity code
-	$(function () {
-		$('.add').on('click',function(){
-			var $qty=$(this).closest('p').find('.qty');
-			var currentVal = parseInt($qty.val());
-				$qty.val(currentVal + 1);
-		});
-		$('.minus').on('click',function(){
-			var $qty=$(this).closest('p').find('.qty');
-			var currentVal = parseInt($qty.val());
-			$qty.val(currentVal - 1);					
-		});
-	});	
 });

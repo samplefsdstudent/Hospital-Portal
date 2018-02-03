@@ -36,7 +36,7 @@ function reservation (req, res){
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.email,
                 subject: 'Confirmed! Your request for reservation at Restaurant is accepted.',
-                text: 'The Reservation ID is: ' + newReservation.ref_id +'.\n The table is reserved on -' + date + ' at ' + newReservation.time + 'for ' + newReservation.preson_count + ' people.\n We are available to assist you for any queries.' 
+                text: 'The Reservation ID is: ' + newReservation.ref_id +'.\n The table is reserved on ' + date + ' at ' + newReservation.time + 'for ' + newReservation.person_count + ' people.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {

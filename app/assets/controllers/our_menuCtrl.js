@@ -1,10 +1,16 @@
 angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url', function($routeParams,$scope,RestaurantService,$http,prefix_url){
 	$scope.filter = 'all';
-	$http.get(prefix_url + 'menu').then(function(data){
-		$scope.recipes = data.data;
-	}, function(err){
-		console.log(err);
-	})
+	
+	if(!RestaurantService.recipes.length){
+		$http.get(prefix_url + 'menu').then(function(data){
+			$scope.recipes = data.data;
+			RestaurantService.recipes = data.data;
+		}, function(err){
+			console.log(err);
+		})
+	}else{
+		$scope.recipes = RestaurantService.recipes
+	}
 
 	$scope.addToCart = function(data, index){
 		if(!data.checked){
@@ -21,15 +27,10 @@ angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','Res
 			$scope.recipes[index].checked = true;
 			return true;
 		}else{
-			for(var i=0;i < RestaurantService.cart.length;i++){
-				if(angular.equals(RestaurantService.cart[i].name, data.name))
-					RestaurantService.cart.splice(i,1);
-					break;
-			}
-			alert(`"${data.name}" is removed from your Cart!`);
-			console.log(RestaurantService.cart);
-			RestaurantService.recipes[index] = false;
+			RestaurantService.cart.splice(index,1);
+			RestaurantService.recipes[index].checked = false;
 			$scope.recipes = RestaurantService.recipes;
+			alert(`"${data.name}" is removed from your Cart!`);
 			return true;
 		}
 	}

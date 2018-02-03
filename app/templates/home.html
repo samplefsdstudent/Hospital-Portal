@@ -181,12 +181,12 @@
 							<i class="icofont icofont-ui-calendar"></i><input name="date" placeholder="date" ng-model="reserveData.date"  id="input-date" class="form-control" type="date" required/>
 						</div> 
 						<div class="col-sm-4">
-							<i class="icofont icofont-clock-time"></i><input name="time" placeholder="time" ng-model="reserveData.time"  min="11:00" max="22:00" id="input-time" class="form-control" type="time" required/>
+							<i class="icofont icofont-clock-time"></i><input name="time" placeholder="time" ng-model="reserveData.time" value="11:00" min="11:00" max="22:00" id="input-time" class="form-control" type="time" required/>
 						</div>
 						<div class="col-sm-4">
 							<i class="fa fa-key"></i>
-							<select class="selectpicker form-control bs-select-hidden" ng-model="person_count">
-								<option value="0" disabled="true">number of persons</option>
+							<select class="selectpicker form-control bs-select-hidden" ng-model="reserveData.person_count">
+								<option value="" selected disabled>number of persons</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="2">3</option>

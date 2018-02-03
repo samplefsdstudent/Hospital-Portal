@@ -53,7 +53,7 @@
 
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
-  app.post('/api/comments/:blog_id', commentMiddleware.post);
+  app.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
   
   app.get('/api/menu', menuMiddleware);
   app.get('/api/blogs', blogMiddleware);

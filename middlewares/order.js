@@ -14,7 +14,8 @@ function order (req, res){
 			rejectUnauthorized : false
 		}
     });
-    var orderList = req.body.products
+  
+    var orderList = req.body.products;
     for(let i = 0; i < req.body.products.length ; i++){
         orderList = req.body.products[i].name + ',';
     }
@@ -28,22 +29,25 @@ function order (req, res){
         contact_details : req.body.contact_details,
         card_details : req.body.card_details
     })
+
     newOrder.save(function(err) {
         if (err) {
             res.status(400).send(err)
         }else{
+            console.log('saved');
+
             var date = newOrder.date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-            var time = date.getHours() + ':' + date.getMinutes() + ' ISD GMT 5:30+';
+            var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';
             var mailOptions = {
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
-                to: req.body.email,
+                to: req.body.contact_details.email,
                 subject: 'Confirmed! Your request for online order at Restaurant is successful.',
-                text: 'The Reservation ID is: ' + newOrder.ref_id +'.\n The order is placed on -' + date + ' at ' + time + 'for Products- ' + orderList + '\n The total amount including all taxes is - Rs.' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
+                text: 'The Reference ID of your order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Products- ' + orderList + '\n The total amount including all taxes is - $' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
-            res.end('Success')
+                res.end('Success')
             });
         }
     });

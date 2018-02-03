@@ -5947,6 +5947,7 @@ button.close {
   position: relative;
   width: auto;
   margin: 10px;
+  margin-top:100px;
 }
 .modal-content {
   position: relative;
@@ -6018,7 +6019,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 100px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

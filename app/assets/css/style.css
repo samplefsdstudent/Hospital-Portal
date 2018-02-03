@@ -1503,7 +1503,7 @@ footer .powered .social li a:hover i{
 }
 .blog-detail .comment ul li .caption p{
 	font-size:14px;
-	margin:13px 0 0;
+	margin:13px 20px 0;
 	color:#686868;
 }
 .blog-detail .comment h1{
@@ -2343,7 +2343,7 @@ footer .powered .social li a:hover i{
 	margin:0 0 30px;
 	text-transform:uppercase;
 	border:1px solid #e5e5e5;
-	color:#b3b3b3;
+	color:#6d6c6c;
 }
 .mycart #tab-payment form{
 	margin:0 100px 120px;

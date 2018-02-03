@@ -1,4 +1,4 @@
-angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope','RestaurantService','prefix_url', function($routeParams,$scope,RestaurantService,prefix_url){
+angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll', function($routeParams,$scope,RestaurantService,$http,prefix_url,$anchorScroll){
 	$scope.order = {
 		date : new Date(),
 		total_amount : 0,
@@ -7,44 +7,48 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope'
 		contact_details : {},
 		card_details : {}
 	}
+	$scope.order.card_details.cart_type = 'Visa Card';
 	$scope.filter = '1';
 
 	$scope.next = function(flag){
 		if(flag == 0){
 			$scope.filter = '1';
-		}
-		if(flag == 1){
+			$anchorScroll();
+		}else if(flag == 1){
 			$scope.filter = '2';
+			$anchorScroll();
 		}else if(flag == 2){
 			$scope.filter = '3';
+			$anchorScroll();
 		}
 	};
 
 	$scope.$watch('order.products', function(oldValue, newValue){
 		angular.forEach($scope.order.products, function(item){
-			$scope.order.total_amount += item.price*item.number;
+			var total_amount = 0;
+			total_amount += item.price*item.number;
+			$scope.order.total_amount = total_amount;
 		})
 	}, true)
 
 	$scope.takeOrder = function(data){
-		var name = data.contact_details.first_name + ' ' + data.contact_details.first_name;
+		var name = data.contact_details.first_name + ' ' + data.contact_details.last_name;
 		$http.post(prefix_url + 'order', data).then(function(data){
-			alert('Hi ' + name + ' ,Order is successful!')
+			alert('Hi ' + name + ' ,Order is successful! Please check you Email for more details.');
+			RestaurantService.cart = [];
+			RestaurantService.recipes = [];
+			$location.path('/home'); 
 		}, function(err){
 			alert('Error! Try after some time.')
 		})
 	}
 
-	$scope.removeFromCart = function(data){
-		for(var i=0;i < RestaurantService.cart.length;i++){
-			if(angular.equals(RestaurantService.cart[i].name, data.name)){
-				RestaurantService.cart.splice(i,1);
-				$scope.order.products.splice(i,1);
-				console.log($scope.order);
-				$scope.$apply();
-				break;
-			}
-		}
-		alert(`"${data.name}" is removed from your Cart!`);
+	$scope.removeFromCart = function(index){
+		index = RestaurantService.cart.length - index - 1;
+		var name = RestaurantService.cart[index].name;
+		RestaurantService.cart.splice(index,1);
+		$scope.order.products = RestaurantService.cart;
+		$scope.$apply();
+		alert(`"${name}" is removed from your Cart!`);
 	}
 }])

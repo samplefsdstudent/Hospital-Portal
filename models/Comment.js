@@ -22,7 +22,11 @@ var mongoose = require('mongoose'),
     	date : {
     		type : Date,
     		required : true
-    	}
+    	},
+        content : {
+            type : String,
+            required : true
+        }
     })
 
     // we need to create a model using the Schema

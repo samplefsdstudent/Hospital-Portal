@@ -18,19 +18,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs" ng-if="order.products.length">
 					<li ng-class="(filter == '1') ? 'active' : ''"><span>1</span>shopping cart</li>
 					<li ng-class="(filter == '2') ? 'active' : ''"><span>2</span>shopping info</li>
 					<li ng-class="(filter == '3') ? 'active' : ''"><span>3</span>payment method</li>
 				</ul>
-				<div class="bor"></div>
+				<div class="bor" ng-if="order.products.length"></div>
 				<div class="tab-content">
 					<div class="tab-pane" id="tab-cart" ng-class="(filter == '1') ? 'active' : ''">
 						<form ng-submit="next(1)">
 							<h2>You have {{order.products.length}} items in your order.</h2>
 							<div class="table-responsive">
 								<table class="table  table-bordered">
-									<thead>
+									<thead ng-if="order.products.length">
 										<tr>
 											<td class="text-center">Name</td>
 											<td class="text-center">Price</td>
@@ -40,7 +40,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="product in order.products track by $index">
+										<tr ng-repeat="product in order.products | orderBy : '-' track by $index">
 											<td>
 												<a href="#">
 													<img ng-src="{{product.image}}" class="img-responsive" alt="thumb" title="thumb" />
@@ -60,25 +60,32 @@
 											<td class="text-center">$ {{product.price}}</td>
 											<td class="text-center">
 												<p class="qtypara">
-													<span id="minus1" class="minus"><a ng-click="(product.number > 1) ? product.number = product.number - 1 : product.number"><i class="icofont icofont-minus"></i></a></span>
+													<span id="minus1" class="minus"><a ng-click="(product.number > 0) ? product.number = product.number - 1 : product.number"><i class="icofont icofont-minus"></i></a></span>
 													<input type="number" name="quantity" ng-model="product.number" size="2" id="input-quantity1" class="form-control qty" disabled required/>
 													<span id="add1" class="add"><a ng-click="(product.number < 10) ? product.number = product.number + 1 : product.number"><i class="icofont icofont-plus"></i></a></span>
 												</p>
 											</td>
 											<td class="text-center">${{product.price * product.number}}</td>
 											<td class="text-center">
-												<button confirmed-click="removeFromCart(product)" 
+												<button confirmed-click="removeFromCart($index)" 
     ng-confirm-click="Are you Sure?" type="button"><i class="icofont icofont-close-line"></i></button>
 											</td>
 										</tr>
-										<tr>
+										<tr ng-if="order.products.length">
 											<td colspan="5">
-												<h3 class="text-right">SUBTOTAL - ${{total_amount}}</h3>
+												<h3 class="text-right">SUBTOTAL - ${{order.total_amount}}</h3>
 												<div class="buttons pull-left">
 													<a href="/our-menu" class="btn btn-primary">Continue Shopping</a>
 												</div>
 												<div class="buttons pull-right">
 													<a ng-click="next(1)" class="btn btn-primary">Checkout</a>
+												</div>
+											</td>
+										</tr>
+										<tr ng-if="!order.products.length">
+											<td colspan="5">
+												<div class="buttons text-center">
+													<a href="/our-menu" class="btn btn-primary">Go To Menu Page</a>
 												</div>
 											</td>
 										</tr>
@@ -132,7 +139,7 @@
 								<button ng-click="next(0)" class="btn-primary">shopping cart</button>
 							</div>
 							<div class="buttons pull-right">
-								<button type="button" class="btn-primary">payment method</button>
+								<button type="submit" class="btn-primary">payment method</button>
 							</div>
 						</div>
 						</form>
@@ -142,17 +149,17 @@
 							<fieldset>
 								<div class="form-group ">
 									<ul class="list-inline text-center link">
-										<li class="active">
-											<a ng-click="order.card_details.cart_type = 'Visa Card'"><img src="../assets/images/visacard.png" alt="visa" title="visa" class="img-responsive"></a>
+										<li ng-class="(order.card_details.cart_type == 'Visa Card') ? 'active' : ''">
+											<a href="" ng-click="order.card_details.cart_type = 'Visa Card'"><img src="../assets/images/visacard.png" alt="visa" title="visa" class="img-responsive"></a>
 										</li>
-										<li>
-											<a ng-click="order.card_details.cart_type = 'Master Card'"><img src="../assets/images/master.png" alt="master" title="master" class="img-responsive"></a>
+										<li ng-class="(order.card_details.cart_type == 'Master Card') ? 'active' : ''">
+											<a href="" ng-click="order.card_details.cart_type = 'Master Card'"><img src="../assets/images/master.png" alt="master" title="master" class="img-responsive"></a>
 										</li>
-										<li>
-											<a ng-click="order.card_details.cart_type = 'Discover Card'"><img src="../assets/images/discovers.png" alt="discover" title="discover" class="img-responsive"></a>
+										<li ng-class="(order.card_details.cart_type == 'Discover Card') ? 'active' : ''">
+											<a href="" ng-click="order.card_details.cart_type = 'Discover Card'"><img src="../assets/images/discovers.png" alt="discover" title="discover" class="img-responsive"></a>
 										</li>
-										<li>
-											<a ng-click="order.card_details.cart_type = 'Paypal Card'"><img src="../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
+										<li ng-class="(order.card_details.cart_type == 'Paypal Card') ? 'active' : ''">
+											<a href="" ng-click="order.card_details.cart_type = 'Paypal Card'"><img src="../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
 										</li>
 									</ul>
 								</div>

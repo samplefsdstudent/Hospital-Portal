@@ -1,22 +1,24 @@
 angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($routeParams, $scope, RestaurantService, $http,prefix_url,$anchorScroll,$location){
-
 	$scope.filter = 'all';
-	$scope.reserveData = {};
-	$scope.person_count = 0;
+	$scope.reserveData = {
+		person_count : 1
+	};
 
-	$http.get(prefix_url + 'menu').then(function(data){
-		$scope.recipes = data.data;
-	}, function(err){
-		console.log(err);
-	})
-
-	$scope.recipes = RestaurantService.recipes;
+	if(!RestaurantService.recipes.length){
+		$http.get(prefix_url + 'menu').then(function(data){
+			$scope.recipes = data.data;
+			RestaurantService.recipes = data.data;
+		}, function(err){
+			console.log(err);
+		})
+	}else{
+		$scope.recipes = RestaurantService.recipes
+	}
 
 	$scope.doReservation = function(data){
-		data.person_count = person_count;
 		var name = data.name;
 		$http.post(prefix_url + 'reservation', data).then(function(data){
-			alert('Hi ' + name + ' ,Booking is done! Please check your email for details.')
+			alert('Hi ' + name + ' ,Booking is done! Please check your Email for more details.')
 			$anchorScroll();
 			$scope.reserveData = {}
 			$scope.person_count = 0;
@@ -41,16 +43,10 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 			console.log(RestaurantService.cart);
 			return false;
 		}else{
-			for(var i=0;i < RestaurantService.cart.length;i++){
-				if(angular.equals(RestaurantService.cart[i].name, data.name)){
-					RestaurantService.cart.splice(i,1);
-					break;
-				}
-			}
-			alert(`"${data.name}" is removed from your Cart!`);
-			console.log(RestaurantService.cart);
+			RestaurantService.cart.splice(index,1);
 			RestaurantService.recipes[index].checked = false;
 			$scope.recipes = RestaurantService.recipes;
+			alert(`"${data.name}" is removed from your Cart!`);
 			return true;
 		}
 	}
