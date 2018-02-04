@@ -10,7 +10,8 @@ var mongoose = require('mongoose'),
     	},
         date : {
             type : Date,
-            default : Date.now
+            default : Date.now,
+            require : true
         },
         total_amount : {
             type : Number,
@@ -106,7 +107,8 @@ var mongoose = require('mongoose'),
                 }
             }],
             cvv : {
-                type : Number
+                type : Number,
+                require : true
             }
         }
     })
