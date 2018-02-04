@@ -65,7 +65,8 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
 
   }])
 
-.controller('mainCtrl', ['$anchorScroll','$scope','$http','prefix_url', function($anchorScroll,$scope,$http,prefix_url){
+.controller('mainCtrl', ['$anchorScroll','$scope','$http','prefix_url','RestaurantService', function($anchorScroll,$scope,$http,prefix_url,RestaurantService){
+    $scope.length = RestaurantService.cart.length;
     $scope.subscribeNewsletter = function(data){
         data.date = new Date();
         $http.post(prefix_url + 'newsletter', data).then(function(data){
@@ -87,7 +88,8 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
 
 .filter('capitalize', function() {
     return function(input) {
-      return input.split('_').join(' ').toUpperCase();
+        console.log(typeof input);
+        return (typeof input === 'number') ? input : input.split('_').join(' ').toUpperCase();
     }
 })
 

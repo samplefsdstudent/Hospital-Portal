@@ -151,6 +151,13 @@ a:focus{
 	margin-bottom: 0px;
 	border-bottom:0px;
 }
+
+.badge{
+	background-color : #FFA41F;
+	margin-top: -5px;
+    padding: 3px 4px;
+    font-size: 12px;
+}
 /*--------------------
 [ Header / header ]
 ---------------------*/
