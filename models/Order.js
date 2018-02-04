@@ -13,101 +13,85 @@ var mongoose = require('mongoose'),
             default : Date.now
         },
         total_amount : {
-            type : Number
+            type : Number,
+            required : true
         },
     	products : [{
             name : {
-                type : String,
-                required : true
+                type : String
             },
             image : {
-                type : String,
-                required : true
+                type : String
             },
             price : {
-                type : Number,
-                required : true
+                type : Number
             },
             number : {
-                type : Number,
-                required : true
+                type : Number
             },
             description : {
-                type : String,
-                required : true
+                type : String
             },
             type : {
-                type : String,
-                required : true
-            }
+                type : String
+            },
+            required : true
         }],
         address_details : {
             country : {
-                type : String,
-                required : true
+                type : String
             },
             city : {
-                type : String,
-                required : true
+                type : String
             },
             state : {
-                type : String,
-                required : true
+                type : String
             },
             pin_code : {
-                type : Number,
-                required : true
+                type : Number
             },
             address : {
-                type : String,
-                required : true
-            }
+                type : String
+            },
+            required : true
         },
         contact_details : {
             first_name : {
-                type : String,
-                required : true
+                type : String
             },
             last_name : {
-                type : String,
-                required : true
+                type : String
             },
             email : {
-                type : String,
-                required : true
+                type : String
             },
             mobile_no : {
-                type : String,
-                required : true
-            }
+                type : String
+            },
+            required : true
         },
         card_details : {
             card_type : {
-                type : String,
-                required : true
+                type : String
             },
             card_holder : {
-                type : String,
-                required : true
+                type : String
             },
             card_number : {
-                type : Number,
-                required : true
+                type : Number
             },
             expiry_date : [{
                 month : {
-                    type : Number,
-                    required : true
+                    type : Number
                 },
                 year : {
-                    type : Number,
-                    required : true
+                    type : Number
                 }
             }],
             cvv : {
-                type : Number,
-                required : true
-            }
+                type : Number
+            },
+            required : true
         }
     })
 
