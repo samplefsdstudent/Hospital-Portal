@@ -7,8 +7,8 @@
       commentMiddleware = require('./middlewares/comment'),
       memberMiddleware = require('./middlewares/member'),
       serviceMiddleware = require('./middlewares/services'),
-      feedbackMiddleware = require('./middlewares/services'),
-      newsletterMiddleware = require('./middlewares/services'),
+      feedbackMiddleware = require('./middlewares/feedback'),
+      newsletterMiddleware = require('./middlewares/newsletter'),
 
       nodemailer = require('nodemailer'),
     	compression = require('compression'),
