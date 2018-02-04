@@ -16,7 +16,6 @@ function postOrder (req, res){
     });
   
     var orderList = req.body.products.join(', ');
-    orderList.substr(0, orderList.length - 1);
     var newOrder = new Order({
         ref_id : Math.random().toString(36).substr(2, 9),
         date : req.body.date,
@@ -26,6 +25,8 @@ function postOrder (req, res){
         contact_details : req.body.contact_details,
         card_details : req.body.card_details
     })
+
+    console.log(newOrder);
 
     newOrder.save(function(err) {
         if (err) {
