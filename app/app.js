@@ -63,7 +63,7 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
 .controller('mainCtrl', ['$anchorScroll','$scope','$http','prefix_url', function($anchorScroll,$scope,$http,prefix_url){
     $scope.subscribeNewsletter = function(data){
         data.date = new Date();
-        $http.post(prefix_url + 'newsletter').then(function(data){
+        $http.post(prefix_url + 'newsletter', data).then(function(data){
             alert('Success! You have subscribed with our Newsletter Service. ')
             $scope.feedbackData = {};
             $anchorScroll();
