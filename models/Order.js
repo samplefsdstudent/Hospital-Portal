@@ -17,77 +17,98 @@ var mongoose = require('mongoose'),
         },
     	products : [{
             name : {
-                type : String
+                type : String,
+                required : true
             },
             image : {
-                type : String
+                type : String,
+                required : true
             },
             price : {
-                type : Number
+                type : Number,
+                required : true
             },
             number : {
-                type : Number
+                type : Number,
+                required : true
             },
             description : {
-                type : String
+                type : String,
+                required : true
             },
             type : {
-                type : String
+                type : String,
+                required : true
             }
         }],
-        address_details : [{
+        address_details : {
             country : {
-                type : String
+                type : String,
+                required : true
             },
-            country : {
-                type : String
+            city : {
+                type : String,
+                required : true
             },
-            country : {
-                type : String
+            state : {
+                type : String,
+                required : true
             },
-            country : {
-                type : String
+            pin_code : {
+                type : Number,
+                required : true
             },
-            country : {
-                type : String
+            address : {
+                type : String,
+                required : true
             }
-        }],
-        contact_details : [{
+        },
+        contact_details : {
             first_name : {
-                type : String
+                type : String,
+                required : true
             },
             last_name : {
-                type : String
+                type : String,
+                required : true
             },
             email : {
-                type : String
+                type : String,
+                required : true
             },
             mobile_no : {
-                type : String
+                type : String,
+                required : true
             }
-        }],
-        card_details : [{
+        },
+        card_details : {
             card_type : {
-                type : String
+                type : String,
+                required : true
             },
             card_holder : {
-                type : String
+                type : String,
+                required : true
             },
             card_number : {
-                type : Number
+                type : Number,
+                required : true
             },
             expiry_date : [{
                 month : {
-                    type : Number
+                    type : Number,
+                    required : true
                 },
                 year : {
-                    type : Number
+                    type : Number,
+                    required : true
                 }
             }],
             cvv : {
-                type : Number
+                type : Number,
+                required : true
             }
-        }]
+        }
     })
 
     // we need to create a model using the Schema

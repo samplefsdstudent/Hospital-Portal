@@ -100,19 +100,19 @@
 							<h6>shopping address</h6>
 								<fieldset>	
 									<div class="form-group">
-										<input name="india" ng-model="order.address_details.country" placeholder="india" id="input-india" class="form-control" type="text">
+										<input name="india" ng-model="order.address_details.country" placeholder="india" id="input-india" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="City" ng-model="order.address_details.city" placeholder="City" id="input-City" class="form-control" type="text">
+										<input name="City" ng-model="order.address_details.city" placeholder="City" id="input-City" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="state" ng-model="order.address_details.state" placeholder="state / region / province" id="input-state" class="form-control" type="text">
+										<input name="state" ng-model="order.address_details.state" placeholder="state / region / province" id="input-state" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="code" ng-model="order.address_details.pin_code" placeholder="pin code" id="input-code" class="form-control" type="text">
+										<input name="code" ng-model="order.address_details.pin_code" placeholder="pin code" id="input-code" class="form-control" type="number" required>
 									</div>
 									<div class="form-group">
-										<input name="address" ng-model="order.address_details.address" placeholder="address" id="input-address" class="form-control" type="text">
+										<input name="address" ng-model="order.address_details.address" placeholder="address" id="input-address" class="form-control" type="text" required>
 									</div>
 								</fieldset>
 						</div>
@@ -121,16 +121,16 @@
 							<h6>contact information</h6>
 								<fieldset>	
 									<div class="form-group">
-										<input name="firstname" ng-model="order.contact_details.first_name" placeholder="first name" id="input-firstname" class="form-control" type="text">
+										<input name="firstname" ng-model="order.contact_details.first_name" placeholder="first name" id="input-firstname" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="lastname" ng-model="order.contact_details.last_name" placeholder="last name" id="input-lastname" class="form-control" type="text">
+										<input name="lastname" ng-model="order.contact_details.last_name" placeholder="last name" id="input-lastname" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="email" ng-model="order.contact_details.email" placeholder="email" id="input-email" class="form-control" type="text">
+										<input name="email" ng-model="order.contact_details.email" placeholder="email" id="input-email" class="form-control" type="email" required>
 									</div>
 									<div class="form-group">
-										<input name="phone" ng-model="order.contact_details.mobile_no" placeholder="mobile number" id="input-phone" class="form-control" type="text">
+										<input name="phone" ng-model="order.contact_details.mobile_no" placeholder="mobile number" id="input-phone" class="form-control" type="number" required>
 									</div>
 								</fieldset>
 						</div>
@@ -174,7 +174,7 @@
 								<div class="form-group">
 									<label>end date</label>
 									<div class="col-sm-3">
-										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.month">
+										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.month" required>
 											<option selected="" value="0">mm</option>
 											<option value="1">Jan</option>
 											<option value="2">Feb</option>
@@ -191,7 +191,7 @@
 										</select>
 									</div>
 									<div class="col-sm-3">
-										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.year"> 
+										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.year" > 
 											<option selected="" value="0">year</option>
 											<option value="2018">2018</option>
 											<option value="2019">2019</option>
@@ -204,7 +204,7 @@
 										</select>
 									</div>
 									<div class="col-sm-2">
-										<input class="form-control" id="input-cvv" placeholder="cvv" ng-model="order.card_details.cvv" name="email" required="" type="text">
+										<input class="form-control" id="input-cvv" placeholder="cvv" ng-model="order.card_details.cvv" name="email" required="" type="number" required>
 									</div>
 								</div>	
 							</fieldset>

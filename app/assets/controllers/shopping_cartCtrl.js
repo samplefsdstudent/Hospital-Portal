@@ -1,4 +1,4 @@
-angular.module('myApp').controller('shopping_cartCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url','$anchorScroll', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$anchorScroll){
+angular.module('myApp').controller('shopping_cartCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$anchorScroll,$location){
 	$anchorScroll();
 	$scope.order = {
 		date : new Date(),
@@ -35,10 +35,9 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$anchorScroll','$scope
 	$scope.takeOrder = function(data){
 		var name = data.contact_details.first_name + ' ' + data.contact_details.last_name;
 		$http.post(prefix_url + 'order', data).then(function(data){
-			alert('Hi ' + name + ' ,Order is successful! Please check you Email for more details.');
 			RestaurantService.cart = [];
 			RestaurantService.recipes = [];
-			$location.path('/home'); 
+			$location.path('/' + data.data.ref_id + '/confirmation/order'); 
 		}, function(err){
 			alert('Error! Try after some time.')
 		})

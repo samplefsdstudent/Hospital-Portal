@@ -15,10 +15,7 @@ function postOrder (req, res){
 		}
     });
   
-    var orderList = req.body.products;
-    for(let i = 0; i < req.body.products.length ; i++){
-        orderList = req.body.products[i].name + ',';
-    }
+    var orderList = req.body.products.join(', ');
     orderList.substr(0, orderList.length - 1);
     var newOrder = new Order({
         ref_id : Math.random().toString(36).substr(2, 9),
@@ -41,11 +38,11 @@ function postOrder (req, res){
                 from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
                 to: req.body.contact_details.email,
                 subject: 'Confirmed! Your request for online order at Restaurant is successful.',
-                text: 'The Reference ID of your order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Products- ' + orderList + '\n The total amount including all taxes is - $' + newOrder.total_amount + 'The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
+                text: 'The Reference ID of your order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Products- ' + orderList + '\n The total amount including all taxes is - $' + newOrder.total_amount + '. The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
-                res.end('Success')
+                res.json({ref_id : newOrder.ref_id});
             });
         }
     });

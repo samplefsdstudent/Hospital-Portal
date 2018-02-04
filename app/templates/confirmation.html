@@ -24,52 +24,85 @@
 	<div class="col-sm-2 col-xs-2 commontop text-center" style="margin-bottom:50px;"></div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-10 text-center">
+			<div class="col-sm-12 text-center">
 				<!-- address start here -->
 				<div class="address" ng-if="type == 'order'">
 					<div class="container">
 						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-6 mycart" style="margin: 0;">
+								<div class="box text-center myCart" id="tab-cart" style="height: auto;padding: 20px 0 0 0;">
+									<div class="icon">
+										<i class="icofont icofont-fast-food"></i>
+									</div>
+									<h4>PRODUCTS</h4>
+									<div class="table-responsive">
+									<table class="table table-bordered"  id="productTable">
+									<thead>
+										<tr>
+											<td class="text-center">Name</td>
+											<td class="text-center">Price</td>
+											<td class="text-center">Qty.</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="product in orderData.products | orderBy : '-' track by $index">
+											<td>
+												<a href="#">
+													<img ng-src="{{product.image}}" class="img-responsive" alt="thumb" title="thumb" style="    width: 50%;" />
+												</a>
+												<div class="name">
+													<h4>{{product.name}}</h4>
+												</div>
+											</td>
+											<td class="text-center">$ {{product.price}}</td>
+											<td class="text-center">
+												<p class="qtypara">
+													{{product.number}}
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="5">
+												<h3 class="text-right" style="margin:0;">SUBTOTAL - ${{orderData.total_amount}}</h3>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							</div>
+							</div>
 							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="box text-center">
+								<div class="box text-center" style="height: auto;">
+									<div class="icon">
+										<i class="icofont icofont-user"></i>
+									</div>
+									<h4>USER INFO</h4>
+									<div class="row">
+									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.contact_details[0] track by $index" ng-if="$index > 0">
+										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
+											<label>{{key | capitalize}}</label>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
+											<p>{{value | capitalize}}</p>
+										</div>
+									</div>
+									</div>
+								</div>	
+								<div class="box text-center" style="height: auto;border-top:none;">
 									<div class="icon">
 										<i class="icofont icofont-home"></i>
 									</div>
-									<h4>PRODUCTS</h4>
-									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="product in orderData.products | orderBy:'-' track by $index">
+									<h4>ADDRESS INFO</h4>
+									<div class="row">
+									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.address_details[0] track by $index" ng-if="$index > 0">
 										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-											<label>Product Name</label>
+											<label>{{key | capitalize}}</label>
 										</div>
 										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
-											<p>{{product.name}}</p>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-											<label>Quantity</label>
-										</div>
-										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
-											<p>{{product.number}}</p>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-											<label>Product Price</label>
-										</div>
-										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
-											<p>{{product.price}}</p>
-										</div>
-										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
-											<label>Total Cost</label>
-										</div>
-										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
-											<p>${{orderData.total_amout}}</p>
+											<p>{{value | capitalize}}</p>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="box text-center">
-									<div class="icon">
-										<i class="icofont icofont-phone"></i>
 									</div>
-									<h4>DETAILS PROVIDED</h4>
-									<p>123 456 7890 <br>423 456 7900</p>
 								</div>	
 							</div>
 						</div>

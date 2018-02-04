@@ -42,7 +42,7 @@ function postReservation (req, res){
                     res.status(400);
                     res.send(error)
                 }
-                res.end('Success')
+                res.json({ref_id : newReservation.ref_id})
             });
         }
     });

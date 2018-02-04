@@ -19,8 +19,7 @@ angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$h
 	$scope.doReservation = function(data){
 		var name = data.name;
 		$http.post(prefix_url + 'reservation', data).then(function(data){
-			alert('Hi ' + name + ' ,Booking is done! Please check your Email for more details.')
-			$anchorScroll();
+			$location.path('/' + data.data.ref_id + '/confirmation/reservation'); 
 			$scope.reserveData = {}
 			$scope.person_count = 0;
 		}, function(err){

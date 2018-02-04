@@ -3,7 +3,7 @@ angular.module('myApp').controller('confirmationCtrl', ['$anchorScroll','$scope'
 	$scope.type = $routeParams.type;
 	if($scope.type == "order"){
 		$http.get(prefix_url + 'order/' + $routeParams.ref_id).then(function(data){
-			$scope.orderData = data.data;
+			$scope.orderData = data.data[0];
 		}, function(err){
 			console.log(err);
 		})

@@ -85,6 +85,12 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
     }
 })
 
+.filter('capitalize', function() {
+    return function(input) {
+      return input.split('_').join(' ').toUpperCase();
+    }
+})
+
 .directive('ngConfirmClick', [
         function(){
             return {
