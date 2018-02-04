@@ -1,6 +1,6 @@
-angular.module('myApp').controller('our_galleryCtrl', ['$routeParams', '$scope','$http','prefix_url', function($routeParams,$scope,$http, prefix_url){
+angular.module('myApp').controller('our_galleryCtrl', ['$anchorScroll', '$scope','$http','prefix_url', function($anchorScroll,$scope,$http, prefix_url){
+	$anchorScroll();
 	$scope.showData = {};
-
 	$http.get(prefix_url + 'gallery').then(function(data){
 		$scope.images = data.data;
 	}, function(err){

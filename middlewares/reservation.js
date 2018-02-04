@@ -1,7 +1,7 @@
 'use strict';
 var nodemailer = require('nodemailer'); 
 var Reservation = require('../models/Reservation');
-function reservation (req, res){
+function postReservation (req, res){
 	let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
 		secure : false,
@@ -47,4 +47,15 @@ function reservation (req, res){
         }
     });
 }
-module.exports = reservation;
+
+function getReservation(req, res){
+    Reservation.find({'ref_id' : req.params.ref_id}, function (err, reservation) {
+        if (err) return err;
+        res.json(reservation);
+    })
+}
+
+module.exports = {
+    get : getReservation,
+    post : postReservation
+};

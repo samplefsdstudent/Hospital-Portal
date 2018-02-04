@@ -1,7 +1,7 @@
 'use strict';
 var nodemailer = require('nodemailer');
 var Order = require('../models/Order');
-function order (req, res){
+function postOrder (req, res){
 	let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
 		secure : false,
@@ -50,4 +50,15 @@ function order (req, res){
         }
     });
 }
-module.exports = order;
+
+function getOrder(req, res){
+    Order.find({ref_id : req.params.ref_id}, function (err, order) {
+        if (err) return err;
+        res.json(order);
+    })
+}
+
+module.exports = {
+    get : getOrder,
+    post : postOrder
+};

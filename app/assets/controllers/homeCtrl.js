@@ -1,4 +1,5 @@
-angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($routeParams, $scope, RestaurantService, $http,prefix_url,$anchorScroll,$location){
+angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location){
+	$anchorScroll();
 	$scope.filter = 'all';
 	$scope.reserveData = {
 		person_count : 1

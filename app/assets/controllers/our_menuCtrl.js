@@ -1,6 +1,6 @@
-angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url', function($routeParams,$scope,RestaurantService,$http,prefix_url){
+angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url', function($anchorScroll,$scope,RestaurantService,$http,prefix_url){
+	$anchorScroll();
 	$scope.filter = 'all';
-	
 	if(!RestaurantService.recipes.length){
 		$http.get(prefix_url + 'menu').then(function(data){
 			$scope.recipes = data.data;

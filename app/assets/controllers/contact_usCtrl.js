@@ -1,4 +1,5 @@
 angular.module('myApp').controller('contact_usCtrl', ['$anchorScroll','$scope','prefix_url','$http', function($anchorScroll,$scope,prefix_url,$http){
+	$anchorScroll();
 	$scope.sendFeedback = function(data){
 		data.date = new Date();
         $http.post(prefix_url + 'feedback', data).then(function(data){

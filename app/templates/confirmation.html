@@ -1,0 +1,116 @@
+<!-- bread-crumb start here -->
+<div class="bread-crumb">
+	<img src="../assets/images/banner_top.jpg" class="img-responsive" alt="banner-top" title="banner-top">
+	<div class="container">
+		<div class="matter">
+			<h2>Confirmation</h2>
+			<ul class="list-inline">
+				<li><a href="/home">HOME</a></li>
+				<li><a href="/confirmation">Confirmation</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- bread-crumb end here -->
+
+<!-- thanks start here -->
+<div class="thanks">
+	<div class="col-sm-2 col-xs-2 commontop text-center" style="margin-bottom:50px;"></div>
+	<div class="col-sm-8 col-xs-8 commontop text-center" style="margin-bottom:50px;">
+		<h2>Congratulations. Your {{type}} is Completed</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id. Nullam ultricies eu turpis at accumsan. </p>
+		<hr>
+	</div>
+	<div class="col-sm-2 col-xs-2 commontop text-center" style="margin-bottom:50px;"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 text-center">
+				<!-- address start here -->
+				<div class="address" ng-if="type == 'order'">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<div class="box text-center">
+									<div class="icon">
+										<i class="icofont icofont-home"></i>
+									</div>
+									<h4>PRODUCTS</h4>
+									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="product in orderData.products | orderBy:'-' track by $index">
+										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
+											<label>Product Name</label>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
+											<p>{{product.name}}</p>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
+											<label>Quantity</label>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
+											<p>{{product.number}}</p>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
+											<label>Product Price</label>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
+											<p>{{product.price}}</p>
+										</div>
+										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
+											<label>Total Cost</label>
+										</div>
+										<div class="col-md-9 col-sm-9 col-xs-9 text-left">
+											<p>${{orderData.total_amout}}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<div class="box text-center">
+									<div class="icon">
+										<i class="icofont icofont-phone"></i>
+									</div>
+									<h4>DETAILS PROVIDED</h4>
+									<p>123 456 7890 <br>423 456 7900</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- address end here -->
+				<!-- address start here -->
+				<div class="address" ng-if="type == 'reservation'">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<div class="box text-center">
+									<div class="icon">
+										<i class="icofont icofont-home"></i>
+									</div>
+									<h4>PRODUCTS</h4>
+									<div class="row">
+										<div class="col-md-6 col-sm-6 col-xs-6">
+											<p>{{}}</p>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-6">
+											<p>3691 Rodney Street, Franklin Avenue Harvester, MO. 234501</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6">
+								<div class="box text-center">
+									<div class="icon">
+										<i class="icofont icofont-phone"></i>
+									</div>
+									<h4>DETAILS PROVIDED</h4>
+									<p>123 456 7890 <br>423 456 7900</p>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- address end here -->
+				<button type="button" class="btn-primary" ng-click="navigator(0)">back to home</button>	
+			</div>		</div>
+	</div>
+</div>
+<!-- thanks end here -->

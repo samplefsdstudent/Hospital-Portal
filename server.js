@@ -54,14 +54,16 @@
         }
     });
 
-	app.post('/api/reservation', reservationMiddleware);
-	app.post('/api/order', orderMiddleware);
+	app.post('/api/reservation', reservationMiddleware.post);
+	app.post('/api/order', orderMiddleware.post);
   app.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
   app.post('/api/feedback', feedbackMiddleware);
   app.post('/api/newsletter', newsletterMiddleware);
   
   app.get('/api/menu', menuMiddleware);
   app.get('/api/blogs', blogMiddleware);
+  app.get('/api/order/:ref_id', orderMiddleware.get);
+  app.get('/api/reservation/:ref_id', orderMiddleware.post);
   app.get('/api/gallery', galleryMiddleware);
   app.get('/api/testimonials', testimonialMiddleware);
   app.get('/api/comments/:blog_id', commentMiddleware.get);

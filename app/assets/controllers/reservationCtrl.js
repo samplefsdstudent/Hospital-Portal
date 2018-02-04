@@ -1,4 +1,5 @@
-angular.module('myApp').controller('reservationCtrl', ['$routeParams','$scope','$http', 'prefix_url', function($routeParams,$scope,$http,prefix_url){
+angular.module('myApp').controller('reservationCtrl', ['$anchorScroll','$scope','$http', 'prefix_url', function($anchorScroll,$scope,$http,prefix_url){
+	$anchorScroll();
 	$scope.doReservation = function(data){
 		var name = data.name;
 		$http.post(prefix_url + 'reservation', data).then(function(data){

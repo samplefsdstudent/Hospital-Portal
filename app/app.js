@@ -54,6 +54,11 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
         templateUrl : 'templates/testimonials.html',
         controller : 'testimonialCtrl'
     })
+    .when('/:ref_id/confirmation/:type', {
+        cache : true,
+        templateUrl : 'templates/confirmation.html',
+        controller : 'confirmationCtrl'
+    })
     .otherwise({redirectTo : '/home'});
 
     $locationProvider.html5Mode(true);

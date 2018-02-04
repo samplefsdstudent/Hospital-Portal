@@ -1,4 +1,5 @@
-angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope','RestaurantService','$http','prefix_url','$anchorScroll', function($routeParams,$scope,RestaurantService,$http,prefix_url,$anchorScroll){
+angular.module('myApp').controller('shopping_cartCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url','$anchorScroll', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$anchorScroll){
+	$anchorScroll();
 	$scope.order = {
 		date : new Date(),
 		total_amount : 0,
