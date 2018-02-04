@@ -56,9 +56,16 @@
 									</div>
 									<div class="caption">
 										<h4>{{recipe.name}}</h4>
-										<p class="des">{{recipe.description}}</p>
-										<div class="price">${{recipe.price}}</div>
-										<div class="icon text-right">
+										<p class="des">{{recipe.description | limitTo:50}}...</p>
+										<div class="rating col-md-12 col-sm-12 col-xs-12 text-left" style="    padding: 0;">
+											<i class="icofont icofont-star" ng-style="(recipe.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+											<i class="icofont icofont-star" ng-style="(recipe.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+											<i class="icofont icofont-star" ng-style="(recipe.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+											<i class="icofont icofont-star" ng-style="(recipe.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+											<i class="icofont icofont-star" ng-style="(recipe.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+										</div>
+										<div class="price col-md-6 col-sm-6 col-xs-6 text-left" style="    padding: 0;">${{recipe.price}}</div>
+										<div class="icon text-right  col-md-6 col-sm-6 col-xs-6" style="    padding: 0;">
 											<a class="cart" ng-click="switch(recipe.checked,recipe, $index);"><i ng-style="(recipe.checked) ? {color : '#8BC34A'} : {color : '#FFA41F'}" class="icofont icofont-cart-alt"></i></a>
 										</div>
 									</div>
@@ -67,10 +74,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- ng-repeat on recipes end here -->
-				<div class="text-center">
-					<button type="button" class="btn-primary" href="/our-menu">view more <i class="icofont icofont-curved-double-right"></i></button>
-				</div>	
+				<!-- ng-repeat on recipes end here -->	
 			</div>
 		</div>
 	</div>
@@ -80,7 +84,7 @@
 <div class="dishes">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 commontop text-center">
+			<div class="col-sm-12 commontop text-center" style="margin-bottom:50px;">
 				<h4>our popular dishes</h4>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id. Nullam ultricies eu turpis at accumsan. Mauris a sodales mi, eget lobortis nulla.</p>
 				<hr>
@@ -88,13 +92,35 @@
 		
 	<div class="dish owl-carousel">
 		<!-- ng-repeat on recipes with filter 'dish' start here -->
-		<div class="item" ng-repeat="recipe in recipes | filter : {type : 'dish'} track by $index">
+		<div class="item" ng-repeat="recipe in recipes track by $index" ng-repeat-owl-carousel carousel-init="carouselInit" ng-if="recipe.type == 'dish'">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="box">
 					<a href="/shop"><img ng-src="{{recipe.image}}" alt="image" title="image" class="img-responsive" /></a>
 					<div class="caption">
-						<h4>{{recipe.title}}</h4>
-						<p>${{recipe.price}}</p>
+						<div class="row">
+							<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-left">
+								<h4>{{recipe.name}}</h4>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-right" >
+								<div class="icon text-right">
+									<a class="cart" ng-click="switch(recipe.checked,recipe, $index);"><i ng-style="(recipe.checked) ? {color : '#8BC34A'} : {color : '#FFA41F'}" class="icofont icofont-cart-alt" style="font-size:25px;"></i></a>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+								<div class="rating">
+									<i class="icofont icofont-star" ng-style="(recipe.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+									<i class="icofont icofont-star" ng-style="(recipe.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+									<i class="icofont icofont-star" ng-style="(recipe.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+									<i class="icofont icofont-star" ng-style="(recipe.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+									<i class="icofont icofont-star" ng-style="(recipe.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
+								<p>${{recipe.price}}</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

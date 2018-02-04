@@ -24,8 +24,8 @@ angular.module('myApp').controller('shopping_cartCtrl', ['$routeParams','$scope'
 	};
 
 	$scope.$watch('order.products', function(oldValue, newValue){
+		var total_amount = 0;
 		angular.forEach($scope.order.products, function(item){
-			var total_amount = 0;
 			total_amount += item.price*item.number;
 			$scope.order.total_amount = total_amount;
 		})

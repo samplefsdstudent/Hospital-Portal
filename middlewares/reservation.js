@@ -29,7 +29,6 @@ function reservation (req, res){
             res.status(400);
             res.send(err)
         }else{
-            console.log(newReservation);
             var date = newReservation.date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear();
             var mailOptions = {

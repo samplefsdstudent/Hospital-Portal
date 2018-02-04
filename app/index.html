@@ -41,9 +41,9 @@
 			<div class="row">
 				<div class="col-sm-12 col-xs-12">
 					<ul class="list-inline pull-left icon">
-						<li><a href="/contact-us"><i class="icofont icofont-ui-message"></i> Email : info@restaurant.com</a></li>
-						<li><a href="/contact-us"><i class="icofont icofont-phone"></i> Phone : 123 456 7890</a></li>
-						<li><a href="/shopping-cart"><i class="icofont icofont-cart-alt"></i> My Cart</a></li>
+						<li><a href="/contact-us"><i class="icofont icofont-ui-message"></i>Email : info@restaurant.com</a></li>
+						<li><a href="/contact-us"><i class="icofont icofont-phone"></i>Phone : 123 456 7890</a></li>
+						<li><a href="/shopping-cart"><i class="icofont icofont-cart-alt"></i>My Cart</a></li>
 					</ul>
 					<ul class="list-inline pull-right  icon">
 						<li>
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 				
-			<div class="col-md-7 col-sm-7 col-xs-12 paddleft">
+			<div class="col-md-9 col-sm-9 col-xs-12">
 				<!-- menu start here -->
 				<div id="menu">	
 					<nav class="navbar">
@@ -102,10 +102,6 @@
 				</div>
 				<!-- menu end here -->
 			</div>
-			
-			<div class="col-md-2 col-sm-2 col-xs-12 button-top paddleft">
-				<a class="btn-primary" href='/reservation'>BOOK YOUR TABLE</a>
-			</div>
 		</div>
 	</div>
 </header>
@@ -117,11 +113,11 @@
 
 </div>
 <!-- newsletter start here -->
-<div id="newsletter">
+<div id="newsletter" ng-controller="mainCtrl">
 	<div class="container">
 		<div class="row">
 			<div id="subscribe">
-				<form class="form-horizontal" name="subscribe">
+				<form class="form-horizontal" ng-submit="subscribeNewsletter(newsData)" name="subscribe">
 					<div class="col-sm-7"> 
 						<div class="input-group">
 							<span class="news">newsletter</span>
@@ -130,7 +126,7 @@
 					</div>
 					<div class="col-sm-5 form-group">
 						<div class="input-group">
-							<input  value="" name="subscribe_email" id="subscribe_email" placeholder="Email" type="text">
+							<input  ng-model="newsData.email" name="subscribe_email" id="subscribe_email" placeholder="Email" type="email" required>
 							<button class="btn btn-news" type="submit" value="submit">Send</button>
 						</div>
 					</div>

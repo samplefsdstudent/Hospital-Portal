@@ -7,6 +7,9 @@
       commentMiddleware = require('./middlewares/comment'),
       memberMiddleware = require('./middlewares/member'),
       serviceMiddleware = require('./middlewares/services'),
+      feedbackMiddleware = require('./middlewares/services'),
+      newsletterMiddleware = require('./middlewares/services'),
+
       nodemailer = require('nodemailer'),
     	compression = require('compression'),
     	config = require('./config/config'),
@@ -54,6 +57,8 @@
 	app.post('/api/reservation', reservationMiddleware);
 	app.post('/api/order', orderMiddleware);
   app.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
+  app.post('/api/feedback', feedbackMiddleware);
+  app.post('/api/newsletter', newsletterMiddleware);
   
   app.get('/api/menu', menuMiddleware);
   app.get('/api/blogs', blogMiddleware);

@@ -27,7 +27,7 @@
 				<div class="tab-content">
 					<div class="tab-pane" id="tab-cart" ng-class="(filter == '1') ? 'active' : ''">
 						<form ng-submit="next(1)">
-							<h2>You have {{order.products.length}} items in your order.</h2>
+							<h2>You have {{order.products.length}} items in your Shopping Cart.</h2>
 							<div class="table-responsive">
 								<table class="table  table-bordered">
 									<thead ng-if="order.products.length">
@@ -60,7 +60,7 @@
 											<td class="text-center">$ {{product.price}}</td>
 											<td class="text-center">
 												<p class="qtypara">
-													<span id="minus1" class="minus"><a ng-click="(product.number > 0) ? product.number = product.number - 1 : product.number"><i class="icofont icofont-minus"></i></a></span>
+													<span id="minus1" class="minus"><a ng-click="(product.number > 1) ? product.number = product.number - 1 : product.number"><i class="icofont icofont-minus"></i></a></span>
 													<input type="number" name="quantity" ng-model="product.number" size="2" id="input-quantity1" class="form-control qty" disabled required/>
 													<span id="add1" class="add"><a ng-click="(product.number < 10) ? product.number = product.number + 1 : product.number"><i class="icofont icofont-plus"></i></a></span>
 												</p>

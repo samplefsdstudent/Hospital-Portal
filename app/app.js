@@ -5,42 +5,52 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
   .config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/home', {
+        cache : true,
         templateUrl : 'templates/home.html',
         controller : 'homeCtrl'
     })
     .when('/about-us', {
+        cache : true,
         templateUrl : 'templates/about_us.html',
         controller : 'about_usCtrl'
     })
     .when('/blog-details/:id', {
+        cache : true,
         templateUrl : 'templates/blog_details.html',
         controller : 'blog_detailCtrl'
     })
     .when('/contact-us', {
+        cache : true,
         templateUrl : 'templates/contact_us.html',
         controller : 'contact_usCtrl'
     })
     .when('/our-blog', {
+        cache : true,
         templateUrl : 'templates/our_blog.html',
         controller : 'our_blogCtrl'
     })
     .when('/our-gallery', {
+        cache : true,
         templateUrl : 'templates/our_gallery.html',
         controller : 'our_galleryCtrl'
     })
     .when('/our-menu', {
+        cache : true,
         templateUrl : 'templates/our_menu.html',
         controller : 'our_menuCtrl'
     })
     .when('/reservation', {
+        cache : true,
         templateUrl : 'templates/reservation.html',
         controller : 'reservationCtrl'
     })
     .when('/shopping-cart', {
+        cache : true,
         templateUrl : 'templates/shopping_cart.html',
         controller : 'shopping_cartCtrl'
     })
     .when('/testimonials', {
+        cache : true,
         templateUrl : 'templates/testimonials.html',
         controller : 'testimonialCtrl'
     })
@@ -49,6 +59,19 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
     $locationProvider.html5Mode(true);
 
   }])
+
+.controller('mainCtrl', ['$anchorScroll','$scope','$http','prefix_url', function($anchorScroll,$scope,$http,prefix_url){
+    $scope.subscribeNewsletter = function(data){
+        data.date = new Date();
+        $http.post(prefix_url + 'newsletter').then(function(data){
+            alert('Success! You have subscribed with our Newsletter Service. ')
+            $scope.feedbackData = {};
+            $anchorScroll();
+        }, function(err){
+            console.log(err);
+        })
+    }
+}])
 
 .factory('RestaurantService', function() {
     return {

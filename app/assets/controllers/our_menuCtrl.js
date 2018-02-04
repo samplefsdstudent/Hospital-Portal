@@ -35,6 +35,24 @@ angular.module('myApp').controller('our_menuCtrl', ['$routeParams','$scope','Res
 		}
 	}
 
+	$scope.carouselInit = function() {
+		/*dish script code start here*/
+		$('.dish').owlCarousel({
+			items: 5,
+			itemsDesktop : [1199, 3],
+			itemsDesktopSmall : [979, 3],
+			itemsTablet : [768, 1],
+			itemsMobile : [479, 1],
+			navigation : false,
+			slideSpeed : 300,
+			paginationSpeed : 400,
+			singleItem : false,
+			navigationText: ['<i class="fa fa-angle-double-left fa1"></i>', '<i class="fa fa-angle-double-right fa2"></i>'],
+			pagination: false,
+		});
+		/*dish script code end here*/
+	};
+
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
 		if(bool){

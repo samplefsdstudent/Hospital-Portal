@@ -77,6 +77,8 @@ angular.module('myApp').controller('homeCtrl', ['$routeParams','$scope','Restaur
 
 	$scope.navigator = function(flag){
 		if(flag == 0)
-			$location.path('/our-menu'); 
+			$location.path('/our-menu');
+		else if(flag == 1)
+			 $location.path('/reservation');
 	}
 }])

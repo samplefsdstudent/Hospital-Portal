@@ -34,8 +34,6 @@ function order (req, res){
         if (err) {
             res.status(400).send(err)
         }else{
-            console.log('saved');
-
             var date = newOrder.date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
             var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';

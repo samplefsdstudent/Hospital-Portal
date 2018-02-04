@@ -309,6 +309,11 @@ input[type="time"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-inner-spin-button{
     display: none;
 }
+
+input[type="number"]::-webkit-calendar-picker-indicator,
+input[type="number"]::-webkit-inner-spin-button{
+    display: none;
+}
 /*--------------------------------- 
 [ Slideshow / .slideshow ]
 ----------------------------------- */
@@ -594,7 +599,6 @@ input[type="time"]::-webkit-inner-spin-button{
 [ dish / .dish ]
 ----------------------- */
 .dishes .commontop h4{
-	border-top:1px solid #ddd;
 	padding-top:40px;
 }
 .dishes {

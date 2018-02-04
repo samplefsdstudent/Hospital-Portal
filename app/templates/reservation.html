@@ -18,7 +18,7 @@
 <div class="reserved mar-b">
 	<div class="container">
 		<div class="row ">
-			<div class="col-sm-12 commontop text-center">
+			<div class="col-sm-12 commontop text-center" style="margin-bottom:50px;">
 				<h4>reservation</h4>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id. Nullam ultricies eu turpis at accumsan. Mauris a sodales mi, eget lobortis nulla.</p>
 				<hr>
@@ -26,37 +26,34 @@
 			<div class="col-sm-6 col-xs-12">
 				<img src="../assets/images/reservation.jpg" class="img-responsive" alt="image" title="image" />
 			</div>
-			<div class="col-sm-6 col-xs-12">
+			<div class="col-sm-6 col-xs-12" style="margin-top:60px;">
 				<!-- Reservation form start here -->
-				<form method="post" enctype="multipart/form-data">
+				<form ng-submit="doReservation(reserveData)">
 					<div class="form-group">
-						<i class="icofont icofont-ui-user"></i><input name="name" placeholder="name" id="input-name" class="form-control" type="text">
+						<i class="icofont icofont-ui-user"></i><input name="name" ng-model="reserveData.name" placeholder="name" id="input-name" class="form-control" type="text" required>
 					</div>
 					<div class="form-group">
-						<i class="icofont icofont-ui-message"></i><input name="email" placeholder="email" id="input-email" class="form-control" type="text">
+						<i class="icofont icofont-ui-message"></i><input name="email" ng-model="reserveData.email" placeholder="email" id="input-email" class="form-control" type="email" required>
 					</div>
 					<div class="form-group">
-							<i class="icofont icofont-phone"></i><input name="mobile" placeholder="mobile number" id="input-mobile" class="form-control" type="text">
+							<i class="icofont icofont-phone"></i><input name="mobile" ng-model="reserveData.mobile_no" placeholder="mobile number" id="input-mobile" class="form-control" type="number" required>
 					</div>
 					<div class="form-group">
-						<i class="icofont icofont-ui-calendar"></i><input name="date" placeholder="date" id="input-date" class="form-control" type="text">
+						<i class="icofont icofont-ui-calendar"></i><input name="date" ng-model="reserveData.date" placeholder="date" id="input-date" class="form-control" type="date" required>
 					</div>
 					<div class="form-group">
-						<i class="icofont icofont-clock-time"></i><input name="time" placeholder="time" id="input-time" class="form-control" type="text">
+						<i class="icofont icofont-clock-time"></i><input name="time" ng-model="reserveData.time" placeholder="time" id="input-time" class="form-control" type="time" required>
 					</div>
 					<div class="form-group">
 						<i class="fa fa-key"></i>
-						<select class="selectpicker form-control bs-select-hidden">
-							<option selected="" value="0">number of persons</option>
+						<select class="selectpicker form-control bs-select-hidden" ng-model="reserveData.person_count" required>
+							<option value="" selected disabled>number of persons</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="2">3</option>
 							<option value="2">4</option>
 							<option value="2">5</option>
 						</select>
-					</div>
-					<div class="form-group">
-						<i class="icofont icofont-ui-message"></i><textarea class="form-control" id="message" name="message" placeholder="MESSAGE" ></textarea>
 					</div>
 				</form>
 				<!-- Reservation form end here -->
