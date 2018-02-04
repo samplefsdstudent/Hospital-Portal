@@ -1,4 +1,4 @@
-angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url', function($anchorScroll,$scope,RestaurantService,$http,prefix_url){
+angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url','$rootScope', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$rootScope){
 	$anchorScroll();
 	$scope.filter = 'all';
 	if(!RestaurantService.recipes.length){
@@ -22,7 +22,8 @@ angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','Re
 			price : data.price,
 			description : data.description,
 			type : data.type
-			})
+			});
+			$rootScope.$emit('badgeUpdate', RestaurantService.cart.length);
 			alert(`"${data.name}" is added to your Cart!`);
 			$scope.recipes[index].checked = true;
 			return true;
@@ -30,6 +31,7 @@ angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','Re
 			RestaurantService.cart.splice(index,1);
 			RestaurantService.recipes[index].checked = false;
 			$scope.recipes = RestaurantService.recipes;
+			$rootScope.$emit('badgeUpdate', RestaurantService.cart.length);
 			alert(`"${data.name}" is removed from your Cart!`);
 			return true;
 		}

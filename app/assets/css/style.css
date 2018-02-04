@@ -154,9 +154,9 @@ a:focus{
 
 .badge{
 	background-color : #FFA41F;
-	margin-top: -5px;
+	margin-top: -7px;
     padding: 3px 4px;
-    font-size: 12px;
+    font-size: 10px;
 }
 /*--------------------
 [ Header / header ]

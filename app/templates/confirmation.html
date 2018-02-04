@@ -78,7 +78,7 @@
 									</div>
 									<h4>USER INFO</h4>
 									<div class="row">
-									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.contact_details track by $index" ng-if="$index > 0">
+									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.contact_details track by $index">
 										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
 											<label>{{key | capitalize}}</label>
 										</div>
@@ -94,7 +94,7 @@
 									</div>
 									<h4>ADDRESS INFO</h4>
 									<div class="row">
-									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.address_details track by $index" ng-if="$index > 0">
+									<div class="row col-sm-offset-1 col-sm-offset-right-1" ng-repeat="(key, value) in orderData.address_details track by $index">
 										<div class="col-md-3 col-sm-3 col-xs-3 text-right">
 											<label>{{key | capitalize}}</label>
 										</div>

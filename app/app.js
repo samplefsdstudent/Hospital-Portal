@@ -2,7 +2,7 @@
 var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
   .value('prefix_url','http://restaurant-express-server.herokuapp.com/api/')
 
-  .config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
+  .config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
     $routeProvider
     .when('/home', {
         cache : true,
@@ -65,9 +65,14 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
 
   }])
 
-.controller('mainCtrl', ['$anchorScroll','$scope','$http','prefix_url','RestaurantService', function($anchorScroll,$scope,$http,prefix_url,RestaurantService){
-    $scope.length = RestaurantService.cart.length;
-    $scope.subscribeNewsletter = function(data){
+.controller('mainCtrl', ['$anchorScroll',
+    '$scope',
+    '$http',
+    'prefix_url',
+    'RestaurantService',
+    '$rootScope', function($anchorScroll,$scope,$http,prefix_url,RestaurantService,$rootScope){
+      $scope.length = RestaurantService.cart.length;
+      $scope.subscribeNewsletter = function(data){
         data.date = new Date();
         $http.post(prefix_url + 'newsletter', data).then(function(data){
             alert('Success! You have subscribed with our Newsletter Service. ')
@@ -76,7 +81,12 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
         }, function(err){
             console.log(err);
         })
-    }
+      };
+
+      $rootScope.$on('badgeUpdate', function(event, data) {
+        $scope.length = data;
+        console.log('badge');
+      });
 }])
 
 .factory('RestaurantService', function() {
@@ -87,10 +97,9 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
 })
 
 .filter('capitalize', function() {
-    return function(input) {
-        console.log(typeof input);
-        return (typeof input === 'number') ? input : input.split('_').join(' ').toUpperCase();
-    }
+  return function(input) {
+   return (typeof input === 'number') ? input : input.split('_').join(' ').toUpperCase();
+  }
 })
 
 .directive('ngConfirmClick', [

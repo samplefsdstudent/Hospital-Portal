@@ -1,4 +1,4 @@
-angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location){
+angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location','$rootScope', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location,$rootScope){
 	$anchorScroll();
 	$scope.filter = 'all';
 	$scope.reserveData = {
@@ -38,18 +38,20 @@ angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$h
 			description : data.description,
 			type : data.type
 			})
+			$rootScope.$emit('badgeUpdate', RestaurantService.cart.length);
 			alert(`"${data.name}" is added to your Cart!`);
 			$scope.recipes[index].checked = true;
-			console.log(RestaurantService.cart);
 			return false;
 		}else{
 			RestaurantService.cart.splice(index,1);
 			RestaurantService.recipes[index].checked = false;
 			$scope.recipes = RestaurantService.recipes;
+			$scope.$emit('badgeUpdate', RestaurantService.cart.length);
 			alert(`"${data.name}" is removed from your Cart!`);
 			return true;
 		}
 	}
+
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
 		if(bool){
