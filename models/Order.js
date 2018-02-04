@@ -18,80 +18,96 @@ var mongoose = require('mongoose'),
         },
     	products : [{
             name : {
-                type : String
+                type : String,
+                require : true
             },
             image : {
-                type : String
+                type : String,
+                require : true
             },
             price : {
-                type : Number
+                type : Number,
+                require : true
             },
             number : {
-                type : Number
+                type : Number,
+                require : true
             },
             description : {
-                type : String
+                type : String,
+                require : true
             },
             type : {
-                type : String
-            },
-            required : true
+                type : String,
+                require : true
+            }
         }],
         address_details : {
             country : {
-                type : String
+                type : String,
+                require : true
             },
             city : {
-                type : String
+                type : String,
+                require : true
             },
             state : {
-                type : String
+                type : String,
+                require : true
             },
             pin_code : {
-                type : Number
+                type : Number,
+                require : true
             },
             address : {
-                type : String
-            },
-            required : true
+                type : String,
+                require : true
+            }
         },
         contact_details : {
             first_name : {
-                type : String
+                type : String,
+                require : true
             },
             last_name : {
-                type : String
+                type : String,
+                require : true
             },
             email : {
-                type : String
+                type : String,
+                require : true
             },
             mobile_no : {
-                type : String
-            },
-            required : true
+                type : String,
+                require : true
+            }
         },
         card_details : {
             card_type : {
-                type : String
+                type : String,
+                require : true
             },
             card_holder : {
-                type : String
+                type : String,
+                require : true
             },
             card_number : {
-                type : Number
+                type : Number,
+                require : true
             },
             expiry_date : [{
                 month : {
-                    type : Number
+                    type : Number,
+                    require : true
                 },
                 year : {
-                    type : Number
+                    type : Number,
+                    require : true
                 }
             }],
             cvv : {
                 type : Number
-            },
-            required : true
+            }
         }
     })
 

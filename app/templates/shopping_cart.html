@@ -150,25 +150,25 @@
 								<div class="form-group ">
 									<ul class="list-inline text-center link">
 										<li ng-class="(order.card_details.cart_type == 'Visa Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.cart_type = 'Visa Card'"><img src="../assets/images/visacard.png" alt="visa" title="visa" class="img-responsive"></a>
+											<a href="" ng-click="order.card_details.card_type = 'Visa Card'"><img src="../assets/images/visacard.png" alt="visa" title="visa" class="img-responsive"></a>
 										</li>
 										<li ng-class="(order.card_details.cart_type == 'Master Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.cart_type = 'Master Card'"><img src="../assets/images/master.png" alt="master" title="master" class="img-responsive"></a>
+											<a href="" ng-click="order.card_details.card_type = 'Master Card'"><img src="../assets/images/master.png" alt="master" title="master" class="img-responsive"></a>
 										</li>
 										<li ng-class="(order.card_details.cart_type == 'Discover Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.cart_type = 'Discover Card'"><img src="../assets/images/discovers.png" alt="discover" title="discover" class="img-responsive"></a>
+											<a href="" ng-click="order.card_details.card_type = 'Discover Card'"><img src="../assets/images/discovers.png" alt="discover" title="discover" class="img-responsive"></a>
 										</li>
 										<li ng-class="(order.card_details.cart_type == 'Paypal Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.cart_type = 'Paypal Card'"><img src="../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
+											<a href="" ng-click="order.card_details.card_type = 'Paypal Card'"><img src="../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
 										</li>
 									</ul>
 								</div>
 								<div class="form-group">	
 									<div class="col-sm-6">
-										<input class="form-control" id="input-card" placeholder="card holder name" ng-model="order.card_details.holder_name" name="email" required="" type="text">
+										<input class="form-control" id="input-card" placeholder="card holder name" ng-model="order.card_details.card_holder" name="email" required="" type="text">
 									</div>
 									<div class="col-sm-6">
-										<input class="form-control" id="input-expiry" placeholder="card number" ng-model="order.card_details.card_no" name="email" type="number" required>
+										<input class="form-control" id="input-expiry" placeholder="card number" ng-model="order.card_details.card_number" name="email" type="number" required>
 									</div>
 								</div>	
 								<div class="form-group">
