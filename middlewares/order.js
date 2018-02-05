@@ -17,10 +17,11 @@ function postOrder (req, res){
   
     var orderList = '';
     req.body.products.forEach(function(product){
-        orderList = product.name.join(', ');
+        orderList += product.name + ', ';
     })
+
+    orderList.substr(0,orderList.length - 1);
     
-    console.log(orderList);
     var newOrder = new Order({
         ref_id : Math.random().toString(36).substr(2, 9),
         date : req.body.date,
