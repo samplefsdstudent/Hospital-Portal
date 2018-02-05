@@ -61,4 +61,9 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 		$rootScope.$emit('badgeUpdate', RestaurantService.cart.length);
 		alert(`"${name}" is removed from your Cart!`);
 	  }
+
+	  $scope.navigator = function(flag){
+		if(flag == 0)
+			$location.path('/our-menu');
+	  }
 }])
