@@ -1,5 +1,5 @@
-angular.module('myApp').controller('about_usCtrl',
- ['$anchorScroll',
+angular.module('myApp').controller('about_usCtrl',[
+  '$anchorScroll',
   '$scope',
   '$http',
   'prefix_url', function($anchorScroll,$scope,$http,prefix_url){

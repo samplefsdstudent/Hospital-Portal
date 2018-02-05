@@ -1,30 +1,37 @@
-angular.module('myApp').controller('homeCtrl', ['$scope','RestaurantService','$http','prefix_url','$anchorScroll','$location','$rootScope', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location,$rootScope){
-	$anchorScroll();
-	$scope.filter = 'all';
-	$scope.reserveData = {
-		person_count : 1
-	};
+angular.module('myApp').controller('homeCtrl', [
+ '$scope',
+ 'RestaurantService',
+ '$http',
+ 'prefix_url',
+ '$anchorScroll',
+ '$location',
+ '$rootScope', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location,$rootScope){
+   $anchorScroll();
+   $scope.filter = 'all';
+   $scope.reserveData = {
+	 person_count : 1
+   };
 
-	if(!RestaurantService.recipes.length){
-		$http.get(prefix_url + 'menu').then(function(data){
-			$scope.recipes = data.data;
-			RestaurantService.recipes = data.data;
-		}, function(err){
-			console.log(err);
-		})
+   if(!RestaurantService.recipes.length){
+	$http.get(prefix_url + 'menu').then(function(data){
+	 $scope.recipes = data.data;
+	  RestaurantService.recipes = data.data;
+	 }, function(err){
+	  console.log(err);
+	 })
 	}else{
-		$scope.recipes = RestaurantService.recipes
+	 $scope.recipes = RestaurantService.recipes
 	}
 
 	$scope.doReservation = function(data){
-		var name = data.name;
-		$http.post(prefix_url + 'reservation', data).then(function(data){
-			$location.path('/' + data.data.ref_id + '/confirmation/reservation'); 
-			$scope.reserveData = {}
-			$scope.person_count = 0;
-		}, function(err){
-			alert('Error! Try after some time.')
-		})
+	 var name = data.name;
+	 $http.post(prefix_url + 'reservation', data).then(function(data){
+		$location.path('/' + data.data.ref_id + '/confirmation/reservation'); 
+		$scope.reserveData = {}
+		$scope.person_count = 0;
+	 }, function(err){
+	    alert('Error! Try after some time.')
+	 })
 	}
 
 	$scope.addToCart = function(data, index){

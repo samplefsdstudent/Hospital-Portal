@@ -1,4 +1,10 @@
-angular.module('myApp').controller('our_menuCtrl', ['$anchorScroll','$scope','RestaurantService','$http','prefix_url','$rootScope', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$rootScope){
+angular.module('myApp').controller('our_menuCtrl', [
+	'$anchorScroll',
+	'$scope',
+	'RestaurantService',
+	'$http',
+	'prefix_url',
+	'$rootScope', function($anchorScroll,$scope,RestaurantService,$http,prefix_url,$rootScope){
 	$anchorScroll();
 	$scope.filter = 'all';
 	if(!RestaurantService.recipes.length){

@@ -1,4 +1,4 @@
-	var reservationMiddleware = require('./middlewares/reservation'),
+	  var reservationMiddleware = require('./middlewares/reservation'),
     	orderMiddleware = require('./middlewares/order'),
       blogMiddleware = require('./middlewares/blogs'),
       galleryMiddleware = require('./middlewares/gallery'),
@@ -19,7 +19,7 @@
     	app = express();
       const port = process.env.PORT || 5000;
 
-	  mongoose.connect('mongodb://samplefsd:ankit939@ds213118.mlab.com:13118/restaurant')
+    mongoose.connect('mongodb://samplefsd:ankit939@ds213118.mlab.com:13118/restaurant')
 	
 	  app.use(bodyParser.json());
 	  app.use(bodyParser.urlencoded({extended : false}));
@@ -46,13 +46,13 @@
         text: 'FSD Server is Up'
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }else{
-        	console.log(info);
-        }
-    });
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          return console.log(error);
+      }else{
+        console.log(info);
+      }
+  });
 
 	app.post('/api/reservation', reservationMiddleware.post);
 	app.post('/api/order', orderMiddleware.post);
