@@ -1122,7 +1122,7 @@ footer .footer_container{
 .leftside{
 	background-image: url("../images/sign_bg.jpg");
 	background-size: cover;
-	height: 1050px;
+	height: 100%;
 	width:100%;
 	border-radius: 4px 0px 0 4px;
 }
@@ -1130,7 +1130,7 @@ footer .footer_container{
 	padding:0 33px;
 	position:absolute;
 	background: rgba(0,0,0,0.6);
-	height: 1050px;
+	height: 416px;
 	top:0; 
 	left:0; 
 }
