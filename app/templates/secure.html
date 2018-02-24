@@ -1,0 +1,84 @@
+<style>
+	#menu .nav > li > a {
+    color: #3c8dbc;
+    font-size: 14px;
+}
+</style>
+<!-- Website header start here-->
+<header style="box-shadow: 0px 0px 20px -4px rgba(163,163,163,1);background:white;position: fixed;z-index: 20;">
+	<div class="container" style="margin-left: 25px;padding:0;">
+		<div class="row" >
+			<div class="col-md-3 col-sm-3 col-xs-12">
+				<div id="logo">
+					<a href="/"><img class="img-responsive" src="assets/images/logo.png" alt="logo" title="logo" style="width: 160px;margin-top: 10px;" /></a>
+				</div>
+			</div>
+				
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<!-- menu start here -->
+				<div id="menu">	
+					<nav class="navbar">
+						<div class="navbar-header">
+							<span class="menutext visible-xs">Menu</span>
+							<button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="btn btn-navbar navbar-toggle" type="button"><i class="icofont icofont-navigation-menu"></i></button>
+						</div>
+						<div class="collapse navbar-collapse navbar-ex1-collapse padd0">
+							<ul class="nav navbar-nav text-right">
+								<li><a href="/home">home</a></li>
+								<li><a href="/about-us">about us</a></li>
+								<li><a href="/contact-us">contact us</a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icofont icofont-caret-down"></i></a>
+									<div class="dropdown-menu repeating" style="min-width: 120px;margin: 0px 0px 0px -50px;">
+										<div class="dropdown-inner">
+											<ul class="list-unstyled">
+												<li><a href="/our-blog">Profile</a></li>
+												<li><a href="/testimonials">Settings</a></li>
+												<li><a href="/testimonials">Logout</a></li>
+											</ul>
+										</div>
+									</div>
+								</li>
+								<li ng-if="userData"><a href="/signup">
+								</a>
+								</a></li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+				<!-- menu end here -->
+			</div>
+		</div>
+	</div>
+</header>
+<!-- header end here -->
+<div class="row" style="margin-top: 85px;">
+	<div class="col-md-3">
+		<div ui-view="sidebar"></div>
+	</div>
+	<div class="col-md-9" style="margin-left: -30px;">
+		<div ui-view="dashContent" style="min-height: 576px;">
+	</div>
+</div>
+</div>
+<!-- footer start here -->
+<footer>
+	<div class="container footer_container">
+		<div class="row powered">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 text-center">
+				<p>Copyright © <span>Health & Care Hospital</span> 2018. All Rights Reserved.</p>
+			</div>
+			<div class="col-sm-3 text-right">
+				<ul class="list-inline social">
+					<li><a href="https://www.facebook.com/" target="_blank"><i class="icofont icofont-social-facebook"></i></a></li>
+					<li><a href="https://twitter.com/" target="_blank"><i class="icofont icofont-social-twitter"></i></a></li>
+					<li><a href="https://plus.google.com/" target="_blank"><i class="icofont icofont-social-google-plus"></i></a></li>
+					<li><a href="https://in.pinterest.com/" target="_blank"><i class="icofont icofont-social-pinterest"></i></a></li>
+					<li><a href="https://www.instagram.com/" target="_blank"><i class="icofont icofont-social-instagram"></i></a></li>
+					<li><a href="https://www.youtube.com/" target="_blank"><i class="icofont icofont-social-youtube-play"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- footer end here -->

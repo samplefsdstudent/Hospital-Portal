@@ -1,77 +1,299 @@
 'use strict';
-var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
-  .value('prefix_url','http://restaurant-express-server.herokuapp.com/api/')
+var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
+  .value('prefix_url','http://localhost:5000/api/')
 
-  .config(['$routeProvider','$locationProvider',function($routeProvider, $locationProvider) {
-    $routeProvider
-    .when('/home', {
-        cache : true,
-        templateUrl : 'templates/home.html',
-        controller : 'homeCtrl'
-    })
-    .when('/about-us', {
-        cache : true,
-        templateUrl : 'templates/about_us.html',
-        controller : 'about_usCtrl'
-    })
-    .when('/blog-details/:id', {
-        cache : true,
-        templateUrl : 'templates/blog_details.html',
-        controller : 'blog_detailCtrl'
-    })
-    .when('/contact-us', {
-        cache : true,
-        templateUrl : 'templates/contact_us.html',
-        controller : 'contact_usCtrl'
-    })
-    .when('/our-blog', {
-        cache : true,
-        templateUrl : 'templates/our_blog.html',
-        controller : 'our_blogCtrl'
-    })
-    .when('/our-gallery', {
-        cache : true,
-        templateUrl : 'templates/our_gallery.html',
-        controller : 'our_galleryCtrl'
-    })
-    .when('/our-menu', {
-        cache : true,
-        templateUrl : 'templates/our_menu.html',
-        controller : 'our_menuCtrl'
-    })
-    .when('/reservation', {
-        cache : true,
-        templateUrl : 'templates/reservation.html',
-        controller : 'reservationCtrl'
-    })
-    .when('/shopping-cart', {
-        cache : true,
-        templateUrl : 'templates/shopping_cart.html',
-        controller : 'shopping_cartCtrl'
-    })
-    .when('/testimonials', {
-        cache : true,
-        templateUrl : 'templates/testimonials.html',
-        controller : 'testimonialCtrl'
-    })
-    .when('/:ref_id/confirmation/:type', {
-        cache : true,
-        templateUrl : 'templates/confirmation.html',
-        controller : 'confirmationCtrl'
-    })
-    .otherwise({redirectTo : '/home'});
+  .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider,$urlRouterProvider) {
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 
-    $locationProvider.html5Mode(true);
+    $stateProvider
+        .state('app', {
+            abstract : true,
+            views: {
+                'mainContent': {
+                    templateUrl: '/templates/app.html',
+                    controller : 'appCtrl'
+                }
+            }
+        })
 
+        .state('app.home', {
+            url : '/home',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/home.html',
+                    controller : 'homeCtrl'
+                }
+            }
+        })
+
+        .state('app.about', {
+            url : '/about-us',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/about_us.html',
+                    controller : 'about_usCtrl'
+                }
+            }
+        })
+
+        .state('app.blogs', {
+            url : '/our-blogs',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/our_blog.html',
+                    controller : 'our_blogCtrl'
+                }
+            }
+        })
+
+        .state('app.blog_details', {
+            url : '/blog_details/:id',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/blog_details.html',
+                    controller : 'blog_detailCtrl'
+                }
+            },
+            resolve: {
+                id: ["$stateParams", function($stateParams) {
+                return $stateParams.id
+                }]
+            }
+        })
+
+        .state('app.login', {
+            url : '/login',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/login.html',
+                    controller : 'loginCtrl'
+                }
+            }
+        })
+
+        .state('app.signup', {
+            url : '/signup',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/signup.html',
+                    controller : 'signupCtrl'
+                }
+            }
+        })
+
+        .state('app.gallery', {
+            url : '/our-gallery',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/gallery.html',
+                    controller : 'galleryCtrl'
+                }
+            }
+        })
+
+        .state('app.testimonials', {
+            url : '/testimonials',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/testimonials.html',
+                    controller : 'testimonialCtrl'
+                }
+            }
+        })
+
+        .state('app.contact', {
+            url : '/contact-us',
+            cache:true,
+            views: {
+                'subContent': {
+                    templateUrl: '/templates/contact_us.html',
+                    controller : 'contact_usCtrl'
+                }
+            }
+        })
+
+        .state('secure', {
+            abstract : true,
+            url : '/secure/:user',
+            views: {
+                'mainContent': {
+                    templateUrl: '/templates/secure.html',
+                    controller : 'secureCtrl'
+                },
+                'sidebar@secure' : {
+                    templateUrl: '/templates/sidebar.html',
+                    controller : 'sidebarCtrl'
+                }
+            },
+            resolve: {
+                user: ["$stateParams", function($stateParams) {
+                    return $stateParams.user
+                }]
+            }
+        })
+
+        .state('secure.dashboard', {
+            url : '/dashboard',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/dashboard.html',
+                    controller : 'dashboardCtrl'
+                }
+            }
+        })
+
+
+        .state('secure.orders', {
+            url : '/track-order',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/orders.html',
+                    controller : 'orderCtrl'
+                }
+            }
+        })
+
+        .state('secure.hospitals', {
+            url : '/hospitals',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/hospitals.html',
+                    controller : 'hospitalCtrl'
+                }
+            }
+        })
+
+        .state('secure.settings', {
+            url : '/account-settings',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/settings.html',
+                    controller : 'settingsCtrl'
+                }
+            }
+        })
+
+        .state('secure.profile', {
+            url : '/user-profile',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/profile.html',
+                    controller : 'profileCtrl'
+                }
+            }
+        })
+
+        .state('secure.history', {
+            url : '/history',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/history.html',
+                    controller : 'historyCtrl'
+                }
+            }
+        })
+
+        .state('secure.support', {
+            url : '/support',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/support.html',
+                    controller : 'supportCtrl'
+                }
+            }
+        })
+
+        .state('secure.equipments', {
+            url : '/medical-equipments',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/equipments.html',
+                    controller : 'equipmentCtrl'
+                }
+            }
+        })
+
+        .state('secure.store', {
+            url : '/live-store',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/store.html',
+                    controller : 'storeCtrl'
+                }
+            }
+        })
+
+        .state('secure.shopping_cart', {
+            url : '/shopping-cart',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/shopping_cart.html',
+                    controller : 'shopping_cartCtrl'
+                }
+            }
+        })
+
+        .state('secure.donate_form', {
+            url : '/donate-equipment-form',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/donate_equipment_form.html',
+                    controller : 'donate_equipmentCtrl'
+                }
+            }
+        })
+
+        .state('secure.confirmation', {
+            url : '/confirmation/:id',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/confirmation.html',
+                    controller : 'confirmationCtrl'
+                }
+            },
+            resolve: {
+                id: ["$stateParams", function($stateParams) {
+                return $stateParams.id
+                }]
+            }
+        })
+        
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            var $state = $injector.get('$state');
+            $state.go('app.home');
+         });
   }])
 
 .controller('mainCtrl', ['$anchorScroll',
     '$scope',
     '$http',
     'prefix_url',
-    'RestaurantService',
-    '$rootScope', function($anchorScroll,$scope,$http,prefix_url,RestaurantService,$rootScope){
-      $scope.length = RestaurantService.cart.length;
+    'HospitalService',
+    '$rootScope', function($anchorScroll,$scope,$http,prefix_url,HospitalService,$rootScope){
+      $scope.length = HospitalService.cart.length;
       $scope.subscribeNewsletter = function(data){
         data.date = new Date();
         $http.post(prefix_url + 'newsletter', data).then(function(data){
@@ -89,10 +311,11 @@ var myApp = angular.module('myApp', ['ngRoute','naif.base64'])
       });
 }])
 
-.factory('RestaurantService', function() {
+.factory('HospitalService', function() {
     return {
         cart : [],
-        recipes : []
+        equipments : [],
+        user : {}
     }
 })
 

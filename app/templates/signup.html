@@ -1,0 +1,90 @@
+<!-- bread-crumb start here -->
+<div class="bread-crumb">
+	<img src="../assets/images/banner_top.jpg" class="img-responsive" alt="banner-top" title="banner-top">
+	<div class="container">
+		<div class="matter">
+			<h2>signup</h2>
+			<ul class="list-inline">
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="sign_in.html">signup</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- bread-crumb end here -->
+<!-- main container start here -->
+<div class="login">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				
+				<div class="col-sm-5 padd0">
+					<div class="leftside"></div>
+					<div class="loginto">
+						<div class="commontop text-center">
+							<h4>signup</h4>
+							<hr>
+						</div>
+						<p>If you have an account already? So <a href="/login">Login Now</a> And start ad posting less than a mintue</p>
+						<h5>Login via social accounts</h5>
+						<ul class="list-unstyled text-center">
+							<li><a href="https://www.facebook.com/" target="_blank"><i class="icofont icofont-social-facebook"></i> Login with Facebook</a></li>
+							<li><a href="https://plus.google.com/" target="_blank"><i class="icofont icofont-social-google-plus"></i> Login with Google+</a></li>
+						</ul>
+					</div>
+				</div>	
+				<div class="col-sm-7 padd0">
+					<div class="loginnow">
+						<form ng-submit="doSignup(signupData)">
+							<div class="form-group">
+								<i class="icofont icofont-ui-user"></i><input type="email" name="email" ng-model="signupData.email" value="" placeholder="email" id="input-name" class="form-control" required/>
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-lock"></i><input type="password" name="password" ng-model="signupData.password" value="" placeholder="password" id="input-name" class="form-control" required/>
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-lock"></i><input type="password" name="password" ng-model="signupData.confirm_password" value="" placeholder="confirm password" id="input-name" class="form-control" required/>
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-ui-user"></i><input type="text" name="email" ng-model="signupData.name" value="" placeholder="name" id="name" class="form-control" />
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-home"></i><input type="text" name="password" ng-model="signupData.address" value="" placeholder="address" id="input-password" class="form-control" />
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-home"></i><input type="text" name="password" ng-model="signupData.city" value="" placeholder="address" id="input-password" class="form-control" />
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-home"></i><input type="text" name="password" ng-model="signupData.state" value="" placeholder="state" id="input-password" class="form-control" />
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-lock"></i><input type="number" name="confirm" ng-model="signupData.pin_code" value="" placeholder="pin code" id="input-confirm" class="form-control" />
+							</div>
+							<div class="form-group">
+								<i class="icofont icofont-phone"></i><input type="number" name="confirm" ng-model="signupData.mobile_no" value="" placeholder="mobile number" id="input-confirm" class="form-control" />
+							</div>
+							<div class="links">
+								<div class="col-sm-12 text-left">
+										<label>Signup As</label>
+									</div>
+								<div class="col-sm-12 form-group">
+									<div class="col-sm-6 text-center">
+										<input type="radio" name="type" ng-model="signupData.type" value="donor" class="radio-inline" required/>Donor 
+									</div>
+									<div class="col-sm-6 text-center">
+										<input type="radio" name="type" ng-model="signupData.type" value="requester" class="radio-inline" required/>Requester
+									</div>
+								</div>
+							</div>
+							<div class="links">
+								<input type="radio" ng-model="signupData.agreed" class="radio-inline" required/>By signing up I agree with <a href="#">terms & conditions.</a>
+							</div>
+							<input type="submit" value="SIGN UP" class="btn btn-primary" />
+						</form>
+					</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+</div>
+<!-- main container end here -->

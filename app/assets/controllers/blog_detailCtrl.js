@@ -1,11 +1,11 @@
 angular.module('myApp').controller('blog_detailCtrl', [
- '$routeParams',
+ '$stateParams',
  '$scope',
  '$http',
  'prefix_url',
- '$anchorScroll', function($routeParams,$scope,$http,prefix_url,$anchorScroll){
+ '$anchorScroll', function($stateParams,$scope,$http,prefix_url,$anchorScroll){
    $anchorScroll();
-   $scope.index = $routeParams.id - 1;
+   $scope.index = $stateParams.id - 1;
    $http.get(prefix_url + 'blogs').then(function(data){
 	 $scope.blogs = data.data;
 	 $http.get(prefix_url + 'comments/' + $scope.blogs[$scope.index].id)

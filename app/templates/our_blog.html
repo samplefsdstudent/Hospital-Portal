@@ -20,7 +20,7 @@
 			<!-- ng-repeat on blogs start here -->
 			<div class="col-sm-4" ng-repeat="blog in blogs track by $index">
 				<div class="box">
-					<a href="/blog-details/{{$index + 1}}"><img ng-src="{{blog.image}}" class="img-responsive" alt="image" title="image" /></a>
+					<a ui-sref="app.blog_details({id : $index + 1})"><img ng-src="{{blog.image}}" class="img-responsive" alt="image" title="image" /></a>
 					<div class="caption">
 						<h4>{{blog.title}}</h4>
 						<p class="text">{{blog.date | date}} / By {{blog.uploaded_by}}</p>

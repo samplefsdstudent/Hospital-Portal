@@ -1,0 +1,128 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../assets/images/user.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <hr style="width: 85%;margin-top: 10px;margin-bottom: 10px;">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu tree" data-widget="tree">
+        <li class="active treeview menu-open" ng-if="access[0]">
+          <a ui-sref="secure.dashboard">
+            <i class="icofont icofont-home"></i> 
+            <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="active" ng-if="access[1]">
+          <a ui-sref="secure.profile">
+            <i class="icofont icofont-ui-user"></i> 
+            <span>Profile</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li ng-if="access[2]">
+          <a ui-sref="secure.hospitals">
+            <i class="icofont icofont-hospital"></i> 
+            <span>Hospitals</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li ng-if="access[3]">
+          <a ui-sref="secure.store">
+            <i class="icofont icofont-hospital"></i> 
+            <span>Live Store</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[4]">
+          <a ui-sref="secure.donate_form">
+            <i class="icofont icofont-first-aid-alt"></i>
+            <span>Donate Equipments</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[5]">
+          <a ui-sref="secure.orders">
+            <i class="icofont icofont-cart-alt"></i>
+            <span>Track Orders</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[6]">
+          <a ui-sref="secure.shopping_cart">
+            <i class="icofont icofont-cart-alt"></i>
+            <span>Shopping Cart</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[7]">
+          <a ui-sref="secure.history">
+            <i class="icofont icofont-files"></i>
+            <span>History</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[8]">
+          <a ng-click="exportData()">
+            <i class="icofont icofont-list"></i>
+            <span>Export Data</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[9]">
+          <a ui-sref="secure.support">
+            <i class="icofont icofont-support"></i>
+            <span>Support</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[10]">
+          <a ui-sref="secure.settings">
+            <i class="icofont icofont-wheel"></i> 
+            <span>Settings</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">12</small>
+            </span>
+          </a>
+        </li>
+        <li class="treeview" ng-if="access[11]">
+          <a ng-click="logout()">
+            <i class="icofont icofont-logout"></i> 
+            <span>Logout</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">12</small>
+            </span>
+          </a>
+        </li>
+   	</ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>

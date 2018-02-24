@@ -1,27 +1,42 @@
 angular.module('myApp').controller('homeCtrl', [
  '$scope',
- 'RestaurantService',
+ 'HospitalService',
  '$http',
  'prefix_url',
  '$anchorScroll',
  '$location',
- '$rootScope', function($scope, RestaurantService, $http,prefix_url,$anchorScroll,$location,$rootScope){
+ '$rootScope', function($scope, HospitalService, $http,prefix_url,$anchorScroll,$location,$rootScope){
    $anchorScroll();
    $scope.filter = 'all';
    $scope.reserveData = {
 	 person_count : 1
    };
-
-   if(!RestaurantService.recipes.length){
-	$http.get(prefix_url + 'menu').then(function(data){
-	 $scope.recipes = data.data;
-	  RestaurantService.recipes = data.data;
-	 }, function(err){
-	  console.log(err);
-	 })
-	}else{
-	 $scope.recipes = RestaurantService.recipes
-	}
+   
+	$scope.services = [{
+		name : "Items Availability",
+		image : "../assets/images/about/icon1.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	},{
+		name : "Only Transport Cost Paid",
+		image : "../assets/images/about/icon2.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	},{
+		name : "Order in Bulk",
+		image : "../assets/images/about/icon3.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	},{
+		name : "Special Offers",
+		image : "../assets/images/about/icon4.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	},{
+		name : "Any Payment Mode",
+		image : "../assets/images/about/icon5.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	},{
+		name : "Hospitals Availability",
+		image : "../assets/images/about/icon6.png",
+		description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur placerat nulla, in suscipit erat sodales id."
+	}];
 
 	$scope.doReservation = function(data){
 	 var name = data.name;
@@ -36,7 +51,7 @@ angular.module('myApp').controller('homeCtrl', [
 
 	$scope.addToCart = function(data, index){
 		if(!data.checked){
-			RestaurantService.cart.push({
+			HospitalService.cart.push({
 			name : data.name,
 			image : data.image,
 			number : data.number,
@@ -45,15 +60,15 @@ angular.module('myApp').controller('homeCtrl', [
 			description : data.description,
 			type : data.type
 			})
-			$rootScope.$emit('badgeUpdate', RestaurantService.cart.length);
+			$rootScope.$emit('badgeUpdate', HospitalService.cart.length);
 			alert(`"${data.name}" is added to your Cart!`);
-			$scope.recipes[index].checked = true;
+			$scope.equipments[index].checked = true;
 			return false;
 		}else{
-			RestaurantService.cart.splice(index,1);
-			RestaurantService.recipes[index].checked = false;
-			$scope.recipes = RestaurantService.recipes;
-			$scope.$emit('badgeUpdate', RestaurantService.cart.length);
+			HospitalService.cart.splice(index,1);
+			HospitalService.equipments[index].checked = false;
+			$scope.equipments = HospitalService.equipments;
+			$scope.$emit('badgeUpdate', HospitalService.cart.length);
 			alert(`"${data.name}" is removed from your Cart!`);
 			return true;
 		}
@@ -62,7 +77,7 @@ angular.module('myApp').controller('homeCtrl', [
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
 		if(bool){
-			return (value) ? $scope.recipes[index].checked = false : $scope.recipes[index].checked = true
+			return (value) ? $scope.equipments[index].checked = false : $scope.equipments[index].checked = true
 		}
 	}
 

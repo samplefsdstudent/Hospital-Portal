@@ -1,14 +1,15 @@
-	  var reservationMiddleware = require('./middlewares/reservation'),
-    	orderMiddleware = require('./middlewares/order'),
+	  var orderMiddleware = require('./middlewares/order'),
       blogMiddleware = require('./middlewares/blogs'),
       galleryMiddleware = require('./middlewares/gallery'),
-      menuMiddleware = require('./middlewares/menu'),
+      equipmentMiddleware = require('./middlewares/equipment'),
       testimonialMiddleware = require('./middlewares/testimonials'),
       commentMiddleware = require('./middlewares/comment'),
-      memberMiddleware = require('./middlewares/member'),
+      userMiddleware = require('./middlewares/user'),
       serviceMiddleware = require('./middlewares/services'),
       feedbackMiddleware = require('./middlewares/feedback'),
       newsletterMiddleware = require('./middlewares/newsletter'),
+      loginMiddleware = require('./middlewares/login'),
+      signupMiddleware = require('./middlewares/signup'),
 
       nodemailer = require('nodemailer'),
     	compression = require('compression'),
@@ -19,7 +20,7 @@
     	app = express();
       const port = process.env.PORT || 5000;
 
-    mongoose.connect('mongodb://samplefsd:ankit939@ds213118.mlab.com:13118/restaurant')
+    mongoose.connect('mongodb://samplefsd:ankit939@ds229438.mlab.com:29438/donate_hospital')
 	
 	  app.use(bodyParser.json());
 	  app.use(bodyParser.urlencoded({extended : false}));
@@ -40,10 +41,10 @@
     });
 
     var mailOptions = {
-        from: '"Sample FSD Project" <samplefsdstudent@gmail.com>',
+        from: '"Hospital FSD Project" <samplefsdstudent@gmail.com>',
         to: 'ankitkumarsharma939@gmail.com',
-        subject: 'FSD Server is Up',
-        text: 'FSD Server is Up'
+        subject: 'Hospital FSD Server is Up',
+        text: 'Hospital FSD Server is Up'
     };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -54,29 +55,32 @@
       }
   });
 
-	app.post('/api/reservation', reservationMiddleware.post);
 	app.post('/api/order', orderMiddleware.post);
   app.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
   app.post('/api/feedback', feedbackMiddleware);
   app.post('/api/newsletter', newsletterMiddleware);
+  app.post('/api/equipment', equipmentMiddleware.post);
   
-  app.get('/api/menu', menuMiddleware);
+  app.get('/api/equipments', equipmentMiddleware.get);
   app.get('/api/blogs', blogMiddleware);
   app.get('/api/order/:ref_id', orderMiddleware.get);
-  app.get('/api/reservation/:ref_id', orderMiddleware.post);
   app.get('/api/gallery', galleryMiddleware);
   app.get('/api/testimonials', testimonialMiddleware);
   app.get('/api/comments/:blog_id', commentMiddleware.get);
-  app.get('/api/members', memberMiddleware);
   app.get('/api/services', serviceMiddleware);
+
+  app.post('/api/login', loginMiddleware);
+  app.post('/api/signup', signupMiddleware);
+  app.get('/api/profile/:email', userMiddleware.get);
+  app.post('/api/profile/update:/:email', userMiddleware.update);
 
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
   app.engine('html', require('ejs').renderFile);
 
-	app.get('/*', function(req, res, next) {
-    	res.render('index.html', { root: __dirname });
-	});
+	app.all('/*', function(req, res, next) {
+    res.render('index.html', { root: __dirname });
+  });
 
 	app.listen(port, function(){
    		console.log(`Express Server is listening at Port : ${port}`);
