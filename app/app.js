@@ -1,6 +1,6 @@
 'use strict';
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
-  .value('prefix_url','https://hospital-fsd.herokuapp.com/')
+  .value('prefix_url','http://hospital-fsd.herokuapp.com/api/')
 
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider,$urlRouterProvider) {
     $locationProvider.html5Mode({
