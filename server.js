@@ -64,6 +64,7 @@
   app.get('/api/equipments', equipmentMiddleware.get);
   app.get('/api/blogs', blogMiddleware);
   app.get('/api/order/:ref_id', orderMiddleware.get);
+  app.get('/api/order/:type/:id', orderMiddleware.getAll);
   app.get('/api/gallery', galleryMiddleware);
   app.get('/api/testimonials', testimonialMiddleware);
   app.get('/api/comments/:blog_id', commentMiddleware.get);

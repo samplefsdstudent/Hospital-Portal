@@ -1,18 +1,3 @@
-<!-- bread-crumb start here -->
-<div class="bread-crumb">
-	<img src="../assets/images/banner_top.jpg" class="img-responsive" alt="banner-top" title="banner-top">
-	<div class="container">
-		<div class="matter">
-			<h2>Confirmation</h2>
-			<ul class="list-inline">
-				<li><a href="/home">HOME</a></li>
-				<li><a href="/confirmation">Confirmation</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-<!-- bread-crumb end here -->
-
 <!-- thanks start here -->
 <div class="thanks">
 	<div class="col-sm-2 col-xs-2 commontop text-center" style="margin-bottom:50px;"></div>
@@ -26,8 +11,7 @@
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<!-- address start here -->
-				<div class="address" ng-if="type == 'order'">
-					<div class="container">
+				<div class="address">
 						<div class="row">
 							<div class="col-md-6 col-sm-6 col-xs-6 mycart" style="margin: 0;">
 								<div class="box text-center myCart" id="tab-cart" style="height: auto;padding: 20px 0 0 0;">
@@ -106,40 +90,6 @@
 								</div>	
 							</div>
 						</div>
-					</div>
-				</div>
-				<!-- address end here -->
-				<!-- address start here -->
-				<div class="address" ng-if="type == 'reservation'">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="box text-center">
-									<div class="icon">
-										<i class="icofont icofont-home"></i>
-									</div>
-									<h4>PRODUCTS</h4>
-									<div class="row">
-										<div class="col-md-6 col-sm-6 col-xs-6">
-											<p>{{}}</p>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6">
-											<p>3691 Rodney Street, Franklin Avenue Harvester, MO. 234501</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="box text-center">
-									<div class="icon">
-										<i class="icofont icofont-phone"></i>
-									</div>
-									<h4>DETAILS PROVIDED</h4>
-									<p>123 456 7890 <br>423 456 7900</p>
-								</div>	
-							</div>
-						</div>
-					</div>
 				</div>
 				<!-- address end here -->
 				<button type="button" class="btn-primary" ng-click="navigator(0)">back to home</button>	

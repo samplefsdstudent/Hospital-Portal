@@ -2,12 +2,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
 
     // create the Member Schema
-    memberSchema = new Schema({
+    userSchema = new Schema({
     	name : {
-    		type : String,
-    		required : true,
-    		unique : true
-    	},
+            type : String,
+            required : true
+        },
         email : {
             type : String,
             required : true,
@@ -17,38 +16,44 @@ var mongoose = require('mongoose'),
             type : String,
             required : true
         },
-        role : {
+        address : {
             type : String,
             required : true
         },
+        city : {
+            type : String,
+            required : true
+        },
+        state : {
+            type : String,
+            required : true
+        },
+        mobile_no : {
+            type : String,
+            required : true
+        },
+        pin_code : {
+            type : Number,
+            required : true
+        },
         image : {
-            type : String,
-            required : false
+            type : String
         },
-    	description : {
-    		type : String,
-    		required : false
-    	},
-        facebook_url : {
-            type : String,
-            required : false
+        description : {
+            type : String
         },
-    	twitter_url : {
-    		type : String,
-    		required : false
-    	},
-        plus_google_url : {
+        created_on : {
             type : String,
-            required : false
+            required : true
         },
-        instagram_url : {
+        type : {
             type : String,
-            required : false
-        } 
+            required : true
+        }
     })
 
     // we need to create a model using the Schema
-    User = mongoose.model('User', memberSchema);
+    User = mongoose.model('User', userSchema);
 
     // make this available to our users in our Express application
     module.exports = User;

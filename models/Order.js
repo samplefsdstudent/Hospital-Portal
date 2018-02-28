@@ -17,37 +17,23 @@ var mongoose = require('mongoose'),
             type : Number,
             required : true
         },
-    	products : [{
-            name : {
-                type : String,
-                require : true
-            },
-            image : {
-                type : String,
-                require : true
-            },
-            price : {
-                type : Number,
-                require : true
-            },
-            number : {
-                type : Number,
-                require : true
-            },
-            description : {
-                type : String,
-                require : true
-            },
-            type : {
-                type : String,
-                require : true
-            }
-        }],
+    	products : {
+            type : String,
+            required : true
+        },
+        donated_by : {
+            type : String,
+            required : true
+        },
+        deal_with : {
+            type : String,
+            required : true
+        },
+        sold_to : {
+            type : String,
+            required : false
+        },
         address_details : {
-            country : {
-                type : String,
-                require : true
-            },
             city : {
                 type : String,
                 require : true
@@ -66,11 +52,7 @@ var mongoose = require('mongoose'),
             }
         },
         contact_details : {
-            first_name : {
-                type : String,
-                require : true
-            },
-            last_name : {
+            name : {
                 type : String,
                 require : true
             },
@@ -83,32 +65,14 @@ var mongoose = require('mongoose'),
                 require : true
             }
         },
-        card_details : {
-            card_type : {
+        receipt_upload : {
+            payment_mode : {
                 type : String,
-                require : true
+                require : false
             },
-            card_holder : {
+            image : {
                 type : String,
-                require : true
-            },
-            card_number : {
-                type : Number,
-                require : true
-            },
-            expiry_date : [{
-                month : {
-                    type : Number,
-                    require : true
-                },
-                year : {
-                    type : Number,
-                    require : true
-                }
-            }],
-            cvv : {
-                type : Number,
-                require : true
+                require : false
             }
         }
     })

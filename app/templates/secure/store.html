@@ -38,11 +38,11 @@
 										<img ng-src="{{item.image}}" alt="image" title="image" class="img-responsive" />
 									</div>
 									<div class="caption">
-										<h4>{{item.name}}</h4>
+										<h4>{{item.name}}(Qty-{{item.quantity}})</h4>
 										<p class="des">{{item.description | limitTo:50}}...</p>
 										<div class="price col-md-6 col-sm-6 col-xs-6 text-left" style="    padding: 0;">${{item.price}}</div>
 										<div class="icon text-right  col-md-6 col-sm-6 col-xs-6" style="    padding: 0;">
-											<a class="cart" ng-click="switch(item.checked,item, $index);"><i ng-style="(item.checked) ? {color : '#8BC34A'} : {color : '#FFA41F'}" class="icofont icofont-cart-alt"></i></a>
+											<a class="cart" ng-click="switch(item.status,item, $index);"><i ng-style="(item.status) ? {color : '#8BC34A'} : {color : '#2196F3'}" class="icofont icofont-cart-alt"></i></a>
 										</div>
 									</div>
 								</div>

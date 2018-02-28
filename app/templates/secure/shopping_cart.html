@@ -13,9 +13,9 @@
 		<div class="row">
 			<div class="col-sm-10">
 				<ul class="nav nav-tabs" ng-if="order.products.length">
-					<li ng-class="(filter == '1') ? 'active' : ''"><span>1</span>shopping cart</li>
-					<li ng-class="(filter == '2') ? 'active' : ''"><span>2</span>shopping info</li>
-					<li ng-class="(filter == '3') ? 'active' : ''"><span>3</span>payment method</li>
+					<li ng-class="(filter == '1') ? 'active' : ''"><span>1</span>Shopping Cart</li>
+					<li ng-class="(filter == '2') ? 'active' : ''"><span>2</span>Shopping Info</li>
+					<li ng-class="(filter == '3') ? 'active' : ''"><span>3</span>Receipt Upload</li>
 				</ul>
 				<div class="bor" ng-if="order.products.length"></div>
 				<div class="tab-content">
@@ -41,25 +41,14 @@
 												</a>
 												<div class="name">
 													<h4>{{product.name}}</h4>
-													<p>{{product.description}}</p>
- 													<div class="rating">
-														<i class="icofont icofont-star" ng-style="(product.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-														<i class="icofont icofont-star" ng-style="(product.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-														<i class="icofont icofont-star" ng-style="(product.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-														<i class="icofont icofont-star" ng-style="(product.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-														<i class="icofont icofont-star" ng-style="(product.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-													</div>
+													<p>{{product.description | limitTo:50}}...</p>
 												</div>
 											</td>
 											<td class="text-center">$ {{product.price}}</td>
 											<td class="text-center">
-												<p class="qtypara">
-													<span id="minus1" class="minus"><a ng-click="(product.number > 1) ? product.number = product.number - 1 : product.number"><i class="icofont icofont-minus"></i></a></span>
-													<input type="number" name="quantity" ng-model="product.number" size="2" id="input-quantity1" class="form-control qty" disabled required/>
-													<span id="add1" class="add"><a ng-click="(product.number < 10) ? product.number = product.number + 1 : product.number"><i class="icofont icofont-plus"></i></a></span>
-												</p>
+												{{product.quantity}}
 											</td>
-											<td class="text-center">${{product.price * product.number}}</td>
+											<td class="text-center">${{product.price * product.quantity}}</td>
 											<td class="text-center">
 												<button confirmed-click="removeFromCart($index)" 
     ng-confirm-click="Are you Sure?" type="button"><i class="icofont icofont-close-line"></i></button>
@@ -94,9 +83,6 @@
 							<h6>shopping address</h6>
 								<fieldset>	
 									<div class="form-group">
-										<input name="india" ng-model="order.address_details.country" placeholder="india" id="input-india" class="form-control" type="text" required>
-									</div>
-									<div class="form-group">
 										<input name="City" ng-model="order.address_details.city" placeholder="City" id="input-City" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
@@ -121,7 +107,7 @@
 										<input name="lastname" ng-model="order.contact_details.last_name" placeholder="last name" id="input-lastname" class="form-control" type="text" required>
 									</div>
 									<div class="form-group">
-										<input name="email" ng-model="order.contact_details.email" placeholder="email" id="input-email" class="form-control" type="email" required>
+										<input name="email" ng-model="order.contact_details.email" placeholder="email" id="input-email" disabled class="form-control" type="email" required>
 									</div>
 									<div class="form-group">
 										<input name="phone" ng-model="order.contact_details.mobile_no" placeholder="mobile number" id="input-phone" class="form-control" type="number" required>
@@ -133,7 +119,7 @@
 								<button ng-click="next(0)" class="btn-primary">shopping cart</button>
 							</div>
 							<div class="buttons pull-right">
-								<button type="submit" class="btn-primary">payment method</button>
+								<button type="submit" class="btn-primary">Receipt Upload</button>
 							</div>
 						</div>
 						</form>
@@ -141,64 +127,39 @@
 					<div class="tab-pane col-md-12 col-sm-12 col-xs-12"  id="tab-payment" ng-class="(filter == '3') ? 'active' : ''">
 						<form class="form-horizontal" ng-submit="takeOrder(order)">
 							<fieldset>
+								<div class="form-group" style="margin-bottom:50px;">
+									<label>Receipt Upload</label>
+									<div calss="col-sm-6">
+                                		<div style="margin-bottom: 30px;">
+                                  			<img ng-src="{{order.receipt_details.image}}" style="width: 100%;height: 270px;padding: 10px;border-radius: 2px;border: solid 1px grey;" />
+                                  			<input type="file" img-cropper-fileread image="sourceImage" style="position: absolute;width: 200px;left: 130px;" />
+                                		</div>
+                                		<div ng-show="false">
+                                  			<canvas width="500" height="300" id="canvas" image-cropper image="sourceImage" cropped-image="order.receipt_details.image" crop-width="130" crop-height="130" keep-aspect="true" touch-radius="10"></canvas>
+                                		</div>
+                            		</div>
+								</div>
 								<div class="form-group ">
+									<label>Payment Mode</label>
 									<ul class="list-inline text-center link">
-										<li ng-class="(order.card_details.cart_type == 'Visa Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.card_type = 'Visa Card'"><img src="../assets/images/visacard.png" alt="visa" title="visa" class="img-responsive"></a>
+										<li ng-class="(order.receipt_details.payment_mode == 'Credit Card') ? 'active' : ''">
+											<a href="" ng-click="order.receipt_details.payment_mode = 'Credit Card'"><img src="../../assets/images/visacard.png" alt="visa" title="Credit Card" class="img-responsive"></a>
 										</li>
-										<li ng-class="(order.card_details.cart_type == 'Master Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.card_type = 'Master Card'"><img src="../assets/images/master.png" alt="master" title="master" class="img-responsive"></a>
+										<li ng-class="(order.receipt_details.payment_mode == 'Debit Card') ? 'active' : ''">
+											<a href="" ng-click="order.receipt_details.payment_mode = 'Debit Card'"><img src="../../assets/images/master.png" alt="master" title="Debit Card" class="img-responsive"></a>
 										</li>
-										<li ng-class="(order.card_details.cart_type == 'Discover Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.card_type = 'Discover Card'"><img src="../assets/images/discovers.png" alt="discover" title="discover" class="img-responsive"></a>
+										<li ng-class="(order.receipt_details.payment_mode == 'PayTM') ? 'active' : ''">
+											<a href="" ng-click="order.receipt_details.payment_mode = 'PayTM'"><img style="width:50px;" src="../../assets/images/paytm.png" alt="discover" title="payTM" class="img-responsive"></a>
 										</li>
-										<li ng-class="(order.card_details.cart_type == 'Paypal Card') ? 'active' : ''">
-											<a href="" ng-click="order.card_details.card_type = 'Paypal Card'"><img src="../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
+										<li ng-class="(order.receipt_details.payment_mode == 'Paypal Card') ? 'active' : ''">
+											<a href="" ng-click="order.receipt_details.payment_mode = 'Paypal Card'"><img src="../../assets/images/pay.png" alt="paypal" title="paypal" class="img-responsive"></a>
 										</li>
 									</ul>
 								</div>
-								<div class="form-group">	
-									<div class="col-sm-6">
-										<input class="form-control" id="input-card" placeholder="card holder name" ng-model="order.card_details.card_holder" name="email" required="" type="text">
-									</div>
-									<div class="col-sm-6">
-										<input class="form-control" id="input-expiry" placeholder="card number" ng-model="order.card_details.card_number" name="email" type="number" required>
-									</div>
-								</div>	
 								<div class="form-group">
-									<label>end date</label>
-									<div class="col-sm-3">
-										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.month" required>
-											<option selected="" value="0">mm</option>
-											<option value="1">Jan</option>
-											<option value="2">Feb</option>
-											<option value="3">March</option>
-											<option value="4">April</option>
-											<option value="5">May</option>
-											<option value="6">June</option>
-											<option value="7">July</option>
-											<option value="8">August</option>
-											<option value="9">September</option>
-											<option value="10">October</option>
-											<option value="11">November</option>
-											<option value="12">December</option>
-										</select>
-									</div>
-									<div class="col-sm-3">
-										<select class="selectpicker form-control bs-select-hidden" ng-model="order.card_details.expiry_date.year" > 
-											<option selected="" value="0">year</option>
-											<option value="2018">2018</option>
-											<option value="2019">2019</option>
-											<option value="2020">2020</option>
-											<option value="2021">2021</option>
-											<option value="2022">2022</option>
-											<option value="2023">2022</option>
-											<option value="2024">2022</option>
-											<option value="2025">2022</option>
-										</select>
-									</div>
-									<div class="col-sm-2">
-										<input class="form-control" id="input-cvv" placeholder="cvv" ng-model="order.card_details.cvv" name="email" required="" type="number" required>
+									<label>Payment date</label>
+									<div class="col-sm-6">
+										<input class="form-control" id="input-cvv" ng-model="order.receipt_details.payment_date" name="date" type="date" required>
 									</div>
 								</div>	
 							</fieldset>

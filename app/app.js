@@ -1,6 +1,6 @@
 'use strict';
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
-  .value('prefix_url','http://hospital-fsd.herokuapp.com/api/')
+  .value('prefix_url','http://localhost:5000/api/')
 
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider,$urlRouterProvider) {
     $locationProvider.html5Mode({
@@ -221,17 +221,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
             }
         })
 
-        .state('secure.equipments', {
-            url : '/medical-equipments',
-            cache:true,
-            views: {
-                'dashContent@secure': {
-                    templateUrl: '/templates/secure/equipments.html',
-                    controller : 'equipmentCtrl'
-                }
-            }
-        })
-
         .state('secure.store', {
             url : '/live-store',
             cache:true,
@@ -276,7 +265,7 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
             },
             resolve: {
                 id: ["$stateParams", function($stateParams) {
-                return $stateParams.id
+                    return $stateParams.id
                 }]
             }
         })

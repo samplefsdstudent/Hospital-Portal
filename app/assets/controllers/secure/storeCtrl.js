@@ -7,26 +7,34 @@ angular.module('myApp').controller('storeCtrl',[
 	$anchorScroll();
 	$scope.equipments = [];
 	$scope.filter = 'diagnostic';
-	$http.get(prefix_url + 'equipments').then(function(data){
-		$scope.equipments = data.data;
-		HospitalService.equipments = $scope.equipments;
-	}, function(err){
-		console.log(err);
-	})
+	if(!HospitalService.equipments.length){
+		$http.get(prefix_url + 'equipments').then(function(data){
+			$scope.equipments = data.data;
+			HospitalService.equipments = $scope.equipments;
+			console.log($scope.equipments);
+		}, function(err){
+			console.log(err);
+		})
+	}else{
+		$scope.equipments = HospitalService.equipments;
+	}
 
 	$scope.addToCart = function(data, index){
-		if(!data.checked){
+		console.log(data);
+		if(!data.status){
 			HospitalService.cart.push({
 			name : data.name,
 			image : data.image,
-			rating : data.rating,
-			number : data.number,
+			quantity : data.quantity,
 			price : data.price,
 			description : data.description,
-			type : data.type
+			type : data.type,
+			donated_by : data.donated_by.id
 			})
 			alert(`"${data.name}" is added to your Cart!`);
-			$scope.equipments[index].checked = true;
+			$scope.equipments[index].status = true;
+			HospitalService.equipments[index].status = true;
+			console.log($scope.equipments[index]);
 			return true;
 		}else{
 			for(var i=0;i < HospitalService.cart.length;i++){
@@ -45,7 +53,7 @@ angular.module('myApp').controller('storeCtrl',[
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
 		if(bool){
-			return (value) ? $scope.equipments[index].checked = false : $scope.equipments[index].checked = true
+			return (value) ? $scope.equipments[index].status = false : $scope.equipments[index].status = true
 		}
 	}
 }])

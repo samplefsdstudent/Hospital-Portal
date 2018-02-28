@@ -30,7 +30,7 @@ var mongoose = require('mongoose'),
             required : true
         },
         mobile_no : {
-            type : String,
+            type : Number,
             required : true
         },
         pin_code : {

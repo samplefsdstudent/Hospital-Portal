@@ -1,5 +1,6 @@
 'use strict';
 var nodemailer = require('nodemailer');
+var ObjectId = require('mongodb').ObjectId; 
 var Order = require('../models/Order');
 function postOrder (req, res){
 	let transporter = nodemailer.createTransport({
@@ -27,9 +28,12 @@ function postOrder (req, res){
         date : req.body.date,
         total_amount : req.body.total_amount,
         products : req.body.products,
+        donated_by: req.body.donated_by,
+        deal_with :  req.body.deal_with,
+        sold_to : req.body.sold_to,
         address_details : req.body.address_details,
         contact_details : req.body.contact_details,
-        card_details : req.body.card_details
+        receipt_details : req.body.card_details
     })
 
     console.log(newOrder);
@@ -42,10 +46,10 @@ function postOrder (req, res){
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
             var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';
             var mailOptions = {
-                from: '"Restaurant Mail" <samplefsdstudent@gmail.com>',
-                to: req.body.contact_details.email,
-                subject: 'Confirmed! Your request for online order at Restaurant is successful.',
-                text: 'The Reference ID of your order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Products- ' + orderList + '\n The total amount including all taxes is - $' + newOrder.total_amount + '. The order will be delivered in next 30 minutes.\n We are available to assist you for any queries.' 
+                from: '"Hospital Portal Mail" <samplefsdstudent@gmail.com>',
+                to: [req.body.contact_details.email,req.body.deal_with],
+                subject: 'Confirmed! The request for online medical order at Hospital Portal is successful.',
+                text: 'The Reference ID of the order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Equipments- ' + orderList + '\n The total amount including all shipping cost is - $' + newOrder.total_amount + '. The Donor Hospital will further contact you regarding the finalized deal of Medical Equipments.\n We are available to assist you for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
@@ -62,7 +66,18 @@ function getOrder(req, res){
     })
 }
 
+function getAllOrders(req, res){
+    let key;
+    if(req.params.type == 'donor') key = "donated_by";
+    if(req.params.type == 'requester') key = "deal_with";
+    Order.find({key : ObjectId(req.params.id)}, function (err, order) {
+        if (err) return err;
+        res.json(order);
+    })
+}
+
 module.exports = {
     get : getOrder,
+    getAll : getAllOrders,
     post : postOrder
 };
