@@ -5,4 +5,9 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
-module.exports = allowCrossDomain;
+var secret = "ankit939"
+
+module.exports = {
+	allowCrossDomain : allowCrossDomain,
+	secret : secret
+}

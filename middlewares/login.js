@@ -1,7 +1,8 @@
 'use strict';
 var Hospital = require('../models/Hospital'),
     User = require('../models/User'),
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    jwt = require('jsonwebtoken');
 
 function login(req, res){
       var loginData = {
@@ -15,13 +16,18 @@ function login(req, res){
             if(err){
               res.status(400).send({message : err})
             }else if(response){
-              let hospital = new Object(data[0]);
+              let hospital = data[0];
               delete hospital.password;
-              console.log(hospital);
               delete hospital.__v;
-              console.log(hospital);
               hospital.id = hospital._id;
               delete hospital._id;
+              const payload = {
+                name : hospital.name
+              };
+              var access_token = jwt.sign(payload, req.app.get('superSecret'), {
+                expiresIn: 1440 // expires in 24 hours
+              });
+              hospital.access_token = access_token;
               console.log(hospital);
               res.json(hospital);
             }else{
@@ -31,7 +37,7 @@ function login(req, res){
           }else{
             res.status(400).send({message : 'Either Email or Password is wrong.'});
           }  
-        });
+        }).lean();
       }else{
         User.find(loginData, function (err, data) {
           if (err) res.status(500).send(err)
@@ -45,6 +51,14 @@ function login(req, res){
               delete user.__v;
               user.id = user._id;
               delete user._id;
+              const payload = {
+                name : user.name
+              };
+              var access_token = jwt.sign(payload, req.app.get('superSecret'), {
+                expiresIn: 1440 // expires in 24 hours
+              });
+              user.access_token = access_token
+              console.log(user);
               res.json(user);
             }else{
               res.status(400).send({message : 'Either Email or Password is wrong.'})
@@ -53,7 +67,7 @@ function login(req, res){
           }else{
             res.status(400).send({message : 'Either Email or Password is wrong.'});
           }  
-        });
+        }).lean();
       }
 }
 

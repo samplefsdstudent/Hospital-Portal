@@ -5,19 +5,19 @@
 }
 </style>
 <!-- Website header start here-->
-<header style="box-shadow: 0px 0px 20px -4px rgba(163,163,163,1);background:white;position: fixed;z-index: 20;">
+<header style="box-shadow: 0px 0px 20px -4px rgba(163,163,163,1);background:white;position: fixed;z-index: 20;height: 70px;">
 	<div class="container" style="margin-left: 25px;padding:0;">
 		<div class="row" >
 			<div class="col-md-3 col-sm-3 col-xs-12">
-				<div id="logo">
-					<a href="/"><img class="img-responsive" src="assets/images/logo.png" alt="logo" title="logo" style="width: 160px;margin-top: 10px;" /></a>
+				<div id="logo" style="margin: 17px 0;">
+					<a href="/"><img class="img-responsive" src="assets/images/logo.png" alt="logo" title="logo" style="width: 130px;margin-top: -10px;" /></a>
 				</div>
 			</div>
 				
 			<div class="col-md-9 col-sm-9 col-xs-12">
 				<!-- menu start here -->
 				<div id="menu">	
-					<nav class="navbar">
+					<nav class="navbar" style="margin: 23px 0;margin-right: -80px;">
 						<div class="navbar-header">
 							<span class="menutext visible-xs">Menu</span>
 							<button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="btn btn-navbar navbar-toggle" type="button"><i class="icofont icofont-navigation-menu"></i></button>
@@ -51,11 +51,11 @@
 	</div>
 </header>
 <!-- header end here -->
-<div class="row" style="margin-top: 85px;">
-	<div class="col-md-3">
+<div class="row" style="margin-top: 70px;">
+	<div class="col-md-2" style="width: 17.666667%;">
 		<div ui-view="sidebar"></div>
 	</div>
-	<div class="col-md-9" style="margin-left: -30px;">
+	<div class="col-md-10" style="width: 80.333333%;">
 		<div ui-view="dashContent" style="min-height: 576px;">
 	</div>
 </div>

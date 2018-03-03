@@ -17,10 +17,32 @@ var mongoose = require('mongoose'),
             type : Number,
             required : true
         },
-    	products : {
-            type : String,
+    	products : [{
+	    id : {
+			type : String,
             required : true
         },
+        image : {
+			type : String,
+            required : true
+		},
+	    name : {
+			type : String,
+            required : true
+		},
+        price : {
+			type : Number,
+            required : true
+		},
+        quantity : {
+			type : Number,
+            required : true
+		},
+        description : {
+            type : String,
+            required : true
+        }
+        }],
         donated_by : {
             type : String,
             required : true
@@ -30,6 +52,10 @@ var mongoose = require('mongoose'),
             required : true
         },
         sold_to : {
+            type : String,
+            required : false
+        },
+        status : {
             type : String,
             required : false
         },

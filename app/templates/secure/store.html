@@ -1,6 +1,14 @@
+<style>
+	.menu .nav-tabs {
+    		border: 1px solid #E5E5E5;
+    		margin: 0px 0% 35px;
+    		padding: 20px 0;
+    		text-align: center;
+	}
+</style>
 <section class="content-header">
       <h1>
-        <i class="icofont icofont-hospital"></i> Live Store
+        <i class="icofont icofont-fork-lift"></i> Live Store
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -8,10 +16,52 @@
       </ol>
 </section>
 <!-- menu start here -->
-<div class="menu">
-	<div class="container">
+<div class="menu shop">
 		<div class="row ">
-			<div class="col-sm-10 col-xs-10">
+			<div class="col-sm-3 col-xs-3" style="width:30%;">
+				<div class="col-sm-12">
+				<div class="left">
+					<h4>SEARCH FILTERS</h4>
+					<div class="search">
+						<form class="form-horizontal" method="post">
+							<fieldset>
+								<div class="form-group">
+									<input name="s" value="" class="form-control" placeholder="Search" type="text">
+									<button type="submit" value="submit" class="btn"><i class="icofont icofont-search"></i></button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="price">
+						<h3>price range</h3>
+						<div class="price-filter">
+							<span class="min">$35</span>
+							<a href="#" class="one slider-handle"></a>
+							<div class="price-range"><div class="bg"></div></div>
+							<p>$5 <span class="pull-right">$100</span></p>
+						</div>
+					</div>
+					<div class="price">
+						<h3>Quantity range</h3>
+						<div class="price-filter">
+							<span class="min">20</span>
+							<a href="#" class="one slider-handle"></a>
+							<div class="price-range"><div class="bg"></div></div>
+							<p>$5 <span class="pull-right">100</span></p>
+						</div>
+					</div>
+					<div class="popular">
+						<h3>popular tags <a href="#" class="pull-right"><i class="icofont icofont-plus"></i></a></h3>
+						<ul class="list-inline">
+							<li><a href="#">Medical Equipment <i class="icofont icofont-close"></i></a></li>
+							<li><a href="#">Therapeutic <i class="icofont icofont-close"></i></a></li>
+							<li><a href="#">Surgery <i class="icofont icofont-close"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="col-sm-9 col-xs-9" style="width: 65%;">
 				<!-- ng-class using filter gives active class on click on anchor in the li element -->
 				<ul class="nav nav-tabs list-inline">
 					<li ng-class="(filter == 'diagnostic') ? 'active' : ''">
@@ -53,6 +103,5 @@
 				<!-- ng-repeat on items end here -->	
 			</div>
 		</div>
-	</div>
 </div>
 <!-- menu end here -->

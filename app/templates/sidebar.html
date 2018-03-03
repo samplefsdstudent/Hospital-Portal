@@ -3,10 +3,10 @@
     <section class="sidebar" style="height: auto;">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image">
+        <div class="image col-md-12">
           <img ng-src="{{userData.image}}" class="img-circle" alt="User Image">
         </div>
-        <div class="pull-left info">
+        <div class="info col-md-12">
           <p>{{userData.name}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i>{{userData.type}} Hospital</a>
         </div>
@@ -25,7 +25,7 @@
         </li>
         <li class="active" ng-if="access[1]">
           <a ui-sref="secure.profile">
-            <i class="icofont icofont-ui-user"></i> 
+            <i class="icofont icofont-id-card"></i> 
             <span>Profile</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -43,7 +43,7 @@
         </li>
         <li ng-if="access[3]">
           <a ui-sref="secure.store">
-            <i class="icofont icofont-hospital"></i> 
+            <i class="icofont icofont-search-alt-1"></i> 
             <span>Live Store</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-blue">17</small>
@@ -61,7 +61,7 @@
         </li>
         <li class="treeview" ng-if="access[5]">
           <a ui-sref="secure.orders">
-            <i class="icofont icofont-cart-alt"></i>
+            <i class="icofont icofont-fork-lift"></i>
             <span>Track Orders</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-blue">17</small>
@@ -105,15 +105,6 @@
           </a>
         </li>
         <li class="treeview" ng-if="access[10]">
-          <a ui-sref="secure.settings">
-            <i class="icofont icofont-wheel"></i> 
-            <span>Settings</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">12</small>
-            </span>
-          </a>
-        </li>
-        <li class="treeview" ng-if="access[11]">
           <a ng-click="logout()">
             <i class="icofont icofont-logout"></i> 
             <span>Logout</span>

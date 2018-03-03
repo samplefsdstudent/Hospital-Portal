@@ -64,7 +64,7 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 		$http.post(prefix_url + 'order', data).then(function(data){
 			HospitalService.cart = [];
 			HospitalService.equipments = [];
-			$state.go('secure.confirmation', {id : data.data.ref_id}); 
+			$state.go('secure.confirmation', {id : data.data.ref_id.toLowerCase()}); 
 		}, function(err){
 			alert('Error! Try after some time.')
 		})

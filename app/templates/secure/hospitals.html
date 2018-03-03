@@ -13,43 +13,36 @@
 		<div class="row ">
 			<div class="col-sm-10 col-xs-10">
 				<!-- ng-class using filter gives active class on click on anchor in the li element -->
-				<ul class="nav nav-tabs list-inline">
-					<li ng-class="(filter == 'breakfast') ? 'active' : ''">
-						<a ng-click="filter = 'breakfast'" aria-expanded="false">Signup Requests</a>
+				<ul class="nav nav-tabs list-inline" style="margin: 10px 14% 20px;">
+					<li ng-class="(filter == 'donor') ? 'active' : ''">
+						<a ng-click="filter = 'donor'" aria-expanded="false">Donor Hospitals</a>
 					</li>
-					<li ng-class="(filter == 'breakfast') ? 'active' : ''">
-						<a ng-click="filter = 'breakfast'" aria-expanded="false">Donor Hospitals</a>
+					<li ng-class="(filter == 'requester') ? 'active' : ''">
+						<a ng-click="filter = 'requester'" aria-expanded="false">Requester Hospitals</a>
 					</li>
-					<li ng-class="(filter == 'lunch') ? 'active' : ''">
-						<a ng-click="filter = 'lunch'" aria-expanded="false">Requester Hospitals</a>
-					</li>
-					<li ng-class="(filter == 'lunch') ? 'active' : ''">
-						<a ng-click="filter = 'lunch'" aria-expanded="false">Edit Hospitals</a>
+					<li ng-class="(filter == 'signup') ? 'active' : ''">
+						<a ng-click="filter = 'signup'" aria-expanded="false">Signup Requests</a>
 					</li>
 				</ul>
 				<!-- unordered list end here -->
-				<!-- ng-repeat on recipes using filter start here -->
+				<!-- ng-repeat on hospitals using filter start here -->
 				<div  class="tab-content">
 					<div class="tab-pane active">
 						<div class="row">
-							<div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="recipe in recipes | filter: {type : filter} track by $index">
+							<div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="hospital in hospitals | filter: {type : filter} track by $index">
 								<div class="box">
 									<div class="image">
-										<img ng-src="{{recipe.image}}" alt="image" title="image" class="img-responsive" />
+										<img ng-src="{{hospital.image}}" alt="image" title="image" class="img-responsive" />
 									</div>
 									<div class="caption">
-										<h4>{{recipe.name}}</h4>
-										<p class="des">{{recipe.description | limitTo:50}}...</p>
-										<div class="rating col-md-12 col-sm-12 col-xs-12 text-left" style="    padding: 0;">
-											<i class="icofont icofont-star" ng-style="(recipe.rating > 0) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-											<i class="icofont icofont-star" ng-style="(recipe.rating > 1) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-											<i class="icofont icofont-star" ng-style="(recipe.rating > 2) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-											<i class="icofont icofont-star" ng-style="(recipe.rating > 3) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
-											<i class="icofont icofont-star" ng-style="(recipe.rating > 4) ? {'color' : '#FFA41F'} : {'color' : '#b2b2b2'}"></i>
+										<h4>{{hospital.name}}</h4>
+										<p class="des">{{hospital.description | limitTo:50}}...</p>
+										<div class="col-md-12 col-sm-12 col-xs-12 text-left" style="padding: 0;">
+											{{hospital.address}},
 										</div>
-										<div class="price col-md-6 col-sm-6 col-xs-6 text-left" style="    padding: 0;">${{recipe.price}}</div>
-										<div class="icon text-right  col-md-6 col-sm-6 col-xs-6" style="    padding: 0;">
-											<a class="cart" ng-click="switch(recipe.checked,recipe, $index);"><i ng-style="(recipe.checked) ? {color : '#8BC34A'} : {color : '#FFA41F'}" class="icofont icofont-cart-alt"></i></a>
+										<div class="col-md-6 col-sm-6 col-xs-6 text-left" style="padding: 0;">{{hospital.city}}, {{hospital.state}}</div>
+										<div class="icon text-right  col-md-6 col-sm-6 col-xs-6" style="padding: 0;">
+											<a class="cart" ng-click="viewHospital(hospital);"><i class="icofont icofont-eye-alt"></i></a>
 										</div>
 									</div>
 								</div>
@@ -57,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- ng-repeat on recipes end here -->	
+				<!-- ng-repeat on hospitals end here -->	
 			</div>
 		</div>
 	</div>

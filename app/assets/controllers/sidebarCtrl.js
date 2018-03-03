@@ -5,18 +5,20 @@ angular.module('myApp').controller('sidebarCtrl',[
   'prefix_url',
   'user',
   'HospitalService',
-  '$state', function($anchorScroll,$scope,$http,prefix_url,user,HospitalService,$state){
+  '$window',
+  '$state', function($anchorScroll,$scope,$http,prefix_url,user,HospitalService,$window,$state){
 	$anchorScroll();
 	if(angular.equals(user, 'requester')){
-		$scope.access = [true,true,false,true,false,true,true,false,true,true,true,true];
+		$scope.access = [true,true,false,true,false,true,true,false,true,true,true];
 	}else if(angular.equals(user, 'donor')){
-		$scope.access = [true,true,false,false,true,true,false,false,true,true,true,true];
+		$scope.access = [true,true,false,false,true,true,false,false,true,true,true];
 	}else if(angular.equals(user, 'admin')){
-		$scope.access = [true,false,true,true,true,false,true,true,true,true,true,true];
+		$scope.access = [true,false,true,true,false,true,false,false,true,true,true];
 	}
 	$scope.userData  = HospitalService.user;
-	$scope.userData.image = $scope.userData.image || '../assets/images/user.png';
+	$scope.userData.image = $scope.userData.image || '../images/user.png';
 	$scope.logout = function(){
-		
+		$window.localStorage.clear();
+		$state.go('app.home');
 	}  
 }])

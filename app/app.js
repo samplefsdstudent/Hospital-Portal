@@ -2,11 +2,13 @@
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
   .value('prefix_url','http://localhost:5000/api/')
 
-  .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider,$urlRouterProvider) {
+  .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $locationProvider,$urlRouterProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
+
+    $httpProvider.interceptors.push('AuthInterceptor');
 
     $stateProvider
         .state('app', {
@@ -166,6 +168,22 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
             }
         })
 
+        .state('secure.order_details', {
+            url : '/order-details/:id',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/order_details.html',
+                    controller : 'order_detailsCtrl'
+                }
+            },
+            resolve: {
+                id: ["$stateParams", function($stateParams) {
+                    return $stateParams.id
+                }]
+            }
+        })
+
         .state('secure.hospitals', {
             url : '/hospitals',
             cache:true,
@@ -189,7 +207,7 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
         })
 
         .state('secure.profile', {
-            url : '/user-profile',
+            url : '/hospital-profile',
             cache:true,
             views: {
                 'dashContent@secure': {
@@ -304,13 +322,34 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
     return {
         cart : [],
         equipments : [],
-        user : {}
+        user : {},
+        hospital : undefined
     }
 })
 
+.factory('AuthInterceptor', ['$q', '$location', '$window', function ($q, $location, $window) {
+    return {
+        'request': function (config) {
+            config.headers = config.headers || {};
+            if ($window.localStorage.getItem('access_token')) {
+                config.headers["x-access-token"] = $window.localStorage.getItem('access_token');
+            }
+            return config;
+        },
+        'responseError': function (response) {
+            if (response.status === 401 || response.status === 403) {
+                $location.path('/login');
+            }
+            return $q.reject(response);
+        }
+    };
+}])
+
 .filter('capitalize', function() {
   return function(input) {
-   return (typeof input === 'number') ? input : input.split('_').join(' ').toUpperCase();
+   if(input){
+        return (typeof input === 'number') ? input : (input.toString().match(/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/)) ? input = input.getDate() + '-' + (input.getMonth() + 1) + '-' + input.getFullYear() :  input.split('_').join(' ').toUpperCase();
+   }
   }
 })
 

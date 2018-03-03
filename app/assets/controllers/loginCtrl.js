@@ -5,7 +5,8 @@ angular.module('myApp').controller('loginCtrl',[
   'toastr',
   'HospitalService',
   '$state',
-  'prefix_url', function($anchorScroll,$scope,$http,toastr,HospitalService, $state,prefix_url){
+  '$window',
+  'prefix_url', function($anchorScroll,$scope,$http,toastr,HospitalService, $state, $window, prefix_url){
 	$anchorScroll();
 	$scope.doLogin = function(data){
 		var params = {
@@ -16,11 +17,9 @@ angular.module('myApp').controller('loginCtrl',[
 			toastr.success('Logged In.', 'Success');
 			console.log(data);
 			HospitalService.user = data.data;
-			HospitalService.user.id = HospitalService.user._id;
-			delete HospitalService.user.password;
-			delete HospitalService.user._id;
-			delete HospitalService.user.__v;
 			console.log('USER', HospitalService.user);
+			$window.localStorage.setItem('access_token', HospitalService.user.access_token);
+			delete HospitalService.user.access_token;
 			$state.go('secure.dashboard',{user : data.data.type});
 		},function(err){
 			console.log(err);

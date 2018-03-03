@@ -23,6 +23,7 @@ angular.module('myApp').controller('storeCtrl',[
 		console.log(data);
 		if(!data.status){
 			HospitalService.cart.push({
+			id : data._id,
 			name : data.name,
 			image : data.image,
 			quantity : data.quantity,

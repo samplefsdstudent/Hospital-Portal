@@ -1,0 +1,29 @@
+'use strict';
+var Hospital = require('../models/Hospital');
+
+function getAllHospitals(req, res){
+    Hospital.find({}, function (err, hospitals) {
+        if (err) return err;
+        res.json(hospitals);
+    })
+}
+
+function getHospital(req, res){
+    Hospital.find({_id : req.params.id}, function (err, hospital) {
+        if (err) return err;
+        res.json(hospital);
+    })
+}
+
+function updateHospital(req, res){
+    Hospital.update({_id : req.body.id}, req.body, function (err, hospital) {
+        if (err) return err;
+        res.json(hospital);
+    })
+}
+
+module.exports = {
+	getAll : getAllHospitals,
+	get : getHospital,
+	update : updatHospital
+};

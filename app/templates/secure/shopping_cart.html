@@ -11,7 +11,7 @@
 <div class="mycart" style="margin: 30px 0;">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-10">
+			<div class="col-sm-11">
 				<ul class="nav nav-tabs" ng-if="order.products.length">
 					<li ng-class="(filter == '1') ? 'active' : ''"><span>1</span>Shopping Cart</li>
 					<li ng-class="(filter == '2') ? 'active' : ''"><span>2</span>Shopping Info</li>
@@ -68,7 +68,7 @@
 										<tr ng-if="!order.products.length">
 											<td colspan="5">
 												<div class="buttons text-center">
-													<a ui-sref="secure.equipments" class="btn btn-primary">Go To Menu Page</a>
+													<a ui-sref="secure.donate_form" class="btn btn-primary">Go To Menu Page</a>
 												</div>
 											</td>
 										</tr>
