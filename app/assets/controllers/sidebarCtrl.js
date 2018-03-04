@@ -16,7 +16,7 @@ angular.module('myApp').controller('sidebarCtrl',[
 		$scope.access = [true,false,true,true,false,true,false,false,true,true,true];
 	}
 	$scope.userData  = HospitalService.user;
-	$scope.userData.image = $scope.userData.image || '../images/user.png';
+	$scope.userData.image = $scope.userData.image || '../../assets/images/user.png';
 	$scope.logout = function(){
 		$window.localStorage.clear();
 		$state.go('app.home');

@@ -107,13 +107,16 @@ function statusUpdate (req, res){
 }
 
 function getOrder(req, res){
-    Order.findById(req.params.ref_id, function (err, order) {
+    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<req.params.id', req.params.id);
+    Order.findById(req.params.id, function (err, order) {
         if (err) res.status(400).send(err);
-        else{
-            order.id = order._id;
+        else if(order){
+            console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< order', order);
             delete order._id;
             delete order.__v
             res.json(order);
+        }else{
+            res.status(400).send('Not Found');
         }
     }).lean();
 }

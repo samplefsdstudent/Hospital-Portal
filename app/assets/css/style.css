@@ -2231,6 +2231,11 @@ footer .footer_container{
     border:none ;
     padding:20px 17px;
 }
+
+.edit-form {
+    padding: 0 20px!important;
+} 
+
 .shopdetail .tab-content p{
 	margin:0;
 	color:#686868;
@@ -2937,8 +2942,9 @@ a:hover,a:active,a:focus{
     clear:both
 }
 .user-panel>.image>img{
+	box-shadow: 0 2px 7px rgba(0,0,0,0.1);
     width:100%;
-    max-width:45px;
+    max-width: 90px;
     height:auto
 }
 .user-panel>.info{
@@ -2947,7 +2953,8 @@ a:hover,a:active,a:focus{
 }
 .user-panel>.info>p{
     font-weight:600;
-    margin-bottom:9px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     color: white;
 }
 .user-panel>.info>a{
@@ -4770,6 +4777,7 @@ a:hover,a:active,a:focus{
 .nav-tabs-custom>.tab-content{
     background:#fff;
     padding:10px;
+    min-height: 300px;
     box-shadow: 0px 0px 3px rgba(0,0,0,0.1);
     padding-top: 30px;
     border-bottom-right-radius:3px;

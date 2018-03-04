@@ -17,8 +17,10 @@ angular.module('myApp').controller('order_detailsCtrl',[
 		var id;
 		if(status){
 			id = $scope.orderData.deal_with;
+      $scope.show = "REQUESTER";
 		}else{
 			id = $scope.orderData.donated_by;
+      $scope.show = "DONOR"
 		}
 		console.log('<<<<<<<<<<<<<<<<<<<<<<<<<< statusm, id', status, id);
 		$http.get(prefix_url + 'hospital/' + id).then(function(data){

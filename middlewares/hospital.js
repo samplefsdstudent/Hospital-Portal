@@ -13,21 +13,24 @@ function getHospital(req, res){
     console.log(req.params.id);
     Hospital.findById(req.params.id, function (err, hospital) {
         if (err) res.status(400).send({message : err});
-        else{
+        else if(hospital){
             console.log('err', err, 'hospital', hospital);
             hospital.id = hospital._id;
             delete hospital._id;
             delete hospital.__v;
             delete hospital.password;
             res.json(hospital);
+        }else{
+            res.status(400).send({message : 'Not Found'});
         }
     }).lean()
 }
 
 function updateHospital(req, res){
-    Hospital.where({_id : mongoose.Types.ObjectId(req.body.id)}).update( req.body, function (err, hospital) {
-        if (err) return err;
-        res.json(hospital);
+    Hospital.where({_id : mongoose.Types.ObjectId(req.body.id)}).update(req.body, function (err, hospital) {
+        if (err) res.status(400).send({message : err});
+        else
+            res.json({message : "Updated Successfully."});
     })
 }
 
