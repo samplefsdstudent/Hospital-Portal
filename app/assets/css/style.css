@@ -42,6 +42,10 @@
 /*----------
 [ Body ]
 -------------*/
+#hospitalimg{
+	width: 100px!important;
+    margin: 15px!important;
+}
 select.bs-select-hidden, select.selectpicker {
     display: block!important;
 }
@@ -1438,7 +1442,7 @@ footer .footer_container{
 	font-size:18px;
 	font-weight:600;
 	color:#000;
-	margin: 35px -40px 20px;
+	margin: -22px -40px 10px;
 }
 .address .box p{
 	font-size:14px;
