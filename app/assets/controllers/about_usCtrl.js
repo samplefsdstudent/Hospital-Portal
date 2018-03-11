@@ -4,12 +4,11 @@ angular.module('myApp').controller('about_usCtrl',[
   '$http',
   'prefix_url', function($anchorScroll,$scope,$http,prefix_url){
 	$anchorScroll();
-	$http.get(prefix_url + 'members').then(function(data){
-		$scope.members = data.data;
-	}, function(err){
-		console.log(err);
-	})
-
+	// $http.get(prefix_url + 'members').then(function(data){
+	// 	$scope.members = data.data;
+	// }, function(err){
+	// 	console.log(err);
+	// })
 	$scope.services = [{
 		name : "Items Availability",
 		image : "../assets/images/about/icon1.png",

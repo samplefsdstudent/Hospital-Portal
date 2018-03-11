@@ -74,8 +74,8 @@ function statusUpdate (req, res){
         }
     });
    
-    var query = Model.where({ _id: req.body.id }).setOptions({ overwrite: true })
-    q.update({ $set: { status: req.body.status } }, function(err, newOrder){
+    var query = Order.where({ _id: req.body.id }).setOptions({ overwrite: true })
+    query.update({ $set: { status: req.body.status } }, function(err, newOrder){
         if (err) {
             res.status(400).send(err)
         }else{

@@ -16,6 +16,13 @@ var orderMiddleware = require('../middlewares/order'),
 
 	apiRouter.post('/api/login', loginMiddleware);
   	apiRouter.post('/api/signup', signupMiddleware);
+    apiRouter.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
+    apiRouter.post('/api/feedback', feedbackMiddleware);
+    apiRouter.post('/api/newsletter', newsletterMiddleware);
+    apiRouter.get('/api/blogs', blogMiddleware);
+    apiRouter.get('/api/gallery', galleryMiddleware);
+    apiRouter.get('/api/testimonials', testimonialMiddleware);
+    apiRouter.get('/api/services', serviceMiddleware);
 
 	apiRouter.use('/api', function(req, res, next) {
   		var access_token = req.body.access_token || req.query.access_token || req.headers['x-access-token'];
@@ -37,19 +44,12 @@ var orderMiddleware = require('../middlewares/order'),
 	});
 
   apiRouter.post('/api/order', orderMiddleware.post);
-  apiRouter.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
-  apiRouter.post('/api/feedback', feedbackMiddleware);
-  apiRouter.post('/api/newsletter', newsletterMiddleware);
   apiRouter.post('/api/equipment', equipmentMiddleware.post);
   apiRouter.post('/api/order/status', orderMiddleware.update);
   apiRouter.get('/api/equipments', equipmentMiddleware.get);
-  apiRouter.get('/api/blogs', blogMiddleware);
   apiRouter.get('/api/order/:id', orderMiddleware.get);
   apiRouter.get('/api/order/:type/:id', orderMiddleware.getAll);
-  apiRouter.get('/api/gallery', galleryMiddleware);
-  apiRouter.get('/api/testimonials', testimonialMiddleware);
   apiRouter.get('/api/comments/:blog_id', commentMiddleware.get);
-  apiRouter.get('/api/services', serviceMiddleware);
   apiRouter.get('/api/hospitals', hospitalMiddleware.getAll);
   apiRouter.get('/api/hospital/:id', hospitalMiddleware.get);
   apiRouter.get('/api/profile/:email', userMiddleware.get);

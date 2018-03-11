@@ -2315,37 +2315,50 @@ footer .footer_container{
 .mycart{
 	margin:80px 0;
 }
-.mycart .nav-tabs {
-	border:1px solid #E5E5E5;
-	margin:50px 7% 47px;
-	padding:20px 0;
+.mycart .nav-tabs{
+	border:0;
+	margin:0 0 50px;
+}
+.mycart .nav-tabs li{
+	width:33%;
 	text-align:center;
 }
-.mycart .nav-tabs > li {
-	float:none;
-	display:inline-block;
-	padding:0 25px 0 0;
+.mycart .nav-tabs  li.active  span{
+	background:#FFA41F;
+	border:1px solid #FFA41F;
+	color:#fff;
 }
-.mycart .nav-tabs > li:last-child {
-	padding:0 0 0 0;
+.mycart .nav-tabs li span{
+	display:block;
+	font-size:22px;
+	font-weight:700;
+	color:#000;
+	border:1px solid #e5e5e5;
+	background:transparent;
+	border-radius:50%;
+	margin:0 auto 20px;
+	width:50px;
+	height:50px;
+	padding:8px;
+	background:#fff;
 }
 .mycart .nav-tabs > li > a{
-	border:none;
-	font-weight:600;
+	padding:0;
 	font-size:14px;
-	cursor: pointer;
+	font-weight:600;
 	color:#000;
-	line-height: 14px;
-	margin:0 ;
 	text-transform:uppercase;
-	padding: 14px 25px;
-	border-radius:4px;
+	border:0;
 }
-.mycart .nav-tabs > li.active > a, .mycart .nav-tabs > li.active > a:hover, .mycart .nav-tabs > li.active > a:focus, .mycart .nav-tabs > li > a:hover{
-	color:#fff;
-	background:#2196F3;	
-	border:none;
-} 
+.mycart .nav-tabs > li.active > a{
+	border:0;
+	background:transparent;
+	color:#000;
+}
+.mycart .nav > li > a:hover, .mycart .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+}
 .mycart .bor{
 	border-top: 2px solid #e5e5e5;
 	position: absolute;
@@ -2401,7 +2414,7 @@ footer .footer_container{
 }
 .mycart #tab-cart td .rating i{
 	font-size:14px;
-	color:#2196F3;
+	color:#FFA41F;
 }
 .mycart #tab-cart td .rating i:last-child{
 	color:#b2b2b2;
@@ -2440,7 +2453,7 @@ footer .footer_container{
     padding: 9px 17px;
 }
 .mycart #tab-cart .qtypara .icofont:hover{
-	background-color:#2196F3;
+	background-color:#FFA41F;
 	color:#fff;
 }
 .mycart #tab-cart .qtypara .form-control{
@@ -2462,10 +2475,11 @@ footer .footer_container{
 }
 .mycart .buttons .btn-primary{
 	border:1px solid #E5E5E5;
+	color: #fff;
 	padding:12px 25px;
 }
 .mycart .btn-primary:hover{
-	border:1px solid #2196F3;
+	border:1px solid #FFA41F;
 	color:#fff;
 }
 .mycart #tab-info, .mycart #tab-payment {
@@ -2504,11 +2518,11 @@ footer .footer_container{
 	position:relative;
 }
 .mycart #tab-payment form .link li:hover, .mycart #tab-payment form .link li.active{
-	border:3px solid #2196F3;
+	border:3px solid #FFA41F;
 }
 .mycart #tab-payment form .link li:hover::after, .mycart #tab-payment form .link li.active::after  {
     border-bottom: 7px transparent dashed;
-    border-top: 10px solid #2196F3;
+    border-top: 10px solid #FFA41F;
     border-right: 7px solid transparent;
     border-left: 7px solid transparent;
     position: absolute;
@@ -2532,6 +2546,242 @@ footer .footer_container{
 	color:#b3b3b3;
 }
 .mycart #tab-payment label{
+	font-size:14px;
+	font-weight:600;
+	margin:0 0 15px;
+	text-transform:uppercase;
+	color:#000;
+	width:100%;
+	padding:0 15px;
+}
+
+.myswitch{
+	margin:80px 0;
+}
+.myswitch .nav-tabs {
+	border:1px solid #E5E5E5;
+	margin:50px 7% 47px;
+	padding:20px 0;
+	text-align:center;
+}
+.myswitch .nav-tabs > li {
+	float:none;
+	display:inline-block;
+	padding:0 25px 0 0;
+}
+.myswitch .nav-tabs > li:last-child {
+	padding:0 0 0 0;
+}
+.myswitch .nav-tabs > li > a{
+	border:none;
+	font-weight:600;
+	font-size:14px;
+	cursor: pointer;
+	color:#000;
+	line-height: 14px;
+	margin:0 ;
+	text-transform:uppercase;
+	padding: 14px 25px;
+	border-radius:4px;
+}
+
+.myswitch .nav-tabs li.active span {
+    background: #FFA41F;
+    border: 1px solid #FFA41F;
+    color: #fff;
+}
+
+.myswitch .nav-tabs > li.active > a, .myswitch .nav-tabs > li.active > a:hover, .myswitch .nav-tabs > li.active > a:focus, .myswitch .nav-tabs > li > a:hover{
+	color:#fff;
+	background:#2196F3;	
+	border:none;
+} 
+.myswitch .bor{
+	border-top: 2px solid #e5e5e5;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 0;
+	margin: 0 17%;
+	z-index:-1;
+}
+.myswitch #tab-switch h2{
+	font-size:14px;
+	font-weight:600;
+	color:#686868;
+	margin:0 0 15px;
+}
+.myswitch #tab-switch td{
+	padding:20px 30px;
+	border:0;
+	border-top:1px solid #e5e5e5;
+	vertical-align: middle;
+}
+.myswitch #tab-switch thead td{
+	font-size:14px;
+	font-weight:600;
+	text-transform:uppercase;
+	color:#000;
+}
+.myswitch #tab-switch tbody tr td:nth-child(1){
+	width:52%;
+}
+.myswitch #tab-switch tbody tr td:nth-child(3){
+	width:20%;
+}
+.myswitch #tab-switch tbody tr td:nth-child(2), .myswitch #tab-switch tbody tr td:nth-child(4), .myswitch #tab-switch tbody tr td:nth-child(5){
+	width:15%;
+}
+.myswitch #tab-switch td img{
+	margin:0 20px 0 0;
+	float:left;
+	border:1px solid #e5e5e5;
+}
+.myswitch #tab-switch td .name h4{
+	font-size:16px;
+	font-weight:600;
+	color:#000;
+	margin:30px 0 5px;
+}
+.myswitch #tab-switch td .name p{
+	font-size:13px;
+	font-weight:600;
+	color:#686868;
+	margin:0px 0 10px;
+}
+.myswitch #tab-switch td .rating i{
+	font-size:14px;
+	color:#2196F3;
+}
+.myswitch #tab-switch td .rating i:last-child{
+	color:#b2b2b2;
+}
+.myswitch #tab-switch tbody tr td:nth-child(2), .myswitch #tab-switch tbody tr td:nth-child(4){
+	font-size:18px;
+	font-weight:600;
+	color:#000;
+}
+.myswitch #tab-switch .qtypara{
+	margin:0;
+	position:relative;
+}
+.myswitch #tab-switch .qtypara .minus {
+    position: absolute;
+    left:0;
+    cursor: pointer;
+    top:5px;
+    bottom:auto;
+}
+.myswitch #tab-switch .qtypara .add {
+	position: absolute;
+    cursor: pointer;
+	right:0;
+	top:5px;
+    bottom:auto;
+}
+.myswitch #tab-switch .qtypara .add .icofont {
+    border-radius: 0 15px 15px 0;
+}
+.myswitch #tab-switch .qtypara .icofont{
+	background-color:#e5e5e5;
+	color:#A4A4A4;
+	font-size:14px;
+	border-radius: 15px 0 0 15px;
+    padding: 9px 17px;
+}
+.myswitch #tab-switch .qtypara .icofont:hover{
+	background-color:#2196F3;
+	color:#fff;
+}
+.myswitch #tab-switch .qtypara .form-control{
+	height:32px;
+	text-align:center;
+	border-radius:40px;
+}
+.myswitch #tab-switch td button{
+	background:none;
+	border:none;
+	box-shadow:none;
+	font-size:20px;
+}
+.myswitch #tab-switch  tbody tr td h3{
+	font-size:22px;
+	font-weight:600;
+	color:#000;
+	margin:0 0 48px;
+}
+.myswitch .buttons .btn-primary{
+	border:1px solid #E5E5E5;
+	padding:12px 25px;
+}
+.myswitch .btn-primary:hover{
+	border:1px solid #2196F3;
+	color:#fff;
+}
+.myswitch #tab-info, .myswitch #tab-payment {
+	border:1px solid #e5e5e5;
+	border-radius:4px;
+	padding:50px 30px;
+}
+.myswitch #tab-info h6{
+	font-size:18px;
+	font-weight:600;
+	color:#000;
+	margin:0 0 30px;
+	text-transform:uppercase;
+}
+.myswitch #tab-info .form-group{
+	margin:0;
+}
+.myswitch #tab-info .form-control{
+	height:45px;
+	margin:0 0 30px;
+	text-transform:uppercase;
+	border:1px solid #e5e5e5;
+	color:#6d6c6c;
+}
+.myswitch #tab-payment form{
+	margin:0 100px 120px;
+}
+.myswitch #tab-payment form .link{
+	margin:0 0 50px;
+}
+.myswitch #tab-payment form .link li{
+	border:3px solid #e5e5e5;
+	padding:23px 13px;
+	border-radius:50%;
+	margin-right:20px;
+	position:relative;
+}
+.myswitch #tab-payment form .link li:hover, .myswitch #tab-payment form .link li.active{
+	border:3px solid #2196F3;
+}
+.myswitch #tab-payment form .link li:hover::after, .myswitch #tab-payment form .link li.active::after  {
+    border-bottom: 7px transparent dashed;
+    border-top: 10px solid #2196F3;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    position: absolute;
+    bottom: -18px;
+    display: block;
+    content: "";
+    left:0;
+    right:0;
+    margin:0 auto; 
+    width:6px;
+    height:6px;
+}
+.myswitch #tab-payment .form-group{
+	margin:0;
+}
+.myswitch #tab-payment .form-control, .myswitch #tab-payment  form .bootstrap-select .btn{
+	height:45px;
+	margin:0 0 30px;
+	text-transform:uppercase;
+	border:1px solid #e5e5e5;
+	color:#b3b3b3;
+}
+.myswitch #tab-payment label{
 	font-size:14px;
 	font-weight:600;
 	margin:0 0 15px;
@@ -8537,6 +8787,9 @@ table.text-center,table.text-center td,table.text-center th{
 	.mycart #tab-cart .qtypara .icofont {
 		padding: 9px 11px;
 	}
+	.myswitch #tab-cart .qtypara .icofont {
+		padding: 9px 11px;
+	}
 	.left-box h6 {
 		font-size: 16px;
 	}
@@ -8740,6 +8993,12 @@ table.text-center,table.text-center td,table.text-center th{
 		padding: 20px 15px;
 	}
 	.mycart #tab-cart .qtypara .icofont {
+		padding: 9px 8px;
+	}
+	.myswitch #tab-cart td {
+		padding: 20px 15px;
+	}
+	.myswitch #tab-cart .qtypara .icofont {
 		padding: 9px 8px;
 	}
 	.left-box h6 {
@@ -9122,6 +9381,26 @@ table.text-center,table.text-center td,table.text-center th{
 	.mycart #tab-payment form .link li{
 		margin-bottom:10px;
 	}
+	.myswitch .nav-tabs li {
+		width: 100%;
+		margin: 0 0 20px;
+	}
+	.myswitch .bor{
+		display:none;
+	}
+	.myswitch .buttons .btn-primary{
+		margin:20px 0 0; 
+	}
+	.myswitch .pull-left, .switch .pull-right{
+		float:none;
+	}
+	.myswitch #tab-payment form {
+		margin: 0 0px 30px;
+	}
+	.myswitch #tab-payment form .link li{
+		margin-bottom:10px;
+	}
+
 	.left-box h6, .left-box .latest .caption h3{
 		font-size: 16px;
 	}
@@ -9170,6 +9449,12 @@ table.text-center,table.text-center td,table.text-center th{
 	.mycart #tab-cart .table{
 		width:100%;
 	}
+	.myswitch #tab-cart tbody tr td:nth-child(1), .myswitch #tab-cart tbody tr td:nth-child(3), .myswitch #tab-cart tbody tr td:nth-child(2), .myswitch #tab-cart tbody tr td:nth-child(4), .myswitch #tab-cart tbody tr td:nth-child(5){
+		width:auto ;
+	}
+	.myswitch #tab-cart .table{
+		width:100%;
+	}
 	.gallery #myModal .next {
 		right: 0;
     }	
@@ -9197,6 +9482,15 @@ table.text-center,table.text-center td,table.text-center th{
 		width:130px;
 	}
 	.mycart #tab-cart td .name {
+		width:292px;
+	}
+	.myswitch #tab-cart .qtypara .icofont {
+		padding: 9px 13px;
+	}
+	.myswitch #tab-cart .qtypara input {
+		width:130px;
+	}
+	.myswitch #tab-cart td .name {
 		width:292px;
 	}
 	.order .search-icon .form-group {
@@ -9256,6 +9550,9 @@ table.text-center,table.text-center td,table.text-center th{
 		width: 112px;
 	}
 	.mycart #tab-info h6 {
+		font-size: 16px;
+	}
+	.myswitch #tab-info h6 {
 		font-size: 16px;
 	}
 	.order .search-icon input {

@@ -13,7 +13,7 @@ angular.module('myApp').controller('sidebarCtrl',[
 	}else if(angular.equals(user, 'donor')){
 		$scope.access = [true,true,false,false,true,true,false,false,true,true,true];
 	}else if(angular.equals(user, 'admin')){
-		$scope.access = [true,false,true,true,false,true,false,false,true,true,true];
+		$scope.access = [true,false,true,true,false,false,false,false,true,true,true];
 	}
 	$scope.userData  = HospitalService.user;
 	$scope.userData.image = $scope.userData.image || '../../assets/images/user.png';

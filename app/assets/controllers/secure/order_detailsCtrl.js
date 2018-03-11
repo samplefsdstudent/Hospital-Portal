@@ -18,6 +18,7 @@ angular.module('myApp').controller('order_detailsCtrl',[
 		if(status){
 			id = $scope.orderData.deal_with;
       $scope.show = "REQUESTER";
+      $scope.status = true;
 		}else{
 			id = $scope.orderData.donated_by;
       $scope.show = "DONOR"
@@ -37,8 +38,9 @@ angular.module('myApp').controller('order_detailsCtrl',[
 	}
 
 	$scope.statusUpdate = function(newStatus){
+    console.log('<<<<<<<<<< statusUpdate', $scope.orderData);
    		var params = {
-   			id : $scope.orderData.id,
+   			id : id,
    			status : newStatus
    		}
 		$http.post(prefix_url + 'order/status', params).then(function(data){

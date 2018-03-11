@@ -5,7 +5,8 @@ angular.module('myApp').controller('homeCtrl', [
  'prefix_url',
  '$anchorScroll',
  '$location',
- '$rootScope', function($scope, HospitalService, $http,prefix_url,$anchorScroll,$location,$rootScope){
+ '$state',
+ '$rootScope', function($scope, HospitalService, $http,prefix_url,$anchorScroll,$location,$state,$rootScope){
    $anchorScroll();
    $scope.filter = 'all';
    $scope.reserveData = {
@@ -101,8 +102,8 @@ angular.module('myApp').controller('homeCtrl', [
 
 	$scope.navigator = function(flag){
 		if(flag == 0)
-			$location.path('/our-menu');
+			$state.go('app.login');
 		else if(flag == 1)
-			 $location.path('/reservation');
+			$state.go('app.signup');
 	}
 }])
