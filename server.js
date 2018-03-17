@@ -46,7 +46,6 @@
         console.log(info);
       }
   });
-
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
   app.engine('html', require('ejs').renderFile);

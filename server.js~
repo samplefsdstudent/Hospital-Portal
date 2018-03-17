@@ -1,31 +1,22 @@
-	  var orderMiddleware = require('./middlewares/order'),
-      blogMiddleware = require('./middlewares/blogs'),
-      galleryMiddleware = require('./middlewares/gallery'),
-      equipmentMiddleware = require('./middlewares/equipment'),
-      testimonialMiddleware = require('./middlewares/testimonials'),
-      commentMiddleware = require('./middlewares/comment'),
-      userMiddleware = require('./middlewares/user'),
-      serviceMiddleware = require('./middlewares/services'),
-      feedbackMiddleware = require('./middlewares/feedback'),
-      newsletterMiddleware = require('./middlewares/newsletter'),
-      loginMiddleware = require('./middlewares/login'),
-      signupMiddleware = require('./middlewares/signup'),
-      hospitalMiddleware = require('./middlewares/hospital'),
-
-      nodemailer = require('nodemailer'),
+	  var nodemailer = require('nodemailer'),
     	compression = require('compression'),
     	config = require('./config/config'),
     	mongoose = require('mongoose'),
     	express = require('express'),
     	bodyParser = require('body-parser'),
+      apiRouter = require('./config/routes');
+      jwt    = require('jsonwebtoken'),
     	app = express();
       const port = process.env.PORT || 5000;
 
     mongoose.connect('mongodb://samplefsd:ankit939@ds229438.mlab.com:29438/donate_hospital')
 	
 	  app.use(bodyParser.json());
+
 	  app.use(bodyParser.urlencoded({extended : false}));
-	  app.use(config);
+	  app.use(config.allowCrossDomain);
+    app.set('superSecret', config.secret);
+    app.use('/', apiRouter);
   	app.use(compression());
 
   	let transporter = nodemailer.createTransport({
@@ -55,29 +46,6 @@
         console.log(info);
       }
   });
-
-  app.post('/api/order', orderMiddleware.post);
-  app.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
-  app.post('/api/feedback', feedbackMiddleware);
-  app.post('/api/newsletter', newsletterMiddleware);
-  app.post('/api/equipment', equipmentMiddleware.post);
-  
-  app.get('/api/equipments', equipmentMiddleware.get);
-  app.get('/api/blogs', blogMiddleware);
-  app.get('/api/order/:ref_id', orderMiddleware.get);
-  app.get('/api/order/:type/:id', orderMiddleware.getAll);
-  app.get('/api/gallery', galleryMiddleware);
-  app.get('/api/testimonials', testimonialMiddleware);
-  app.get('/api/comments/:blog_id', commentMiddleware.get);
-  app.get('/api/services', serviceMiddleware);
-  app.get('/api/hospitals', hospitalMiddleware.getAll);
-  app.get('/api/hospitals/:id', hospitalMiddleware.get);
-
-  app.post('/api/login', loginMiddleware);
-  app.post('/api/signup', signupMiddleware);
-  app.get('/api/profile/:email', userMiddleware.get);
-  app.post('/api/profile/update/:email', userMiddleware.update);
-  app.post('/api/hospitals', hospitalMiddleware.update);
 
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
