@@ -46,9 +46,11 @@ var orderMiddleware = require('../middlewares/order'),
   apiRouter.post('/api/order', orderMiddleware.post);
   apiRouter.post('/api/equipment', equipmentMiddleware.post);
   apiRouter.post('/api/order/status', orderMiddleware.update);
-  apiRouter.get('/api/equipments', equipmentMiddleware.get);
+  apiRouter.get('/api/equipments', equipmentMiddleware.getAll);
+  apiRouter.get('/api/equipments/:id', equipmentMiddleware.get);
   apiRouter.get('/api/order/:id', orderMiddleware.get);
-  apiRouter.get('/api/order/:type/:id', orderMiddleware.getAll);
+  apiRouter.get('/api/order/:type/:id', orderMiddleware.getAllType);
+  apiRouter.get('/api/orders', orderMiddleware.getAll);
   apiRouter.get('/api/comments/:blog_id', commentMiddleware.get);
   apiRouter.get('/api/hospitals', hospitalMiddleware.getAll);
   apiRouter.get('/api/hospital/:id', hospitalMiddleware.get);

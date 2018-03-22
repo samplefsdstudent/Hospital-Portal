@@ -122,6 +122,20 @@ function getOrder(req, res){
 }
 
 function getAllOrders(req, res){
+    Order.find({}, function (err, order) {
+        if (err) res.status(400).send(err);
+        else if(order){
+            console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< order', order);
+            delete order._id;
+            delete order.__v
+            res.json(order);
+        }else{
+            res.status(400).send('Not Found');
+        }
+    }).lean();
+}
+
+function getAllTypeOrders(req, res){
     let key;
     if(req.params.type == 'donor') key = "donated_by";
     if(req.params.type == 'requester') key = "deal_with";
@@ -143,6 +157,7 @@ function getAllOrders(req, res){
 
 module.exports = {
     get : getOrder,
+    getAllType : getAllTypeOrders,
     getAll : getAllOrders,
     post : createOrder,
     update : statusUpdate

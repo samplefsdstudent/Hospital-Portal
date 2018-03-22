@@ -1,10 +1,21 @@
 'use strict';
 var Comment = require('../models/Equipment');
 
-function getEquipments(req, res){
+function getAllEquipments(req, res){
     Equipment.find({}, function (err, equipments) {
-        if (err) return err;
-        res.json(equipments);
+        if (err) 
+          res.status(400).send({message : err.errmsg});
+        else
+          res.json(equipments);
+    })
+}
+
+function getEquipments(req, res){
+    Equipment.find({'donated_by.id' : req.params.id}, function (err, equipments) {
+        if (err) 
+          res.status(400).send({message : err.errmsg});
+        else
+          res.json(equipments);
     })
 }
 
@@ -19,6 +30,7 @@ function postEquipment(req, res, next){
 }
 
 module.exports = {
-	get : getEquipments,
+  get : getEquipments,
+	getAll : getAllEquipments,
 	post : postEquipment
 };

@@ -6,6 +6,11 @@ angular.module('myApp').controller('storeCtrl',[
   'prefix_url', function($anchorScroll,$scope,$http,HospitalService,prefix_url){
 	$anchorScroll();
 	$scope.equipments = [];
+	$scope.dataFilter = {
+		price : 100,
+		qty : 50
+
+	}
 	$scope.filter = 'diagnostic';
 	if(!HospitalService.equipments.length){
 		$http.get(prefix_url + 'equipments').then(function(data){

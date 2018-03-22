@@ -36,81 +36,48 @@
           <a ui-sref="secure.hospitals">
             <i class="icofont icofont-hospital"></i> 
             <span>Hospitals</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-blue">17</small>
-            </span>
           </a>
         </li>
         <li ng-if="access[3]">
           <a ui-sref="secure.store">
             <i class="icofont icofont-search-alt-1"></i> 
             <span>Live Store</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-blue">17</small>
-            </span>
           </a>
         </li>
         <li class="treeview" ng-if="access[4]">
           <a ui-sref="secure.donate_form">
             <i class="icofont icofont-first-aid-alt"></i>
             <span>Donate Equipments</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
         </li>
         <li class="treeview" ng-if="access[5]">
           <a ui-sref="secure.orders">
             <i class="icofont icofont-fork-lift"></i>
             <span>Track Orders</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-blue">17</small>
-            </span>
           </a>
         </li>
         <li class="treeview" ng-if="access[6]">
           <a ui-sref="secure.shopping_cart">
             <i class="icofont icofont-cart-alt"></i>
             <span>Shopping Cart</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-blue">17</small>
-            </span>
           </a>
         </li>
         <li class="treeview" ng-if="access[7]">
           <a ui-sref="secure.history">
             <i class="icofont icofont-files"></i>
             <span>History</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
         </li>
         <li class="treeview" ng-if="access[8]">
-          <a ng-click="exportData()">
+          <a ui-sref="secure.statistics-report">
             <i class="icofont icofont-list"></i>
-            <span>Export Data</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <span>Statistics Report</span>
           </a>
         </li>
         <li class="treeview" ng-if="access[9]">
-          <a ui-sref="secure.support">
-            <i class="icofont icofont-support"></i>
-            <span>Support</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-        </li>
-        <li class="treeview" ng-if="access[10]">
           <a href="" ng-click="logout()">
             <i class="icofont icofont-logout"></i> 
             <span>Logout</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">12</small>
-            </span>
           </a>
         </li>
    	</ul>

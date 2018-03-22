@@ -2,6 +2,7 @@
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
   .value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
   //.value('prefix_url','http://hospital-portal-samplefsdstudent250400.codeanyapp.com:3000/api/')
+  .value('prefix_url','http://localhost:5000/api/')
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $locationProvider,$urlRouterProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,
@@ -257,6 +258,17 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
                 'dashContent@secure': {
                     templateUrl: '/templates/secure/shopping_cart.html',
                     controller : 'shopping_cartCtrl'
+                }
+            }
+        })
+
+        .state('secure.statistics-report', {
+            url : '/statistics-reoprt',
+            cache:true,
+            views: {
+                'dashContent@secure': {
+                    templateUrl: '/templates/secure/export-report.html',
+                    controller : 'export-reportCtrl'
                 }
             }
         })
