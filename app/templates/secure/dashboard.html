@@ -143,22 +143,24 @@
                 <table class="table no-margin">
                   <thead>
                   <tr>
+                    <th>S.No</th>
                     <th>Reference ID</th>
                     <th>Equipment</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Status</th>
                     <th style="width: 400px;">Description</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr ng-repeat="order in orders track by $index">
+                    <td>{{$index + 1}}</td>
                     <td><a ui-sref="secure.order_details({id : order._id})">{{order.ref_id}}</a></td>
                     <td>{{order.products[0].name}}</td>
                     <td>${{order.products[0].price}}</td>
                     <td>{{order.products[0].quantity}}</td>
-                    <td><span class="label" ng-class="(order.status == 'completed') ? 'label-success' : (order.status == 'pending') ? 'label-warning' : (order.status == 'rejected') ? 'label-danger' : '' ">{{order.status | capitalize}}</span></td>
                     <td>{{order.products[0].description}}</td>
+                    <td><span class="label" ng-class="(order.status == 'approved') ? 'label-success' : (order.status == 'pending') ? 'label-warning' : (order.status == 'rejected') ? 'label-danger' : '' ">{{order.status | capitalize}}</span></td>
                   </tr>
                   </tbody>
                 </table>

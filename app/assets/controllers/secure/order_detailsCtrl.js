@@ -4,7 +4,9 @@ angular.module('myApp').controller('order_detailsCtrl',[
   '$http',
   'HospitalService',
   'id',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,id,prefix_url){
+  '$state',
+  'toastr',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,id, $state, toastr,prefix_url){
 	$anchorScroll();
 	$http.get(prefix_url + 'order/' + id).then(function(data){
 		$scope.orderData = data.data;
@@ -41,14 +43,20 @@ angular.module('myApp').controller('order_detailsCtrl',[
     console.log('<<<<<<<<<< statusUpdate', $scope.orderData);
    		var params = {
    			id : id,
-   			status : newStatus
+   			status : newStatus,
+        products : $scope.orderData.products,
+        date : $scope.orderData.date,
+        ref_id : $scope.orderData.ref_id,
+        total_amount : $scope.orderData.total_amount,
+        deal_with : $scope.orderData.deal_with,
+        contact_details : $scope.orderData.contact_details
    		}
 		$http.post(prefix_url + 'order/status', params).then(function(data){
-     		alert('Status Changed! The Requester Hospital is sent an email regarding status change.');
-       		$scope.orderData = data.data;
-       		$anchorScroll();
+          toastr.success('The Requester Hospital is sent an email regarding the status change.', 'Status Changed!');
+       		$state.go('secure.orders');
     	}, function(err){
       		console.log(err);
+          toastr.error(err, 'Error');
     	})
 	}
 }])

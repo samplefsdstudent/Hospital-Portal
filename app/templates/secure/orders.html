@@ -22,11 +22,11 @@
 									<li ng-class="(filter == 'pending') ? 'active' : ''">
 										<a ng-click="filter = 'pending'" aria-expanded="false">Pending</a>
 									</li>
-									<li ng-class="(filter == 'completed') ? 'active' : ''">
-										<a ng-click="filter = 'completed'" aria-expanded="false">Completed</a>
+									<li ng-class="(filter == 'approved') ? 'active' : ''">
+										<a ng-click="filter = 'approved'" aria-expanded="false">Approved</a>
 									</li>
-									<li ng-class="(filter == 'history') ? 'active' : ''">
-										<a ng-click="filter = 'history'" aria-expanded="false">History</a>
+									<li ng-class="(filter == 'rejected') ? 'active' : ''">
+										<a ng-click="filter = 'rejected'" aria-expanded="false">Rejected</a>
 									</li>
 								</ul>
 								<!-- unordered list end here -->
@@ -43,7 +43,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="product in orders | filter: {status : filter} | orderBy : '-' track by $index">
+										<tr ng-repeat="product in orders | orderBy : '-' | filter: {status : filter} track by $index">
 											<td>
 												<a href="#">
 													<img ng-src="{{product.products[0].image}}" class="img-responsive" alt="thumb" title="thumb" />

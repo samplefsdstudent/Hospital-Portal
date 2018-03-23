@@ -27,6 +27,10 @@ angular.module('myApp').controller('export-reportCtrl',[
 		}
 	}
 
+	$scope.getDate = function (objectId) {
+		return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
+	};
+
 	$scope.getAmount = function(data, filter){
 		console.log('inside getAmount', data);
 		var final_amount = 0;
@@ -73,7 +77,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -87,9 +91,9 @@ angular.module('myApp').controller('export-reportCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			});
 		}, function(err){
@@ -118,7 +122,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -132,9 +136,9 @@ angular.module('myApp').controller('export-reportCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			})
 		}, function(err){
@@ -170,7 +174,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -184,9 +188,9 @@ angular.module('myApp').controller('export-reportCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			})
 		}, function(err){

@@ -44,7 +44,7 @@ var mongoose = require('mongoose'),
     		required : true
     	},
         status : {
-            type : Boolean,
+            type : String,
             required : true
         },
         donated_by : {

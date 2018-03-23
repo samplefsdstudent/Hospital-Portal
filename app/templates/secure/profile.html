@@ -73,124 +73,9 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a></li>
               <li class=""><a href="#edit-profile" data-toggle="tab" aria-expanded="true">Edit Profile</a></li>
-              <li class=""><a href="#direct-messages" data-toggle="tab" aria-expanded="true">Direct Messages</a></li>
               <li class=""><a href="#account-settings" data-toggle="tab" aria-expanded="false">Account Settings</a></li>
             </ul>
             <div class="tab-content">
-              <div class="tab-pane edit-form" id="direct-messages">
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Shared publicly - 7:30 PM today</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <p>
-                    Lorem ipsum represents a long-held tradition for designers,
-                    typographers and the like. Some people hate it and argue for
-                    its demise, but others ignore the hate as they create awesome
-                    tools to help create filler text for everyone from bacon lovers
-                    to Charlie Sheen fans.
-                  </p>
-                  <ul class="list-inline">
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                    </li>
-                    <li class="pull-right">
-                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                  </ul>
-
-                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                </div>
-                <!-- /.post -->
-
-                <!-- Post -->
-                <div class="post clearfix">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Sent you a message - 3 days ago</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <p>
-                    Lorem ipsum represents a long-held tradition for designers,
-                    typographers and the like. Some people hate it and argue for
-                    its demise, but others ignore the hate as they create awesome
-                    tools to help create filler text for everyone from bacon lovers
-                    to Charlie Sheen fans.
-                  </p>
-
-                  <form class="form-horizontal">
-                    <div class="form-group margin-bottom-none">
-                      <div class="col-sm-9">
-                        <input class="form-control input-sm" placeholder="Response">
-                      </div>
-                      <div class="col-sm-3">
-                        <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <!-- /.post -->
-
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Adam Jones</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Posted 5 photos - 5 days ago</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <div class="row margin-bottom">
-                    <div class="col-sm-6">
-                      <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-6">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                          <br>
-                          <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                          <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                          <br>
-                          <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-                    </div>
-                    <!-- /.col -->
-                  </div>
-                  <!-- /.row -->
-
-                  <ul class="list-inline">
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                    </li>
-                    <li class="pull-right">
-                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                  </ul>
-                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                </div>
-                <!-- /.post -->
-              </div>
-              <!-- /.tab-pane -->
               <div class="tab-pane active" id="timeline">
                 <!-- The timeline -->
                 <ul class="timeline timeline-inverse">
@@ -215,7 +100,7 @@
                 </ul>
               </div>
               <!-- /.tab-pane -->
-
+              <!-- /.tab-pane -->
               <div class="tab-pane" id="edit-profile">
                 <form class="form-horizontal edit-form" ng-submit="editProfile(userData)">
                   <div class="form-group">
@@ -232,38 +117,38 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-6">
-                      <label for="inputName" class="control-label">Type</label>
-                      <input type="text" ng-model="userData.type"  class="form-control" id="inputName" placeholder="Type" disabled>
+                      <label for="inputType" class="control-label">Type</label>
+                      <input type="text" ng-model="userData.type"  class="form-control" id="inputType" placeholder="Type" disabled>
                     </div>
                     <div class="col-sm-6">
-                      <label for="inputExperience" class="control-label">Joined On</label>
-                      <input type="date" ng-model="userData.created_on"  class="form-control" id="inputName" disabled>
+                      <label for="inputJoined" class="control-label">Joined On</label>
+                      <input type="date" ng-model="userData.created_on"  class="form-control" id="inputJoined" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputSkills" class="control-label">Address</label>
-                      <input type="text" class="form-control" ng-model="userData.address"  min="0" id="inputSkills" placeholder="Address">
+                      <label for="inputAdd" class="control-label">Address</label>
+                      <input type="text" class="form-control" ng-model="userData.address"  min="0" id="inputAdd" placeholder="Address">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-6">
-                      <label for="inputSkills" class="control-label">City</label>
-                      <input type="text" class="form-control" ng-model="userData.city"  min="0" id="inputSkills" placeholder="City">
+                      <label for="inputCity" class="control-label">City</label>
+                      <input type="text" class="form-control" ng-model="userData.city"  min="0" id="inputCity" placeholder="City">
                     </div>
                     <div class="col-sm-6">
-                      <label for="inputSkills" class="control-label">State</label>
-                      <input type="text" class="form-control" ng-model="userData.state"  min="0" id="inputSkills" placeholder="State">
+                      <label for="inputState" class="control-label">State</label>
+                      <input type="text" class="form-control" ng-model="userData.state"  min="0" id="inputState" placeholder="State">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-6">
-                      <label for="inputSkills" class="control-label">Pin Code</label>
-                      <input type="number" class="form-control" ng-model="userData.pin_code"  min="0" id="inputSkills" placeholder="Pin Code">
+                      <label for="inputPin" class="control-label">Pin Code</label>
+                      <input type="number" class="form-control" ng-model="userData.pin_code"  min="0" id="inputPin" placeholder="Pin Code">
                     </div>
                     <div class="col-sm-6">
-                      <label for="inputSkills" class="control-label">Mobile Number</label>
-                      <input type="number" class="form-control" ng-model="userData.mobile_no"  min="0" id="inputSkills" placeholder="Mobile Number">
+                      <label for="inputMob" class="control-label">Mobile Number</label>
+                      <input type="number" class="form-control" ng-model="userData.mobile_no"  min="0" id="inputMob" placeholder="Mobile Number">
                     </div>
                   </div>
                   <div class="form-group">
@@ -274,42 +159,46 @@
                 </form>
               </div>
               <div class="tab-pane" id="account-settings">
-                <form class="form-horizontal edit-form" ng-submit="editAccount(userData)">
+                <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;">
+                <legend class="bg-yellow">
+                  Change Password
+                </legend>
+                <form class="form-horizontal edit-form row" ng-submit="changePwd(pwdData)">
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputName" class="control-label">Name</label>
-                      <input type="text" class="form-control" ng-model="userData.name" id="inputName" placeholder="Name" disabled="">
+                      <label for="inputChangeName" class="control-label">Name</label>
+                      <input type="text" class="form-control" ng-model="userData.name" id="inputChangeName" placeholder="Name" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputEmail" class="control-label">Email</label>
-                      <input type="email" class="form-control" ng-model="userData.email" id="inputEmail" placeholder="Email">
+                      <label for="inputChangeEmail" class="control-label">Email</label>
+                      <input type="email" class="form-control" ng-model="userData.email" id="inputChangeEmail" placeholder="Email" disabled>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputName" class="control-label">Old Password</label>
-                      <input type="password" class="form-control" ng-model="userData.old_password" id="inputName" placeholder="Old Password">
+                      <label for="inputOld" class="control-label">Old Password</label>
+                      <input type="password" class="form-control" ng-model="pwdData.old_password" id="inputOld" placeholder="Old Password" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputExperience" class="control-label">New Password</label>
-                      <input type="password" class="form-control" ng-model="userData.new_password" id="inputName" placeholder="New Password">
+                      <label for="inputNew" class="control-label">New Password</label>
+                      <input type="password" class="form-control" ng-model="pwdData.new_password" id="inputNew" placeholder="New Password" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <label for="inputExperience" class="control-label">Confirm Password</label>
-                      <input type="password" class="form-control" ng-model="userData.confirm_password" id="inputName" placeholder="Confirm Password">
+                      <label for="inputConfirm" class="control-label">Confirm Password</label>
+                      <input type="password" class="form-control" ng-model="pwdData.confirm_password" id="inputConfirm" placeholder="Confirm Password" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" ng-model="userData.checked"> I agree to the <a href="#">terms and conditions</a>
+                          <input type="checkbox" ng-model="pwdData.checked"> I agree to the <a href="">terms and conditions</a>
                         </label>
                       </div>
                     </div>
@@ -320,6 +209,40 @@
                     </div>
                   </div>
                 </form>
+              </fieldset>
+              <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;" style="background: rgba(221, 44, 0, 0.22)">
+                <legend class="bg-red">
+                  Account Status
+                </legend>
+                <form class="form-horizontal edit-form row" ng-submit="changeStatus(statData)">
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <label for="inputCurrent" class="control-label">Current Status</label>
+                      <input type="text" class="form-control" ng-model="userData.status" id="inputCurrent" placeholder="Current Status" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <label for="inputPwd" class="control-label">Account Password</label>
+                      <input type="password" class="form-control" ng-model="statData.password" id="inputPwd" placeholder="Enter Password" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" ng-model="statData.checked"> I agree to the <a href="">terms and conditions</a>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-12 text-right">
+                      <button type="submit" class="btn btn-danger" style="width: 150px;">Submit</button>
+                    </div>
+                  </div>
+                </form>
+              </fieldset>
               </div>
               <!-- /.tab-pane -->
             </div>

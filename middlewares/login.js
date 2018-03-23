@@ -29,7 +29,13 @@ function login(req, res){
               });
               hospital.access_token = access_token;
               console.log(hospital);
-              res.json(hospital);
+              if(hospital.status == "pending"){
+                res.status(400).send({message : 'Your Signup Request is still not Approved by Hospital Portal Admin. Please try again later'});
+              }else if(hospital.status == "rejected"){
+                res.status(400).send({message : 'Your Signup Request is Rejected by Hospital Portal Admin. Kindly check your email for more information.'})
+              }else if(hospital.status == "approved"){
+                res.json(hospital);
+              }
             }else{
               res.status(400).send({message : 'Either Email or Password is wrong.'})
             }
@@ -58,7 +64,7 @@ function login(req, res){
                 expiresIn: 1440 // expires in 24 hours
               });
               user.access_token = access_token
-              console.log(user);
+              console.log(user.status);
               res.json(user);
             }else{
               res.status(400).send({message : 'Either Email or Password is wrong.'})
@@ -71,4 +77,78 @@ function login(req, res){
       }
 }
 
-module.exports = login;
+function changePwd(req, res){
+  var pwdData = {
+        email: req.body.email
+      }
+
+    Hospital.find(pwdData, function (err, data) {
+          if (err) res.status(500).send(err)
+          else if(data){
+            var query;
+            bcrypt.compare(req.body.old_password, data[0].password, function(err, response) {
+            if(err){
+              res.status(400).send({message : err})
+            }else if(response){
+              bcrypt.hash(req.body.new_password, 10, function (err, hash){
+                  if (err) {
+                    console.log('inside changePwd err', err);
+                  res.status(500).send({message : 'Internal Server Error'});
+                  }else{
+                    console.log('inside changePwd response', response);
+                    req.body.new_password = hash;
+                    if(req.body.email.split('@')[1] != "hospital.com"){
+                      query = Hospital.where({ email: req.body.email }).setOptions({ overwrite: true });
+                    }else{
+                      query = User.where({ email: req.body.email }).setOptions({ overwrite: true });
+                    }
+                    query.update({ $set: { password: req.body.new_password } }, function(err, newOrder){
+                      if (err) res.status(400).send({message : err});
+                      else
+                          res.json({message : "Password Updated Successfully."});
+                      })
+                  }
+              })
+            }else{
+              res.status(400).send({message : 'Old Password is wrong.'})
+            }
+          });
+          }else{
+            res.status(500).send({message : 'Internal Server Error'});
+          }  
+        }).lean();
+}
+
+function changeStatus(req, res){
+  var statData = {
+        email: req.body.email
+      }
+
+    Hospital.find(statData, function (err, data) {
+          if (err) res.status(500).send(err)
+          else if(data){
+            var query = Hospital.where({ email: req.body.email }).setOptions({ overwrite: true });
+            bcrypt.compare(req.body.password, data[0].password, function(err, response) {
+            if(err){
+              res.status(400).send({message : err})
+            }else if(response){
+            query.update({ $set: { status: req.body.status } }, function(err, newOrder){
+              if (err) res.status(400).send({message : err});
+              else
+                res.json({message : "Account Status Changed Successfully.", data : {status : req.body.status}});
+            })
+            }else{
+              res.status(400).send({message : 'Entered Password is wrong.'})
+            }
+          });
+          }else{
+            res.status(500).send({message : 'Internal Server Error'});
+          }  
+        }).lean();
+}
+
+module.exports = {
+  login : login,
+  changePwd : changePwd,
+  changeStatus : changeStatus
+};

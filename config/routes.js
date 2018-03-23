@@ -14,7 +14,7 @@ var orderMiddleware = require('../middlewares/order'),
     express = require('express'),
 	apiRouter = express.Router();
 
-	  apiRouter.post('/api/login', loginMiddleware);
+	  apiRouter.post('/api/login', loginMiddleware.login);
   	apiRouter.post('/api/signup', signupMiddleware);
     apiRouter.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
     apiRouter.post('/api/feedback', feedbackMiddleware);
@@ -43,6 +43,8 @@ var orderMiddleware = require('../middlewares/order'),
   		}
 	});
 
+  apiRouter.post('/api/password/change', loginMiddleware.changePwd);
+  apiRouter.post('/api/account/status', loginMiddleware.changeStatus);
   apiRouter.post('/api/order', orderMiddleware.post);
   apiRouter.post('/api/equipment', equipmentMiddleware.post);
   apiRouter.post('/api/order/status', orderMiddleware.update);

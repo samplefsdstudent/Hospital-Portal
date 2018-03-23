@@ -69,7 +69,135 @@
           <!-- TABLE: LATEST ORDERS -->
           <div class="boxa box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Latest Orders</h3>
+              <div class="col-sm-4">
+                <h3 class="box-title">Latest Orders</h3>
+              </div>
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-sm-3 hidden-xs"></div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
+                      <label class="input-group-addon" for="input-sort">Sort By :    </label>
+                      <select id="input-sort" class="form-control selectpicker bs-select-hidden">
+                        <option value="" selected="selected">Default</option>
+                        <option value="">Name (A - Z)</option>
+                        <option value="">Name (Z - A)</option>
+                        <option value="">Price (Low &gt; High)</option>
+                        <option value="">Price (High &gt; Low)</option>
+                        <option value="">Rating (Highest)</option>
+                      </select>
+                      <div class="btn-group bootstrap-select input-group-btn form-control">
+                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="input-sort" title="Name (A - Z)" aria-expanded="false">
+                          <span class="filter-option pull-left">Name (A - Z)</span>&nbsp;<i aria-hidden="true" class="icofont icofont-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu open" style="max-height: 501.594px; overflow: hidden; min-height: 92px;">
+                          <ul class="dropdown-menu inner" role="menu" style="max-height: 489.594px; overflow-y: auto; min-height: 80px;">
+                            <li data-original-index="0" class="">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Default</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="1" class="selected">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Name (A - Z)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="2">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Name (Z - A)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="3">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Price (Low &gt; High)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="4">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Price (High &gt; Low)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="5">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Rating (Highest)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
+                      <label class="input-group-addon" for="input-sort">Limit :    </label>
+                      <select id="input-show" class="form-control selectpicker bs-select-hidden">
+                        <option value="" selected="selected">Default</option>
+                        <option value="">1</option>
+                        <option value="">5</option>
+                        <option value="">15</option>
+                        <option value="">20</option>
+                        <option value="">25</option>
+                      </select>
+                      <div class="btn-group bootstrap-select input-group-btn form-control">
+                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="input-show" title="Default" aria-expanded="false">
+                          <span class="filter-option pull-left">Default</span>&nbsp;<i aria-hidden="true" class="icofont icofont-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu open" style="max-height: 501.594px; overflow: hidden; min-height: 92px;">
+                          <ul class="dropdown-menu inner" role="menu" style="max-height: 489.594px; overflow-y: auto; min-height: 80px;">
+                            <li data-original-index="0" class="selected">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Default</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="1">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">1</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="2">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">5</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="3">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">15</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="4">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">20</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="5">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">25</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1 list hidden-xs">
+                    <div class="btn-group btn-group-sm">
+                      <button type="button" id="Download Orders Data" class="btn btnDownload" data-toggle="tooltip" title="Download Orders Data" ng-csv="orders" csv-header="['Field A', 'Field B', 'Field C']" filename="order_data_export.csv"><i class="icofont icofont-download-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -84,21 +212,25 @@
                   <thead>
                   <tr>
                     <th>Reference ID</th>
+                    <th>Date</th>
+                    <th>Image</th>
                     <th>Equipment</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Status</th>
                     <th style="width: 400px;">Description</th>
+                    <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr ng-repeat="order in orders track by $index">
                     <td><a ui-sref="secure.order_details({id : order._id})">{{order.ref_id}}</a></td>
+                    <td>{{getDate(order._id) | date}}</td>
+                    <td><img ng-src="{{order.products[0].image}}" alt="image" title="{{order.products[0].name}}" class="img-responsive" /></td>
                     <td>{{order.products[0].name}}</td>
                     <td>${{order.products[0].price}}</td>
                     <td>{{order.products[0].quantity}}</td>
-                    <td><span class="label" ng-class="(order.status == 'completed') ? 'label-success' : (order.status == 'pending') ? 'label-warning' : (order.status == 'rejected') ? 'label-danger' : '' ">{{order.status | capitalize}}</span></td>
                     <td>{{order.products[0].description}}</td>
+                    <td><span class="label" ng-class="(order.status == 'approved') ? 'label-success' : (order.status == 'pending') ? 'label-warning' : (order.status == 'rejected') ? 'label-danger' : '' ">{{order.status | capitalize}}</span></td>
                   </tr>
                   </tbody>
                 </table>
@@ -106,87 +238,194 @@
               <!-- /.table-responsive -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a ui-sref="secure.donate_form" class="btn btn-sm btn-info btn-flat pull-left">Donate Equipments</a>
-              <a ui-sref="secure.orders" class="btn btn-sm btn-default btn-flat pull-right">Track Orders</a>
-            </div>
-            <!-- /.box-footer -->
           </div>
           <!-- /.box -->
         </div>
         <!-- /.col -->
-
-       <!--  <div class="col-md-12" style="margin-top: 50px;"> -->
-          <!-- Info Boxes Style 2 -->
-         <!--  <div class="info-box bg-yellow col-md-6">
-            <span class="info-box-icon"><i class="icofont icofont-user"></i></span> -->
-
-           <!--  <div class="info-box-content">
-              <span class="info-box-text">Profile Completed</span>
-              <span class="info-box-number">5,200</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 50%"></div>
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <div class="col-md-12">
+          <!-- TABLE: LATEST ORDERS -->
+          <div class="boxa box-info">
+            <div class="box-header with-border">
+              <div class="col-sm-4">
+                <h3 class="box-title">Equipments in Live Store</h3>
               </div>
-              <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span> -->
-            <!-- </div> -->
-            <!-- /.info-box-content -->
-         <!--  </div> -->
-          <!-- /.info-box -->
-          <!-- <div class="info-box bg-green col-md-6">
-            <span class="info-box-icon"><i class="icofont icofont-fork-lift"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Equipment Inventory</span>
-              <span class="info-box-number">92,050</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
+              <div class="col-sm-8">
+                <div class="row">
+                  <div class="col-sm-3 hidden-xs"></div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
+                      <label class="input-group-addon" for="input-sort">Sort By :    </label>
+                      <select id="input-sort" class="form-control selectpicker bs-select-hidden">
+                        <option value="" selected="selected">Default</option>
+                        <option value="">Name (A - Z)</option>
+                        <option value="">Name (Z - A)</option>
+                        <option value="">Price (Low &gt; High)</option>
+                        <option value="">Price (High &gt; Low)</option>
+                        <option value="">Rating (Highest)</option>
+                      </select>
+                      <div class="btn-group bootstrap-select input-group-btn form-control">
+                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="input-sort" title="Name (A - Z)" aria-expanded="false">
+                          <span class="filter-option pull-left">Name (A - Z)</span>&nbsp;<i aria-hidden="true" class="icofont icofont-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu open" style="max-height: 501.594px; overflow: hidden; min-height: 92px;">
+                          <ul class="dropdown-menu inner" role="menu" style="max-height: 489.594px; overflow-y: auto; min-height: 80px;">
+                            <li data-original-index="0" class="">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Default</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="1" class="selected">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Name (A - Z)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="2">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Name (Z - A)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="3">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Price (Low &gt; High)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="4">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Price (High &gt; Low)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="5">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Rating (Highest)</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
+                      <label class="input-group-addon" for="input-sort">Limit :    </label>
+                      <select id="input-show" class="form-control selectpicker bs-select-hidden">
+                        <option value="" selected="selected">Default</option>
+                        <option value="">1</option>
+                        <option value="">5</option>
+                        <option value="">15</option>
+                        <option value="">20</option>
+                        <option value="">25</option>
+                      </select>
+                      <div class="btn-group bootstrap-select input-group-btn form-control">
+                        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" data-id="input-show" title="Default" aria-expanded="false">
+                          <span class="filter-option pull-left">Default</span>&nbsp;<i aria-hidden="true" class="icofont icofont-caret-down"></i>
+                        </button>
+                        <div class="dropdown-menu open" style="max-height: 501.594px; overflow: hidden; min-height: 92px;">
+                          <ul class="dropdown-menu inner" role="menu" style="max-height: 489.594px; overflow-y: auto; min-height: 80px;">
+                            <li data-original-index="0" class="selected">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">Default</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="1">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">1</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="2">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">5</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="3">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">15</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="4">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">20</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                            <li data-original-index="5">
+                              <a tabindex="0" class="" style="" data-tokens="null">
+                                <span class="text">25</span>
+                                <span class="glyphicon glyphicon-ok check-mark"></span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-1 list hidden-xs">
+                    <div class="btn-group btn-group-sm">
+                      <button type="button" id="Download Equipments Data" class="btn btnDownload" data-toggle="tooltip" title="Download Equipments Data" ng-csv="equipments" csv-header="['S.No','Date','Equipment', 'Price($)', 'Quantity', 'donated_by', 'Deal With', 'Description', 'Status']" filename="equipment_data_export.csv"><i class="icofont icofont-download-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
-            </div> -->
-            <!-- /.info-box-content -->
-          <!-- </div> -->
-          <!-- /.info-box -->
-         <!--  <div class="info-box bg-red col-md-6">
-            <span class="info-box-icon"><i class="icofont icofont-chart-bar-graph"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Orders History</span>
-              <span class="info-box-number">114,381</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 70%"></div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-              <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-            </div> -->
-            <!-- /.info-box-content -->
-         <!--  </div> -->
-          <!-- /.info-box -->
-          <!-- <div class="info-box bg-aqua col-md-6">
-            <span class="info-box-icon"><i class="icofont icofont-speech-comments"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Support Messages</span>
-              <span class="info-box-number">163,921</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 40%"></div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Date</th>
+                    <th>Image</th>
+                    <th>Equipment</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Donated By</th>
+                    <th>Deal With</th>
+                    <th style="width: 250px;">Description</th>
+                    <th>Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="item in equipments track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{getDate(item._id) | date}}</td>
+                     <td><img ng-src="{{item.image}}" alt="image" title="{{order.products[0].name}}" class="img-responsive" /></td>
+                    <td><a ui-sref="secure.order_details({id : order._id})">{{item.name}}</a></td>
+                    <td>${{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.donated_by.name || '-'}}</td>
+                    <td>{{item.sold_to.name || '-' }}</td>
+                    <td>{{item.description}}</td>
+                    <td><span class="label" ng-class="(item.status == 'available') ? 'label-success' : (order.status == 'sold') ? 'label-warning' : (item.status == 'withdrawn') ? 'label-danger' : '' ">{{item.status | capitalize}}</span></td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
-              <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-            </div> -->
-            <!-- /.info-box-content -->
-         <!--  </div> -->
-          <!-- /.info-box -->
-      <!--   </div> -->
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->

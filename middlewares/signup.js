@@ -15,7 +15,7 @@ function signup(req, res){
         description : req.body.description,
         created_on : new Date(),
         type : req.body.type,
-        status : false,
+        status : "pending",
         stock : []
       }
       console.log(hospitalData);

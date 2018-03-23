@@ -74,6 +74,12 @@ p{
 	margin:0;
 }
 
+.btnDownload{
+	background: #dd4b39!important;
+    color: white!important;
+    border: white!important;
+}
+
 .btn-link:hover, .btn-link:focus {
     text-decoration: none;
 }
@@ -166,6 +172,21 @@ p{
     padding: 3px 4px;
     font-size: 10px;
 }
+
+legend {
+    display: block;
+    background: blue;
+    width: 27%;
+    padding: 1px;
+    padding-left: 19px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: inherit;
+    border: 0;
+    border-bottom: none;
+    border-radius: 25px;
+}
+
 /*--------------------
 [ Header / header ]
 ---------------------*/

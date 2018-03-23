@@ -8,6 +8,7 @@ angular.module('myApp').controller('loginCtrl',[
   '$window',
   'prefix_url', function($anchorScroll,$scope,$http,toastr,HospitalService, $state, $window, prefix_url){
 	$anchorScroll();
+	$scope.loginData = {};
 	$scope.doLogin = function(data){
 		var params = {
 			email : data.email,
@@ -22,8 +23,9 @@ angular.module('myApp').controller('loginCtrl',[
 			delete HospitalService.user.access_token;
 			$state.go('secure.dashboard',{user : data.data.type});
 		},function(err){
-			console.log(err);
-			toastr.error(err.data.message, 'Error');
+			$anchorScroll();
+			$scope.loginData = {};
+			toastr.error(err.data.message, 'Login Failed!');
 		})
 	}
 }])

@@ -14,14 +14,17 @@
 			<div class="col-sm-10 col-xs-10">
 				<!-- ng-class using filter gives active class on click on anchor in the li element -->
 				<ul class="nav nav-tabs list-inline" style="margin: 10px 14% 20px;">
-					<li ng-class="(filter == 'donor') ? 'active' : ''">
-						<a ng-click="filter = 'donor'" aria-expanded="false">Donor Hospitals</a>
+					<li ng-class="(filter.type == 'donor') ? 'active' : ''">
+						<a ng-click="filter = {type : 'donor', status : 'approved'}" aria-expanded="false">Donor</a>
 					</li>
-					<li ng-class="(filter == 'requester') ? 'active' : ''">
-						<a ng-click="filter = 'requester'" aria-expanded="false">Requester Hospitals</a>
+					<li ng-class="(filter.type == 'requester') ? 'active' : ''">
+						<a ng-click="filter = {type : 'requester', status : 'approved'}" aria-expanded="false">Requester</a>
 					</li>
-					<li ng-class="(filter == 'signup') ? 'active' : ''">
-						<a ng-click="filter = 'signup'" aria-expanded="false">Signup Requests</a>
+					<li ng-class="(filter.status == 'disabled') ? 'active' : ''">
+						<a ng-click="filter = {status : 'disabled'}" aria-expanded="false">Disabled</a>
+					</li>
+					<li ng-class="(filter.status == 'pending') ? 'active' : ''">
+						<a ng-click="filter = {status : 'pending'}" aria-expanded="false">Signup Requests</a>
 					</li>
 				</ul>
 				<!-- unordered list end here -->
@@ -29,7 +32,7 @@
 				<div  class="tab-content">
 					<div class="tab-pane active">
 						<div class="row">
-							<div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="hospital in hospitals | filter: {type : filter} track by $index">
+							<div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="hospital in hospitals | filter: filter track by $index">
 								<div class="box">
 									<div class="image">
 										<img ng-src="{{hospital.image}}" id="hospitalimg" alt="image" title="image" class="img-responsive" />

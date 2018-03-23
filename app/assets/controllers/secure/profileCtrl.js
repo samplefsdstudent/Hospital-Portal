@@ -9,16 +9,24 @@ angular.module('myApp').controller('profileCtrl',[
 	$scope.filter = 'pending';
 	$scope.results = [];
 	$scope.dates = [];
-	var params = {
+	$scope.pwdData =  {};
+	$scope.statData = {};
+	var params = {};
+	if(HospitalService.hospital){
+		var params = {
+		type : HospitalService.hospital.type,
+		id : new String(HospitalService.hospital.id)
+	}
+	}else if(HospitalService.user){
+		var params = {
 		type : HospitalService.user.type,
 		id : new String(HospitalService.user.id)
+	}
 	}
 	$http.get(prefix_url + 'order/' + params.type + '/' + params.id).then(function(response){
 		var results = {};
 		var data = response.data;
-		console.log('data', data);
 		data.forEach(function(key){
-			console.log('key', key);
 			if(!results[key.date]){
 				results[key.date] = [];
 			}
@@ -35,13 +43,10 @@ angular.module('myApp').controller('profileCtrl',[
 		});
 
 		Object.keys(results).forEach(function(key, value){
-			console.log(value, key, results, results[key]);
 			$scope.dates.push(key);
 			var data = results[key];
-			console.log(data);
 			$scope.results = $scope.results.concat(data);
 		});
-		console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< results', $scope.results);
 	}, function(err){
 		console.log(err);
 	})
@@ -49,11 +54,13 @@ angular.module('myApp').controller('profileCtrl',[
 	if(!HospitalService.hospital){
 		$scope.userData  = HospitalService.user;
 		$scope.userData.image = $scope.userData.image || '../assets/images/user.png';
+		$scope.userData.created_on = new Date($scope.userData.created_on);
 	}else{
 		$scope.status = true;
 		$scope.userData.created_on = new Date(HospitalService.hospital.created_on);
 		$scope.userData  = HospitalService.hospital;
 		$scope.userData.image = $scope.userData.image || '../assets/images/user.png';
+		$scope.userData.created_on = new Date($scope.userData.created_on);
 		if(angular.equals($scope.userData.type), "donor")
 			$scope.label = "Donated";
 		else if(angular.equals($scope.userData.type), "requester")
@@ -68,7 +75,39 @@ angular.module('myApp').controller('profileCtrl',[
 		})
 	}
 
-	$scope.editAccount = function(data){
+	$scope.changePwd = function(data){
+		data.email = $scope.userData.email;
+		if(angular.equals(data.new_password, data.confirm_password)){
+			if(data.checked){
+				$http.post(prefix_url + 'password/change', data).then(function(data){
+					toastr.success(data.data.message, 'Success');
+					$scope.pwdData = {};
+					$anchorScroll();
+				}, function(err){
+					toastr.error(err.data.message, 'Error');
+				})
+			}else{
+				toastr.error('Please accept terms and conditions to proceed.', 'Warning');
+			}
+		}else{
+			toastr.error('Password do not match.', 'Error');
+		}
+	}
 
+	$scope.changeStatus = function(data){
+		data.email = $scope.userData.email;
+		if(data.checked){
+			data.status = (angular.equals($scope.userData.status, "disabled")) ? "approved" : "disabled";
+			$http.post(prefix_url + 'account/status', data).then(function(data){
+				toastr.success(data.data.message, 'Success');
+				$scope.userData.status = data.data.data.status;
+				$scope.statData = {};
+				$anchorScroll();
+			}, function(err){
+				toastr.error(err.data.message, 'Error');
+			})
+		}else{
+			toastr.error('Please accept terms and conditions to proceed.', 'Warning');
+		}
 	}
 }])

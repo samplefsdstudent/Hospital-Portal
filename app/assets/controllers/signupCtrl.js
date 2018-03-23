@@ -4,7 +4,7 @@ angular.module('myApp').controller('signupCtrl',[
   '$http',
   'toastr',
   'prefix_url', function($anchorScroll,$scope,$http,toastr,prefix_url){
-	$anchorScroll();
+  	$scope.signupData = {};
 	$scope.doSignup = function(data){
 		if(angular.equals(data.password, data.confirm_password)){
 			var params = {
@@ -21,7 +21,9 @@ angular.module('myApp').controller('signupCtrl',[
 				status : false
 			};
 			$http.post(prefix_url + 'signup', params).then(function(data){
-				toastr.success('Please login to your account.', 'Success');
+				toastr.success('Login to your Account after your signup request has been approved by Hospital Portal Admin.', 'Completed');
+				$anchorScroll();
+				$scope.signupData = {};
 			},function(error){
 				toastr.error(error.data.message, 'Failed');
 			});

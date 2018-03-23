@@ -31,7 +31,7 @@ angular.module('myApp').controller('donate_equipmentCtrl',[
 			state : donateData.state,
 			pin_code : donateData.pin_code,
 			description : donateData.description,
-			status : false,
+			status : 'available',
 			donated_by : {
 				id : $scope.userData.id,
 				name : $scope.userData.name

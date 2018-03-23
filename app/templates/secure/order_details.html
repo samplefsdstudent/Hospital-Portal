@@ -22,7 +22,7 @@
 										<h2 style="text-align: left;">Reference ID - {{orderData.ref_id | uppercase}}</h2>
 										<h2 style="text-align: left;" ng-if="orderData.status">Status - {{orderData.status | capitalize}}</h2>
 									</div>
-									<div class="col-sm-6" style="position: absolute;right: 0px;" ng-if="status">
+									<div class="col-sm-6" style="position: absolute;right: 0px;" ng-if="status && (orderData.status == 'pending')">
 										<div style='padding: 10px;padding-top: 0px;text-align: right;'>
                         					<a style="font-size: 15px;" ng-click="statusUpdate('approved')" class="btn btn-success btn-xs">Approve</a>
                         					<a style="font-size: 15px;" ng-click="statusUpdate('rejected')" class="btn btn-danger btn-xs">Reject</a>

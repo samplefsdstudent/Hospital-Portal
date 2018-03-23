@@ -75,30 +75,31 @@ function statusUpdate (req, res){
     });
    
     var query = Order.where({ _id: req.body.id }).setOptions({ overwrite: true })
-    query.update({ $set: { status: req.body.status } }, function(err, newOrder){
+    query.update({ $set: { status: req.body.status } }, function(err, response){
         if (err) {
             res.status(400).send(err)
         }else{
+            let newOrder = req.body.products;
+            console.log(newOrder);
             var orderList = '';
-             newOrder.products.forEach(function(product){
+             newOrder.forEach(function(product){
                 orderList += product.name + ', ';
             })
             orderList.substr(0,orderList.length - 1);
-            var date = newOrder.date;
+            var date = new Date(req.body.date);
+            var time = date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-            var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';
+            var time = time.getHours() + ':' + time.getMinutes() + ' GMT +5:30(IST)';
+            console.log(date, time);
             var mailOptions = {
                 from: '"Hospital Portal Mail" <samplefsdstudent@gmail.com>',
                 to: [req.body.contact_details.email,req.body.deal_with],
-                subject: 'The request for online medical order at Hospital Portal is ' + newOrder.status + ' by Donor Hospital.',
-                text: 'The Reference ID of the order is: ' + newOrder.ref_id + '.\n The order was placed on ' + date + ' at ' + time + ' for Equipments- ' + orderList + '\n The total amount including all shipping cost is - $' + newOrder.total_amount + '. The Donor Hospital has rejected your request of the deal of Medical Equipments due to some concern.\n We are available to assist you further for any queries.' 
+                subject: 'The request for online medical order at Hospital Portal is ' + req.body.status + ' by Donor Hospital.',
+                text: 'The Reference ID of the order is: ' + req.body.ref_id + '.\n The order was placed on ' + date + ' at ' + time + ' for Equipments- ' + orderList + '\n The total amount including all shipping cost is - $' + req.body.total_amount + '. The Donor Hospital has ' + req.body.status + ' your request of the deal of Medical Equipments due to some concern.\n We are available to assist you further for any queries.' 
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
             else{
-                 newOrder.id = newOrder._id;
-                delete newOrder._id;
-                delete newOrder.__v;
                 res.json(newOrder);
             }
             });

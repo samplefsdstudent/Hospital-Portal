@@ -1,8 +1,8 @@
 'use strict';
-var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr'])
-  .value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
+var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr','ngSanitize', 'ngCsv'])
+ .value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
   //.value('prefix_url','http://hospital-portal-samplefsdstudent250400.codeanyapp.com:3000/api/')
-  //.value('prefix_url','http://localhost:5000/api/')
+ // .value('prefix_url','http://localhost:5000/api/')
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $locationProvider,$urlRouterProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,
@@ -44,33 +44,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
             }
         })
 
-        .state('app.blogs', {
-            url : '/our-blogs',
-            cache:true,
-            views: {
-                'subContent': {
-                    templateUrl: '/templates/our_blog.html',
-                    controller : 'our_blogCtrl'
-                }
-            }
-        })
-
-        .state('app.blog_details', {
-            url : '/blog_details/:id',
-            cache:true,
-            views: {
-                'subContent': {
-                    templateUrl: '/templates/blog_details.html',
-                    controller : 'blog_detailCtrl'
-                }
-            },
-            resolve: {
-                id: ["$stateParams", function($stateParams) {
-                return $stateParams.id
-                }]
-            }
-        })
-
         .state('app.login', {
             url : '/login',
             cache:true,
@@ -100,17 +73,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
                 'subContent': {
                     templateUrl: '/templates/gallery.html',
                     controller : 'galleryCtrl'
-                }
-            }
-        })
-
-        .state('app.testimonials', {
-            url : '/testimonials',
-            cache:true,
-            views: {
-                'subContent': {
-                    templateUrl: '/templates/testimonials.html',
-                    controller : 'testimonialCtrl'
                 }
             }
         })
@@ -225,17 +187,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
                 'dashContent@secure': {
                     templateUrl: '/templates/secure/history.html',
                     controller : 'historyCtrl'
-                }
-            }
-        })
-
-        .state('secure.support', {
-            url : '/support',
-            cache:true,
-            views: {
-                'dashContent@secure': {
-                    templateUrl: '/templates/secure/support.html',
-                    controller : 'supportCtrl'
                 }
             }
         })

@@ -73,7 +73,7 @@ angular.module('myApp').controller('dashboardCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -87,9 +87,9 @@ angular.module('myApp').controller('dashboardCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			});
 		}, function(err){
@@ -118,7 +118,7 @@ angular.module('myApp').controller('dashboardCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -132,9 +132,9 @@ angular.module('myApp').controller('dashboardCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			})
 		}, function(err){
@@ -170,7 +170,7 @@ angular.module('myApp').controller('dashboardCtrl',[
 				color : "bg-yellow",
 				label : "Net Amount",
 				icon : "icofont icofont-money-bag",
-				data : $scope.getAmount($scope.orders, 'completed'),
+				data : $scope.getAmount($scope.orders, 'approved'),
 				total : 100000
 			})
 
@@ -184,9 +184,9 @@ angular.module('myApp').controller('dashboardCtrl',[
 
 			$scope.dashData.unshift({
 				color : "bg-green",
-				label : "Completed Orders",
+				label : "Approved Orders",
 				icon : "icofont icofont-truck-loaded",
-				data : $scope.getOrders($scope.orders, 'completed'),
+				data : $scope.getOrders($scope.orders, 'approved'),
 				total : $scope.orders.length
 			})
 		}, function(err){
