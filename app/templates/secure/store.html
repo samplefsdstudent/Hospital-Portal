@@ -79,7 +79,7 @@
 							<div class="col-md-6 col-sm-6 col-xs-12" ng-repeat="item in equipments | filter: {type : filter}  as FilterEquipments track by $index">
 								<div class="box" ng-if="(item.price <= dataFilter.price) && (item.quantity <= dataFilter.qty && !item.sold_to)">
 									<div class="image">
-										<img ng-src="{{item.image}}" alt="image" title="image" class="img-responsive" />
+										<img ng-src="{{item.image}}" alt="image" title="image" class="img-responsive productImg" />
 									</div>
 									<div class="caption">
 										<h4>{{item.name}}(Qty-{{item.quantity}})</h4>

@@ -42,8 +42,8 @@
 /*----------
 [ Body ]
 -------------*/
-.img-responsive{
-	max-width: 90%;
+.productImg{
+	max-width: 90%!important;
 }
 
 #hospitalimg{
