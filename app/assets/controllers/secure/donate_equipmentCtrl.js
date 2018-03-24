@@ -5,8 +5,13 @@ angular.module('myApp').controller('donate_equipmentCtrl',[
   'HospitalService',
   'toastr',
   '$state',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,toastr,$state,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,toastr,$state,$rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Donate Equipment';
+	$scope.donateData = {
+		type : 'Diagnostic'
+	}
 	$scope.userData = HospitalService.user;
 	console.log($scope.userData);
 	$scope.donateData = {

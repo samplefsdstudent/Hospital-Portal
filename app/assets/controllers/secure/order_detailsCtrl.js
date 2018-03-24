@@ -6,8 +6,10 @@ angular.module('myApp').controller('order_detailsCtrl',[
   'id',
   '$state',
   'toastr',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,id, $state, toastr,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,id, $state, toastr,$rootScope,prefix_url){
 	$anchorScroll();
+  $rootScope.title = 'Order Details';
 	$http.get(prefix_url + 'order/' + id).then(function(data){
 		$scope.orderData = data.data;
 		(angular.equals(HospitalService.user.type, "donor")) ? requestHospital(true) : requestHospital(false);

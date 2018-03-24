@@ -2,8 +2,10 @@ angular.module('myApp').controller('contact_usCtrl', [
  '$anchorScroll',
  '$scope',
  'prefix_url',
- '$http', function($anchorScroll,$scope,prefix_url,$http){
+ '$rootScope',
+ '$http', function($anchorScroll,$scope,prefix_url,$rootScope,$http){
    $anchorScroll();
+   $rootScope.title = 'Contact Us';
    $scope.sendFeedback = function(data){
 	data.date = new Date();
     $http.post(prefix_url + 'feedback', data).then(function(data){

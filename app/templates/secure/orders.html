@@ -16,17 +16,17 @@
 					<div class="tab-pane active" id="tab-switch">
 						<form ng-submit="next(1)">
 							<h2>You have {{orders.length}} orders in your account.</h2>
-							<div class="menu col-sm-12" ng-if="orders.length">
+							<div class="menu col-sm-12" ng-show="orders">
 							<!-- ng-class using filter gives active class on click on anchor in the li element -->
 								<ul class="nav nav-tabs list-inline" style="margin: 10px 11% 20px;">
-									<li ng-class="(filter == 'pending') ? 'active' : ''">
-										<a ng-click="filter = 'pending'" aria-expanded="false">Pending</a>
+									<li ng-class="(filter.status == 'pending') ? 'active' : ''">
+										<a ng-click="filter = {status : 'pending'}" aria-expanded="false">Pending</a>
 									</li>
-									<li ng-class="(filter == 'approved') ? 'active' : ''">
-										<a ng-click="filter = 'approved'" aria-expanded="false">Approved</a>
+									<li ng-class="(filter.status == 'approved') ? 'active' : ''">
+										<a ng-click="filter = {status : 'approved'}" aria-expanded="false">Approved</a>
 									</li>
-									<li ng-class="(filter == 'rejected') ? 'active' : ''">
-										<a ng-click="filter = 'rejected'" aria-expanded="false">Rejected</a>
+									<li ng-class="(filter.status == 'rejected') ? 'active' : ''">
+										<a ng-click="filter = {status : 'rejected'}" aria-expanded="false">Rejected</a>
 									</li>
 								</ul>
 								<!-- unordered list end here -->
@@ -43,7 +43,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="product in orders | orderBy : '-' | filter: {status : filter} track by $index">
+										<tr ng-repeat="product in orders | filter: filter track by $index">
 											<td>
 												<a href="#">
 													<img ng-src="{{product.products[0].image}}" class="img-responsive" alt="thumb" title="thumb" />

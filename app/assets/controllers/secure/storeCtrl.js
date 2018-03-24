@@ -3,8 +3,11 @@ angular.module('myApp').controller('storeCtrl',[
   '$scope',
   '$http',
   'HospitalService',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,prefix_url){
+  '$rootScope',
+  'toastr',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,$rootScope,toastr,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Live Store';
 	$scope.equipments = [];
 	$scope.dataFilter = {
 		price : 100,
@@ -25,8 +28,8 @@ angular.module('myApp').controller('storeCtrl',[
 	}
 
 	$scope.addToCart = function(data, index){
-		console.log(data);
-		if(!data.status){
+		console.log(data.status);
+		if(angular.equals(data.status, "available")){
 			HospitalService.cart.push({
 			id : data._id,
 			name : data.name,
@@ -37,29 +40,28 @@ angular.module('myApp').controller('storeCtrl',[
 			type : data.type,
 			donated_by : data.donated_by.id
 			})
-			alert(`"${data.name}" is added to your Cart!`);
-			$scope.equipments[index].status = true;
-			HospitalService.equipments[index].status = true;
-			console.log($scope.equipments[index]);
-			return true;
+			toastr.success(`"${data.name}" is added to your Cart!`, 'Added');
+			$scope.FilterEquipments[index].status = 'pending';
+			HospitalService.equipments[index].status = 'pending';
+			return 'pending';
 		}else{
 			for(var i=0;i < HospitalService.cart.length;i++){
 				if(angular.equals(HospitalService.cart[i].name, data.name))
 					HospitalService.cart.splice(i,1);
 					break;
 			}
-			alert(`"${data.name}" is removed from your Cart!`);
-			console.log(HospitalService.cart);
-			HospitalService.equipments[index] = false;
-			$scope.equipments = HospitalService.equipments;
-			return true;
+			toastr.warning(`"${data.name}" is removed from your Cart!`, 'Removed');
+			HospitalService.equipments[index].status = 'available';
+			$scope.FilterEquipments[index].status = 'available';
+			return 'available';
 		}
 	}
 
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
+		console.log(bool);
 		if(bool){
-			return (value) ? $scope.equipments[index].status = false : $scope.equipments[index].status = true
+			return bool
 		}
 	}
 }])

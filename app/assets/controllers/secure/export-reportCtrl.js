@@ -3,9 +3,18 @@ angular.module('myApp').controller('export-reportCtrl',[
   '$scope',
   '$http',
   'HospitalService',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService, prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService, $rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Export Reports';
 	$scope.dashData = [];
+	$scope.orderType = 'products[0]._id';
+	$scope.limitOrder = '10';
+	$scope.equipType = 'id';
+	$scope.limitEquip = '10';
+	$scope.donor = false;
+	$scope.requester = false;
+	$scope.admin = false;
 	console.log('<<<<<<< hospitalService', HospitalService);
 	if(HospitalService.hospital){
 		$scope.userData  = HospitalService.hospital;
@@ -70,6 +79,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 	}
 
 	function getDonor(type, id){
+		$scope.donor = true;
 		$http.get(prefix_url + 'order/' + type + '/' + id).then(function(data){
 			$scope.orders = data.data;
 			
@@ -115,6 +125,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 	}
 
 	function getRequester(type, id){
+		$scope.requester = true;
 		$http.get(prefix_url + 'order/' + type + '/' + id).then(function(data){
 			$scope.orders = data.data;
 			
@@ -147,6 +158,7 @@ angular.module('myApp').controller('export-reportCtrl',[
 	}
 
 	function getAdmin(){
+		$scope.admin = true;
 		$http.get(prefix_url + 'hospitals').then(function(data){
 			$scope.hospitals = data.data;
 			$scope.dashData.unshift({

@@ -3,9 +3,11 @@ angular.module('myApp').controller('orderCtrl',[
   '$scope',
   '$http',
   'HospitalService',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,$rootScope,prefix_url){
 	$anchorScroll();
-	$scope.filter = 'approved';
+	$rootScope.title = 'Track Orders';
+	$scope.filter = {status : 'pending'};
 	var params = {
 		type : HospitalService.user.type,
 		id : new String(HospitalService.user.id)

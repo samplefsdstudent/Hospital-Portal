@@ -3,8 +3,10 @@ angular.module('myApp').controller('dashboardCtrl',[
   '$scope',
   '$http',
   'HospitalService',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService, prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,$rootScope ,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Dashboard';
 	$scope.dashData = [];
 	console.log('<<<<<<< hospitalService', HospitalService);
 	if(HospitalService.hospital){

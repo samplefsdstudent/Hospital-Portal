@@ -3,8 +3,10 @@ angular.module('myApp').controller('signupCtrl',[
   '$scope',
   '$http',
   'toastr',
-  'prefix_url', function($anchorScroll,$scope,$http,toastr,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,toastr,$rootScope,prefix_url){
   	$scope.signupData = {};
+  	$rootScope.title = 'Signup';
 	$scope.doSignup = function(data){
 		if(angular.equals(data.password, data.confirm_password)){
 			var params = {

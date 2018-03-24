@@ -4,8 +4,10 @@ angular.module('myApp').controller('profileCtrl',[
   '$http',
   'HospitalService',
   'toastr',
-  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,toastr,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,HospitalService,toastr,$rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Profile';
 	$scope.filter = 'pending';
 	$scope.results = [];
 	$scope.dates = [];
@@ -26,27 +28,28 @@ angular.module('myApp').controller('profileCtrl',[
 	$http.get(prefix_url + 'order/' + params.type + '/' + params.id).then(function(response){
 		var results = {};
 		var data = response.data;
-		data.forEach(function(key){
-			if(!results[key.date]){
-				results[key.date] = [];
-			}
-			var color = '#' + Math.floor(Math.random()*16777215).toString(16);
-			results[key.date].push({
-				ref_id : key.ref_id,
-				total_amount : key.total_amount,
-				status : key.status,
-				description : key.products[0].description,
-				color : color,
-				date : key.date,
-				id : key._id.toUpperCase()
+		if(data.length){
+			data.forEach(function(key){
+				if(!results[key.date]){
+					results[key.date] = [];
+				}
+				var color = '#' + Math.floor(Math.random()*16777215).toString(16);
+				results[key.date].push({
+					ref_id : key.ref_id,
+					total_amount : key.total_amount,
+					status : key.status,
+					description : key.products[0].description,
+					color : color,
+					date : key.date,
+					id : key._id.toUpperCase()
+				});
 			});
-		});
-
-		Object.keys(results).forEach(function(key, value){
-			$scope.dates.push(key);
-			var data = results[key];
-			$scope.results = $scope.results.concat(data);
-		});
+			Object.keys(results).forEach(function(key, value){
+				$scope.dates.push(key);
+				var data = results[key];
+				$scope.results = $scope.results.concat(data);
+			});
+		}
 	}, function(err){
 		console.log(err);
 	})

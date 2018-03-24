@@ -2,6 +2,7 @@
 var nodemailer = require('nodemailer');
 var ObjectId = require('mongodb').ObjectId; 
 var Order = require('../models/Order');
+var Equipment = require('../models/Equipment');
 function createOrder (req, res){
 	let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -15,49 +16,61 @@ function createOrder (req, res){
 			rejectUnauthorized : false
 		}
     });
-  
-    var orderList = '';
-    req.body.products.forEach(function(product){
-        orderList += product.name + ', ';
-    })
 
-    orderList.substr(0,orderList.length - 1);
-    
-    var newOrder = new Order({
-        ref_id : Math.random().toString(36).substr(2, 9).toUpperCase(),
-        date : req.body.date,
-        total_amount : req.body.total_amount,
-        products : req.body.products,
-        donated_by: req.body.donated_by,
-        deal_with :  req.body.deal_with,
-        sold_to : req.body.sold_to,
-        address_details : req.body.address_details,
-        contact_details : req.body.contact_details,
-        receipt_details : req.body.card_details,
-        status : 'pending'
-    })
+        Equipment.find({_id : req.params.products[0]._id}, function (err, equipment) {
+            if (err) 
+              res.status(400).send({message : err.errmsg});
+            else{
+               if(equipment.status == 'sold'){
+                    res.status(400).send({message : 'Equipment is already sold.'});
+                }else if(equipment.status == 'removed'){
+                    res.status(400).send({message : 'Equipment is unavailable.'});
+                }else if(equipment.status == 'available'){
+                    var orderList = '';
+                    req.body.products.forEach(function(product){
+                        orderList += product.name + ', ';
+                    })
 
-    console.log(newOrder);
+                    orderList.substr(0,orderList.length - 1);
+                    
+                    var newOrder = new Order({
+                        ref_id : Math.random().toString(36).substr(2, 9).toUpperCase(),
+                        date : req.body.date,
+                        total_amount : req.body.total_amount,
+                        products : req.body.products,
+                        donated_by: req.body.donated_by,
+                        deal_with :  req.body.deal_with,
+                        sold_to : req.body.sold_to,
+                        address_details : req.body.address_details,
+                        contact_details : req.body.contact_details,
+                        receipt_details : req.body.card_details,
+                        status : 'pending'
+                    })
 
-    newOrder.save(function(err) {
-        if (err) {
-            res.status(400).send(err)
-        }else{
-            var date = newOrder.date;
-            date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
-            var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';
-            var mailOptions = {
-                from: '"Hospital Portal Mail" <samplefsdstudent@gmail.com>',
-                to: [req.body.contact_details.email,req.body.deal_with],
-                subject: 'Confirmed! The request for online medical order at Hospital Portal is successful.',
-                text: 'The Reference ID of the order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Equipments- ' + orderList + '\n The total amount including all shipping cost is - $' + newOrder.total_amount + '. The Donor Hospital will further contact you regarding the finalized deal of Medical Equipments.\n We are available to assist you for any queries.' 
-            };
-            transporter.sendMail(mailOptions, (error, info) => {
-            if (error) res.status(400).send(error);
-                res.json({ref_id : newOrder.ref_id});
-            });
-        }
-    });
+                    console.log(newOrder);
+
+                    newOrder.save(function(err) {
+                        if (err) {
+                            res.status(400).send(err)
+                        }else{
+                            var date = newOrder.date;
+                            date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
+                            var time = newOrder.date.getHours() + ':' + newOrder.date.getMinutes() + ' GMT +5:30(IST)';
+                            var mailOptions = {
+                                from: '"Hospital Portal Mail" <samplefsdstudent@gmail.com>',
+                                to: [req.body.contact_details.email,req.body.deal_with],
+                                subject: 'Confirmed! The request for online medical order at Hospital Portal is successful.',
+                                text: 'The Reference ID of the order is: ' + newOrder.ref_id + '.\n The order is placed on ' + date + ' at ' + time + ' for Equipments- ' + orderList + '\n The total amount including all shipping cost is - $' + newOrder.total_amount + '. The Donor Hospital will further contact you regarding the finalized deal of Medical Equipments.\n We are available to assist you for any queries.' 
+                            };
+                            transporter.sendMail(mailOptions, (error, info) => {
+                            if (error) res.status(400).send(error);
+                                res.json({ref_id : newOrder.ref_id});
+                            });
+                        }
+                    });
+                }
+            }
+        }).lean()
 }
 
 function statusUpdate (req, res){
@@ -99,7 +112,15 @@ function statusUpdate (req, res){
             };
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
-            else{
+            else if(req.body.status == 'approved'){
+                let query = Equipment.where({ _id: req.body.products[0]._id }).setOptions({ overwrite: true })
+                query.update({ $set: { status: 'sold', sold_to : req.body.deal_with } }, function(err, response){
+                    let query = Order.where({'products._id' : req.body.products[0]._id}).setOptions({ overwrite: true })
+                    query.update({ $set: { status: 'rejected'}}, function(err, response){
+                        res.json(newOrder);
+                    }).lean();
+                }).lean();
+            }else{
                 res.json(newOrder);
             }
             });

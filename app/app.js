@@ -1,8 +1,8 @@
 'use strict';
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr','ngSanitize', 'ngCsv'])
- .value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
+ //.value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
   //.value('prefix_url','http://hospital-portal-samplefsdstudent250400.codeanyapp.com:3000/api/')
- // .value('prefix_url','http://localhost:5000/api/')
+  .value('prefix_url','http://localhost:5000/api/')
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $locationProvider,$urlRouterProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,
@@ -62,17 +62,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
                 'subContent': {
                     templateUrl: '/templates/signup.html',
                     controller : 'signupCtrl'
-                }
-            }
-        })
-
-        .state('app.gallery', {
-            url : '/our-gallery',
-            cache:true,
-            views: {
-                'subContent': {
-                    templateUrl: '/templates/gallery.html',
-                    controller : 'galleryCtrl'
                 }
             }
         })
@@ -158,17 +147,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
             }
         })
 
-        .state('secure.settings', {
-            url : '/account-settings',
-            cache:true,
-            views: {
-                'dashContent@secure': {
-                    templateUrl: '/templates/secure/settings.html',
-                    controller : 'settingsCtrl'
-                }
-            }
-        })
-
         .state('secure.profile', {
             url : '/hospital-profile',
             cache:true,
@@ -176,17 +154,6 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
                 'dashContent@secure': {
                     templateUrl: '/templates/secure/profile.html',
                     controller : 'profileCtrl'
-                }
-            }
-        })
-
-        .state('secure.history', {
-            url : '/history',
-            cache:true,
-            views: {
-                'dashContent@secure': {
-                    templateUrl: '/templates/secure/history.html',
-                    controller : 'historyCtrl'
                 }
             }
         })
@@ -214,7 +181,7 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
         })
 
         .state('secure.statistics-report', {
-            url : '/statistics-reoprt',
+            url : '/statistics-report',
             cache:true,
             views: {
                 'dashContent@secure': {

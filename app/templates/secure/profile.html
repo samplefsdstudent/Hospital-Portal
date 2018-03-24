@@ -23,13 +23,17 @@
 
               <ul class="list-group list-group-unbordered" style="margin-top: 15px;">
                 <li class="list-group-item">
-                  <b>{{label}} Items</b> <a class="pull-right">0</a>
+                  <b>Total Orders</b> <a class="pull-right">{{results.length}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Total Orders</b> <a class="pull-right">0</a>
+                  <b>Approved Orders</b> 
+                  <a class="pull-right" ng-repeat="order in results | filter : {status : 'approved'} as approvedOrders track by $index" style="display: none;" ng-if="results"></a>
+                   <a class="pull-right">{{approvedOrders.length}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Pending Orders</b> <a class="pull-right">0</a>
+                  <b>Pending Orders</b> 
+                  <a class="pull-right" ng-repeat="order in results | filter : {status : 'pending'} as pendingOrders track by $index" style="display: none;" ng-if="results"></a>
+                   <a class="pull-right">{{pendingOrders.length}}</a>
                 </li>
               </ul>
             </div>
@@ -159,8 +163,8 @@
                 </form>
               </div>
               <div class="tab-pane" id="account-settings">
-                <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;">
-                <legend class="bg-yellow">
+                <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;margin-bottom: 50px;">
+                <legend class="bg-yellow" style="padding: 7px;text-align: center;">
                   Change Password
                 </legend>
                 <form class="form-horizontal edit-form row" ng-submit="changePwd(pwdData)">
@@ -210,8 +214,8 @@
                   </div>
                 </form>
               </fieldset>
-              <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;" style="background: rgba(221, 44, 0, 0.22)">
-                <legend class="bg-red">
+              <fieldset style="border: solid 1px #ccc;padding: 10px;margin-top:20px;margin-bottom: 20px;" style="background: rgba(221, 44, 0, 0.22)">
+                <legend class="bg-red" style="padding: 7px;text-align: center;">
                   Account Status
                 </legend>
                 <form class="form-horizontal edit-form row" ng-submit="changeStatus(statData)">

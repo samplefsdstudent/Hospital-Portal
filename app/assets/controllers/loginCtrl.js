@@ -6,8 +6,10 @@ angular.module('myApp').controller('loginCtrl',[
   'HospitalService',
   '$state',
   '$window',
-  'prefix_url', function($anchorScroll,$scope,$http,toastr,HospitalService, $state, $window, prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,toastr,HospitalService, $state, $window, $rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Login';
 	$scope.loginData = {};
 	$scope.doLogin = function(data){
 		var params = {

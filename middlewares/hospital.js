@@ -14,7 +14,6 @@ function getHospital(req, res){
     Hospital.findById(req.params.id, function (err, hospital) {
         if (err) res.status(400).send({message : err});
         else if(hospital){
-            console.log('err', err, 'hospital', hospital);
             hospital.id = hospital._id;
             delete hospital._id;
             delete hospital.__v;

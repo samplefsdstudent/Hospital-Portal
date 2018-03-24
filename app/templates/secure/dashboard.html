@@ -32,7 +32,7 @@
         <div class="col-md-12">
           <div class="boxa">
             <div class="box-header with-border">
-              <h3 class="box-title">Monthly Recap Report</h3>
+              <h3 class="box-title">Statistics Report</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -56,10 +56,6 @@
               <div class="row">
                 <!-- /.col -->
                 <div class="col-md-12">
-                  <p class="text-center">
-                    <strong>Statistics</strong>
-                  </p>
-
                   <div class="progress-group" ng-repeat="data in dashData track by $index">
                     <span class="progress-text">{{data.label}}</span>
                     <span class="progress-number"><b>{{data.data}}</b>/{{data.total}}</span>
@@ -96,16 +92,16 @@
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{(getAmount(orders, 'completed')/getAmount(orders, ''))* 100}}%</span>
-                    <h5 class="description-header">${{getAmount(orders, 'completed')}}</h5>
-                    <span class="description-text">COMPLETED ORDERS</span>
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100}}%</span>
+                    <h5 class="description-header">${{getAmount(orders, 'approved')}}</h5>
+                    <span class="description-text">APPROVED ORDERS</span>
                   </div>
                   <!-- /.description-block -->
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block">
-                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'completed')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100}}%</span>
                     <h5 class="description-header">{{orders.length}}</h5>
                     <span class="description-text">TOTAL ORDERS</span>
                   </div>

@@ -6,8 +6,10 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 	'prefix_url',
 	'$anchorScroll',
 	'$state',
-	'$rootScope', function($anchorScroll,$scope,HospitalService,$http,prefix_url,$anchorScroll,$state,$rootScope){
+	'toastr',
+	'$rootScope', function($anchorScroll,$scope,HospitalService,$http,prefix_url,$anchorScroll,$state,toastr,$rootScope){
 	  $anchorScroll();
+	  $rootScope.title = 'Shopping Cart';
 	  $scope.sourceImage = null;
 	  $scope.userData = HospitalService.user;
 	  console.log(HospitalService.cart);
@@ -66,7 +68,7 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 			HospitalService.equipments = [];
 			$state.go('secure.confirmation', {id : data.data.ref_id.toLowerCase()}); 
 		}, function(err){
-			alert('Error! Try after some time.')
+			toastr.error('Error! Try after some time.', 'Error');
 		})
 	  }
 
@@ -78,7 +80,7 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 		$scope.order.products = HospitalService.cart;
 		$scope.$apply();
 		$rootScope.$emit('badgeUpdate', HospitalService.cart.length);
-		alert(`"${name}" is removed from your Cart!`);
+		toastr.warning(`"${name}" is removed from your Cart!`, 'Removed');
 	  }
 
 	  $scope.navigator = function(flag){

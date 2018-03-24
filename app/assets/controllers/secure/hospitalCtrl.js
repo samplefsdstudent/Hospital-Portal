@@ -4,8 +4,10 @@ angular.module('myApp').controller('hospitalCtrl',[
   '$http',
   '$state',
   'HospitalService',
-  'prefix_url', function($anchorScroll,$scope,$http,$state,HospitalService,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,$state,HospitalService,$rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Hospitals';
 	$scope.filter = {type : 'donor', status : 'approved'};
 	HospitalService.hospital = undefined;
 	$http.get(prefix_url + 'hospitals').then(function(data){

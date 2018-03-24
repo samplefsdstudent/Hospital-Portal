@@ -3,8 +3,10 @@ angular.module('myApp').controller('confirmationCtrl',[
   '$scope',
   '$http',
   'id',
-  'prefix_url', function($anchorScroll,$scope,$http,id,prefix_url){
+  '$rootScope',
+  'prefix_url', function($anchorScroll,$scope,$http,id,$rootScope,prefix_url){
 	$anchorScroll();
+	$rootScope.title = 'Order Confirmation';
 	$http.get(prefix_url + 'order/' + id).then(function(data){
 		$scope.orderData = data.data[0];
 	}, function(err){
