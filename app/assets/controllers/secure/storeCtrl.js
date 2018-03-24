@@ -10,8 +10,8 @@ angular.module('myApp').controller('storeCtrl',[
 	$rootScope.title = 'Live Store';
 	$scope.equipments = [];
 	$scope.dataFilter = {
-		price : 100,
-		qty : 50
+		price : 10000,
+		qty : 10000
 
 	}
 	$scope.filter = 'diagnostic';
