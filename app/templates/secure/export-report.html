@@ -248,7 +248,7 @@
                     <td>{{item.donated_by.name || '-'}}</td>
                     <td>{{item.sold_to.name || '-' }}</td>
                     <td>{{item.description}}</td>
-                    <td><span class="label" ng-class="(item.status == 'available') ? 'label-success' : (order.status == 'sold') ? 'label-warning' : (item.status == 'withdrawn') ? 'label-danger' : '' ">{{item.status | capitalize}}</span></td>
+                    <td><span class="label" ng-class="(item.status == 'available') ? 'label-success' : (item.status == 'sold') ? 'label-warning' : (item.status == 'withdrawn') ? 'label-danger' : '' ">{{item.status | capitalize}}</span></td>
                   </tr>
                   <tr>
                       <td ng-if="!filterEquipments.length" colspan="10" style="padding: 25px;text-align: center;font-size: 13px;">No Equipments Found</td>
