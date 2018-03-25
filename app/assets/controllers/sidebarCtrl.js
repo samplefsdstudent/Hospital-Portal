@@ -21,4 +21,8 @@ angular.module('myApp').controller('sidebarCtrl',[
 		$window.localStorage.clear();
 		$state.go('app.home');
 	}  
+
+	$scope.getClass = function (state) {
+	  return ($state.current.name.substr(0, state.length) === state) ? 'active' : '';
+	}
 }])

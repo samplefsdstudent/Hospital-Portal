@@ -274,21 +274,23 @@ header #logo{
 	margin:3px 0;
 }
 #menu .navbar{
-	margin:15px 0;
+	margin: 12px 0;
 	min-height:0;
 	border: 0px solid transparent;
 }
 #menu .nav > li{
-	margin:0 34px 0 0;
+	padding: 5px 20px;
 }
-#menu .nav > li:last-child{
-	margin:0 0px 0 0;
+#menu .nav > li.active{
+	margin: 0 5px;
+    border-radius: 25px;
+    background: #2196f3;
 }
 #menu .nav > li > a{
 	background-color: transparent;
 	color: #fff;
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 700;
 	padding:0;
 	line-height: 25px;
 	text-transform:uppercase;
@@ -300,7 +302,6 @@ header #logo{
 @media (min-width: 768px){
 	.navbar-nav {
     	float: right;
-    	margin-right: 10px;
 	}
 }
 
@@ -322,9 +323,6 @@ header #logo{
 }
 #menu .nav > li > a:hover:before,#menu .nav > li > a:focus:before,#menu .nav > li > a:active:before {
 	left: 0;
-}
-#menu .nav > li > a:hover, #menu .navbar-nav > .active > a, #menu .navbar-nav > .active > a:hover, #menu .navbar-nav > .active > a:focus {
-	color:#2196F3;
 }
 #menu .dropdown-menu{
     padding:0;
@@ -3177,6 +3175,7 @@ a:hover,a:active,a:focus{
     padding-top:10px;
     min-height:100%;
     width:210px;
+    box-shadow: 2px 0px 15px 0px rgba(163,163,163,.7);
     -webkit-transition:-webkit-transform .3s ease-in-out,width .3s ease-in-out;
     -moz-transition:-moz-transform .3s ease-in-out,width .3s ease-in-out;
     -o-transition:-o-transform .3s ease-in-out,width .3s ease-in-out;
@@ -3267,11 +3266,19 @@ a:hover,a:active,a:focus{
 }
 .sidebar-menu>li{
     position:relative;
-    margin:0;
-    padding:0
+    margin: 0px 15px 10px 15px;    
+    padding:0;
 }
+
+.sidebar-menu>li.active{
+    position:relative;
+    padding:0;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.2);
+}
+
 .sidebar-menu>li>a{
-    padding:12px 5px 12px 15px;
+    padding:7px 5px 7px 15px;
     display:block
 }
 .sidebar-menu>li>a>.fa,.sidebar-menu>li>a>.glyphicon,.sidebar-menu>li>a>.ion{

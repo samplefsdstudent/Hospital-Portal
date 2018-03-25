@@ -14,7 +14,7 @@
       <hr style="width: 85%;margin-top: 10px;margin-bottom: 10px;">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu tree" data-widget="tree">
-        <li class="active treeview menu-open" ng-if="access[0]">
+        <li ng-class="getClass('secure.dashboard')" class="treeview menu-open" ng-if="access[0]">
           <a ui-sref="secure.dashboard">
             <i class="icofont icofont-home"></i> 
             <span>Dashboard</span>
@@ -23,7 +23,7 @@
             </span>
           </a>
         </li>
-        <li class="active" ng-if="access[1]">
+        <li ng-class="getClass('secure.profile')" ng-if="access[1]">
           <a ui-sref="secure.profile">
             <i class="icofont icofont-id-card"></i> 
             <span>Profile</span>
@@ -32,43 +32,43 @@
             </span>
           </a>
         </li>
-        <li ng-if="access[2]">
+        <li ng-class="getClass('secure.hospitals')" ng-if="access[2]">
           <a ui-sref="secure.hospitals">
             <i class="icofont icofont-hospital"></i> 
             <span>Hospitals</span>
           </a>
         </li>
-        <li ng-if="access[3]">
+        <li ng-class="getClass('secure.store')" ng-if="access[3]">
           <a ui-sref="secure.store">
             <i class="icofont icofont-search-alt-1"></i> 
             <span>Live Store</span>
           </a>
         </li>
-        <li class="treeview" ng-if="access[4]">
+        <li ng-class="getClass('secure.donate_form')" class="treeview" ng-if="access[4]">
           <a ui-sref="secure.donate_form">
             <i class="icofont icofont-first-aid-alt"></i>
             <span>Donate Equipments</span>
           </a>
         </li>
-        <li class="treeview" ng-if="access[5]">
+        <li ng-class="getClass('secure.orders')" class="treeview" ng-if="access[5]">
           <a ui-sref="secure.orders">
             <i class="icofont icofont-fork-lift"></i>
             <span>Track Orders</span>
           </a>
         </li>
-        <li class="treeview" ng-if="access[6]">
+        <li ng-class="getClass('secure.shopping_cart')" class="treeview" ng-if="access[6]">
           <a ui-sref="secure.shopping_cart">
             <i class="icofont icofont-cart-alt"></i>
             <span>Shopping Cart</span>
           </a>
         </li>
-        <li class="treeview" ng-if="access[7]">
+        <li ng-class="getClass('secure.history')" class="treeview" ng-if="access[7]">
           <a ui-sref="secure.history">
             <i class="icofont icofont-files"></i>
             <span>History</span>
           </a>
         </li>
-        <li class="treeview" ng-if="access[8]">
+        <li ng-class="getClass('secure.statistics-report')" class="treeview" ng-if="access[8]">
           <a ui-sref="secure.statistics-report">
             <i class="icofont icofont-list"></i>
             <span>Statistics Report</span>

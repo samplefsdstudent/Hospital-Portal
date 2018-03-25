@@ -45,14 +45,14 @@
 						</div>
 						<div class="collapse navbar-collapse navbar-ex1-collapse padd0">
 							<ul class="nav navbar-nav text-right">
-								<li><a ui-sref="app.home">home</a></li>
-								<li><a ui-sref="app.about">about us</a></li>
-								<li><a ui-sref="app.contact">contact us</a></li>
-								<li><a ui-sref="app.login">login</a></li>
-								<li><a ui-sref="app.signup">signup</a></li>
-								<li ng-if="userData"><a href="/signup">
+								<li ng-class="getClass('app.home')"><a ui-sref="app.home">home</a></li>
+								<li ng-class="getClass('app.about')"><a ui-sref="app.about">about us</a></li>
+								<li ng-class="getClass('app.contact')"><a ui-sref="app.contact">contact us</a></li>
+								<li ng-class="getClass('app.login')"><a ui-sref="app.login">login</a></li>
+								<li ng-class="getClass('app.signup')"><a ui-sref="app.signup">signup</a></li>
+								<!-- <li ng-if="userData"><a href="/signup">
 								<img class="img-responsive" ng-src="{{userData.image}}" alt="user image" title="{{userData.name}}"/> {{userData.name}}
-								</a></li>
+								</a></li> -->
 							</ul>
 						</div>
 					</nav>
