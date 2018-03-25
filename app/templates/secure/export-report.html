@@ -45,7 +45,7 @@
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block">
-                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100 | number : 2}}%</span>
                     <h5 class="description-header">{{orders.length}}</h5>
                     <span class="description-text">TOTAL ORDERS</span>
                   </div>
@@ -231,8 +231,8 @@
                     <th>Equipment</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Donated By</th>
-                    <th>Deal With</th>
+                    <th ng-if="requester || admin">Donated By</th>
+                    <th ng-if="donor || admin">Sold To</th>
                     <th style="width: 250px;">Description</th>
                     <th>Status</th>
                   </tr>
@@ -245,8 +245,8 @@
                     <td><a ui-sref="secure.order_details({id : order._id})">{{item.name}}</a></td>
                     <td>${{item.price}}</td>
                     <td>{{item.quantity}}</td>
-                    <td>{{item.donated_by.name || '-'}}</td>
-                    <td>{{item.sold_to.name || '-' }}</td>
+                    <td ng-if="requester || admin">{{item.donated_by.name || '-'}}</td>
+                    <td ng-if="donor">{{item.sold_to.name || '-' }}</td>
                     <td>{{item.description}}</td>
                     <td><span class="label" ng-class="(item.status == 'available') ? 'label-success' : (item.status == 'sold') ? 'label-warning' : (item.status == 'withdrawn') ? 'label-danger' : '' ">{{item.status | capitalize}}</span></td>
                   </tr>

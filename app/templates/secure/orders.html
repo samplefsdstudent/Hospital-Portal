@@ -61,7 +61,7 @@
 											<td class="text-center">${{product.products[0].price * product.products[0].quantity}}</td>
 											<td class="text-center"><a ui-sref="secure.order_details({id : product.ref_id})"><i class="icofont icofont-eye-alt" style="font-size: 25px;"></i></a></td>
 										</tr>
-										<tr ng-if="!filterOrders.length">
+										<tr ng-if="!filterOrders.length && orders.length">
 											<td colspan="7">
 												<div class="buttons text-center">
 													<p>No {{filter.status | capitalize}} Order Found</p>

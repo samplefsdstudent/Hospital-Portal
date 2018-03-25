@@ -43,7 +43,7 @@ function createOrder (req, res){
                         sold_to : req.body.sold_to,
                         address_details : req.body.address_details,
                         contact_details : req.body.contact_details,
-                        receipt_details : req.body.card_details,
+                        receipt_details : req.body.receipt_details,
                         status : 'pending'
                     })
 
@@ -112,7 +112,7 @@ function statusUpdate (req, res){
 
               console.log('inside approved');
 
-              Equipment.where({ _id: req.body.products[0]._id }).update({ $set: { 'status' : 'sold', 'sold_to' : req.body.deal_with }}, function(err, response){
+              Equipment.where({ _id: req.body.products[0]._id }).update({ $set: { 'status' : 'sold', 'sold_to' : {id : req.body.deal_with, name : req.body.contact_details.firstname + ' ' + req.body.contact_details.lastname }}}, function(err, response){
               //Equipment.find({ _id: req.body.products[0].id }, function(err, response){
                     console.log('inside query', err, response);
                     if(err) res.status(400).send(err);

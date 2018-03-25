@@ -60,14 +60,15 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 	  }, true)
 
 	  $scope.takeOrder = function(data){
-		var name = data.contact_details.first_name + ' ' + data.contact_details.last_name;
-		$http.post(prefix_url + 'order', data).then(function(data){
-			HospitalService.cart = [];
-			HospitalService.equipments = [];
-			$state.go('secure.confirmation', {id : data.data.ref_id.toLowerCase()}); 
-		}, function(err){
-			toastr.error('Error! Try after some time.', 'Error');
-		})
+	  	console.log(data);
+		// var name = data.contact_details.first_name + ' ' + data.contact_details.last_name;
+		// $http.post(prefix_url + 'order', data).then(function(data){
+		// 	HospitalService.cart = [];
+		// 	HospitalService.equipments = [];
+		// 	$state.go('secure.confirmation', {id : data.data.ref_id.toLowerCase()}); 
+		// }, function(err){
+		// 	toastr.error('Error! Try after some time.', 'Error');
+		// })
 	  }
 
 	  $scope.removeFromCart = function(index){
