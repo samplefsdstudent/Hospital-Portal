@@ -15,10 +15,8 @@ function signup(req, res){
         description : req.body.description,
         created_on : new Date(),
         type : req.body.type,
-        status : "pending",
-        stock : []
+        status : "pending"
       }
-      console.log(hospitalData);
       //use schema.create to insert data into the db
       Hospital.create(hospitalData, function (err, hospital) {
         if (err) 

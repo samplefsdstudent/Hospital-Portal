@@ -10,7 +10,6 @@ function getAllHospitals(req, res){
 }
 
 function getHospital(req, res){
-    console.log(req.params.id);
     Hospital.findById(req.params.id, function (err, hospital) {
         if (err) res.status(400).send({message : err});
         else if(hospital){

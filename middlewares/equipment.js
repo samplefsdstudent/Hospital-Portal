@@ -1,5 +1,5 @@
 'use strict';
-var Comment = require('../models/Equipment');
+var Equipment = require('../models/Equipment');
 
 function getAllEquipments(req, res){
     Equipment.find({}, function (err, equipments) {

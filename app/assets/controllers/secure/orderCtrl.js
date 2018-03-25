@@ -14,7 +14,6 @@ angular.module('myApp').controller('orderCtrl',[
 	}
 	$http.get(prefix_url + 'order/' + params.type + '/' + params.id).then(function(data){
 		$scope.orders = data.data;
-        console.log($scope.orders);
 	}, function(err){
 		console.log(err);
 	})

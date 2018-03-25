@@ -20,7 +20,6 @@ angular.module('myApp').controller('hospitalCtrl',[
 		HospitalService.hospital = data;
 		HospitalService.hospital.id = HospitalService.hospital._id;
 		delete HospitalService.hospital._id;
-		console.log(HospitalService.hospital);
 		$state.go('secure.profile');
 	}
 }])

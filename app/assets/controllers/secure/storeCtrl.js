@@ -19,7 +19,6 @@ angular.module('myApp').controller('storeCtrl',[
 		$http.get(prefix_url + 'equipments').then(function(data){
 			$scope.equipments = data.data;
 			HospitalService.equipments = $scope.equipments;
-			console.log($scope.equipments);
 		}, function(err){
 			console.log(err);
 		})
@@ -28,7 +27,6 @@ angular.module('myApp').controller('storeCtrl',[
 	}
 
 	$scope.addToCart = function(data, index){
-		console.log(data.status);
 		if(angular.equals(data.status, "available")){
 			HospitalService.cart.push({
 			id : data._id,
@@ -59,7 +57,6 @@ angular.module('myApp').controller('storeCtrl',[
 
 	$scope.switch = function(value, data, index){
 		var bool = $scope.addToCart(data,index)
-		console.log(bool);
 		if(bool){
 			return bool
 		}

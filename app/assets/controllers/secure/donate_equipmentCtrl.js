@@ -13,7 +13,6 @@ angular.module('myApp').controller('donate_equipmentCtrl',[
 		type : 'Diagnostic'
 	}
 	$scope.userData = HospitalService.user;
-	console.log($scope.userData);
 	$scope.donateData = {
 		address : $scope.userData.address,
 		city : $scope.userData.city,
@@ -24,7 +23,6 @@ angular.module('myApp').controller('donate_equipmentCtrl',[
 
 	$scope.sourceImage = null;
 	$scope.donateEquipment = function(donateData){
-		console.log(donateData);
 		var data = {
 			type : donateData.type,
 			name : donateData.name,

@@ -12,7 +12,6 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 	  $rootScope.title = 'Shopping Cart';
 	  $scope.sourceImage = null;
 	  $scope.userData = HospitalService.user;
-	  console.log(HospitalService.cart);
 	  	$scope.order = {
 		date : new Date(),
 		total_amount : 0,
@@ -37,7 +36,6 @@ angular.module('myApp').controller('shopping_cartCtrl', [
 	  	if(HospitalService.cart.length > 0){
 	  	  $scope.order.donated_by = new String(HospitalService.cart[0].donated_by);
 	  	}
-	  console.log($scope.order);
 	  $scope.filter = '1';
 
 	  $scope.next = function(flag){

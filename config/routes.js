@@ -1,11 +1,6 @@
 var orderMiddleware = require('../middlewares/order'),
-    blogMiddleware = require('../middlewares/blogs'),
-    galleryMiddleware = require('../middlewares/gallery'),
     equipmentMiddleware = require('../middlewares/equipment'),
-    testimonialMiddleware = require('../middlewares/testimonials'),
-    commentMiddleware = require('../middlewares/comment'),
     userMiddleware = require('../middlewares/user'),
-    serviceMiddleware = require('../middlewares/services'),
     feedbackMiddleware = require('../middlewares/feedback'),
     newsletterMiddleware = require('../middlewares/newsletter'),
     loginMiddleware = require('../middlewares/login'),
@@ -16,13 +11,8 @@ var orderMiddleware = require('../middlewares/order'),
 
 	  apiRouter.post('/api/login', loginMiddleware.login);
   	apiRouter.post('/api/signup', signupMiddleware);
-    apiRouter.post('/api/comments/:blog_id', commentMiddleware.post, commentMiddleware.get);
     apiRouter.post('/api/feedback', feedbackMiddleware);
     apiRouter.post('/api/newsletter', newsletterMiddleware);
-    apiRouter.get('/api/blogs', blogMiddleware);
-    apiRouter.get('/api/gallery', galleryMiddleware);
-    apiRouter.get('/api/testimonials', testimonialMiddleware);
-    apiRouter.get('/api/services', serviceMiddleware);
 
 	apiRouter.use('/api', function(req, res, next) {
   		var access_token = req.body.access_token || req.query.access_token || req.headers['x-access-token'];
@@ -53,7 +43,6 @@ var orderMiddleware = require('../middlewares/order'),
   apiRouter.get('/api/order/:id', orderMiddleware.get);
   apiRouter.get('/api/order/:type/:id', orderMiddleware.getAllType);
   apiRouter.get('/api/orders', orderMiddleware.getAll);
-  apiRouter.get('/api/comments/:blog_id', commentMiddleware.get);
   apiRouter.get('/api/hospitals', hospitalMiddleware.getAll);
   apiRouter.get('/api/hospital/:id', hospitalMiddleware.get);
   apiRouter.get('/api/profile/:email', userMiddleware.get);

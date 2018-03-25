@@ -17,7 +17,8 @@ function createOrder (req, res){
 		}
     });
 
-        Equipment.find({_id : req.params.products[0]._id}, function (err, equipment) {
+        Equipment.find({_id : req.body.products[0].id}, function (err, equipment) {
+            equipment = equipment[0];
             if (err) 
               res.status(400).send({message : err.errmsg});
             else{
@@ -32,7 +33,6 @@ function createOrder (req, res){
                     })
 
                     orderList.substr(0,orderList.length - 1);
-                    
                     var newOrder = new Order({
                         ref_id : Math.random().toString(36).substr(2, 9).toUpperCase(),
                         date : req.body.date,
@@ -46,8 +46,6 @@ function createOrder (req, res){
                         receipt_details : req.body.card_details,
                         status : 'pending'
                     })
-
-                    console.log(newOrder);
 
                     newOrder.save(function(err) {
                         if (err) {
@@ -93,7 +91,6 @@ function statusUpdate (req, res){
             res.status(400).send(err)
         }else{
             let newOrder = req.body.products;
-            console.log(newOrder);
             var orderList = '';
              newOrder.forEach(function(product){
                 orderList += product.name + ', ';
@@ -103,7 +100,6 @@ function statusUpdate (req, res){
             var time = date;
             date = date.getDate() + '-' + date.getMonth() + '-' + date.getFullYear()
             var time = time.getHours() + ':' + time.getMinutes() + ' GMT +5:30(IST)';
-            console.log(date, time);
             var mailOptions = {
                 from: '"Hospital Portal Mail" <samplefsdstudent@gmail.com>',
                 to: [req.body.contact_details.email,req.body.deal_with],
@@ -113,13 +109,31 @@ function statusUpdate (req, res){
             transporter.sendMail(mailOptions, (error, info) => {
             if (error) res.status(400).send(error);
             else if(req.body.status == 'approved'){
-                let query = Equipment.where({ _id: req.body.products[0]._id }).setOptions({ overwrite: true })
-                query.update({ $set: { status: 'sold', sold_to : req.body.deal_with } }, function(err, response){
-                    let query = Order.where({'products._id' : req.body.products[0]._id}).setOptions({ overwrite: true })
-                    query.update({ $set: { status: 'rejected'}}, function(err, response){
-                        res.json(newOrder);
-                    }).lean();
+
+              console.log('inside approved');
+
+              Equipment.where({ _id: req.body.products[0]._id }).update({ $set: { 'status' : 'sold', 'sold_to' : req.body.deal_with }}, function(err, response){
+              //Equipment.find({ _id: req.body.products[0].id }, function(err, response){
+                    console.log('inside query', err, response);
+                    if(err) res.status(400).send(err);
+                    else{
+            
+                        Order.where({'products.id' : req.body.products[0].id,ref_id : { $ne: req.body.ref_id }}).update({ $set: { 'status' : 'rejected'}}, { "multi": true }, function(err, response){
+                        //Order.find({'products.id' : req.body.products[0].id, ref_id : { $ne: req.body.ref_id }}, function(err, response){
+                            if(err) res.status(400).send(err);
+                            else{
+                                console.log('2nd response', response);
+                                res.json(newOrder);
+                            }
+                        }).lean();
+                    }
                 }).lean();
+
+
+
+
+
+
             }else{
                 res.json(newOrder);
             }
@@ -129,8 +143,7 @@ function statusUpdate (req, res){
 }
 
 function getOrder(req, res){
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<req.params.id', req.params.id);
-    Order.findById(req.params.id, function (err, order) {
+    Order.find({ref_id : req.params.id.toUpperCase()}, function (err, order) {
         if (err) res.status(400).send(err);
         else if(order){
             console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< order', order);
@@ -164,15 +177,10 @@ function getAllTypeOrders(req, res){
     Order.find({}, function (err, orders) {
         if (err) return err;
         else{
-              Order.find({}, function (err, orders) {
-        	if (err) return err;
-        	else{
-          		orders.filter(function(order){
-              			return order[key] == req.params.id
-          		})
-        	}
-        		res.json(orders);
-    		})
+           orders =  orders.filter(function(order){
+                return order[key] == req.params.id
+            })
+        	res.json(orders);
         }
     })
 }

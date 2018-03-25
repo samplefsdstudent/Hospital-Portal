@@ -15,17 +15,14 @@ angular.module('myApp').controller('export-reportCtrl',[
 	$scope.donor = false;
 	$scope.requester = false;
 	$scope.admin = false;
-	console.log('<<<<<<< hospitalService', HospitalService);
 	if(HospitalService.hospital){
 		$scope.userData  = HospitalService.hospital;
-		console.log('<<<<<<< inside hospital', $scope.userData);
 		switch($scope.userData.type){
 			case 'admin' : getAdmin();
 						   break;
 		}
 	}else if(HospitalService.user){
 		$scope.userData  = HospitalService.user;
-		console.log('<<<<<<< inside hospital', $scope.userData);
 		switch($scope.userData.type){
 			case 'donor' : getDonor($scope.userData.type, $scope.userData.id);
 						   break;
@@ -41,7 +38,6 @@ angular.module('myApp').controller('export-reportCtrl',[
 	};
 
 	$scope.getAmount = function(data, filter){
-		console.log('inside getAmount', data);
 		var final_amount = 0;
 		if(data.length){
 			data.forEach(function(key){

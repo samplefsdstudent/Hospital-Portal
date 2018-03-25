@@ -1,5 +1,4 @@
-	  var nodemailer = require('nodemailer'),
-    	compression = require('compression'),
+	  var compression = require('compression'),
     	config = require('./config/config'),
     	mongoose = require('mongoose'),
     	express = require('express'),
@@ -19,33 +18,6 @@
     app.use('/', apiRouter);
   	app.use(compression());
 
-  	let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-	    secure : false,
-	    port : 587,
-      auth:{
-        user: 'samplefsdstudent@gmail.com',
-        pass:'ankit939'
-      },
-	    tls:{
-		    rejectUnauthorized : false
-	     }
-    });
-
-    var mailOptions = {
-        from: '"Hospital FSD Project" <samplefsdstudent@gmail.com>',
-        to: 'ankitkumarsharma939@gmail.com',
-        subject: 'Hospital FSD Server is Up',
-        text: 'Hospital FSD Server is Up'
-    };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          return console.log(error);
-      }else{
-        console.log(info);
-      }
-  });
 	app.use(express.static(__dirname + '/app'));
 	app.set('views', __dirname + '/app');
   app.engine('html', require('ejs').renderFile);

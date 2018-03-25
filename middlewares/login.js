@@ -28,7 +28,6 @@ function login(req, res){
                 expiresIn: 1440 // expires in 24 hours
               });
               hospital.access_token = access_token;
-              console.log(hospital);
               if(hospital.status == "pending"){
                 res.status(400).send({message : 'Your Signup Request is still not Approved by Hospital Portal Admin. Please try again later'});
               }else if(hospital.status == "rejected"){
@@ -64,7 +63,6 @@ function login(req, res){
                 expiresIn: 1440 // expires in 24 hours
               });
               user.access_token = access_token
-              console.log(user.status);
               res.json(user);
             }else{
               res.status(400).send({message : 'Either Email or Password is wrong.'})
@@ -92,10 +90,8 @@ function changePwd(req, res){
             }else if(response){
               bcrypt.hash(req.body.new_password, 10, function (err, hash){
                   if (err) {
-                    console.log('inside changePwd err', err);
                   res.status(500).send({message : 'Internal Server Error'});
                   }else{
-                    console.log('inside changePwd response', response);
                     req.body.new_password = hash;
                     if(req.body.email.split('@')[1] != "hospital.com"){
                       query = Hospital.where({ email: req.body.email }).setOptions({ overwrite: true });

@@ -18,9 +18,7 @@ angular.module('myApp').controller('loginCtrl',[
 		};
 		$http.post(prefix_url + 'login', params).then(function(data){
 			toastr.success('Logged In.', 'Success');
-			console.log(data);
 			HospitalService.user = data.data;
-			console.log('USER', HospitalService.user);
 			$window.localStorage.setItem('access_token', HospitalService.user.access_token);
 			delete HospitalService.user.access_token;
 			$state.go('secure.dashboard',{user : data.data.type});

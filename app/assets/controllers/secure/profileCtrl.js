@@ -14,6 +14,11 @@ angular.module('myApp').controller('profileCtrl',[
 	$scope.pwdData =  {};
 	$scope.statData = {};
 	var params = {};
+	var colorList = {
+		approved : "#00a65a",
+		pending : "#f39c12",
+		rejected : "#dd4b39"
+	}
 	if(HospitalService.hospital){
 		var params = {
 		type : HospitalService.hospital.type,
@@ -33,13 +38,13 @@ angular.module('myApp').controller('profileCtrl',[
 				if(!results[key.date]){
 					results[key.date] = [];
 				}
-				var color = '#' + Math.floor(Math.random()*16777215).toString(16);
+				//var color = '#' + Math.floor(Math.random()*16777215).toString(16);
 				results[key.date].push({
 					ref_id : key.ref_id,
 					total_amount : key.total_amount,
 					status : key.status,
 					description : key.products[0].description,
-					color : color,
+					color : colorList[key.status],
 					date : key.date,
 					id : key._id.toUpperCase()
 				});

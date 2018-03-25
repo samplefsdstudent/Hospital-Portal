@@ -11,7 +11,7 @@ angular.module('myApp').controller('order_detailsCtrl',[
 	$anchorScroll();
   $rootScope.title = 'Order Details';
 	$http.get(prefix_url + 'order/' + id).then(function(data){
-		$scope.orderData = data.data;
+		$scope.orderData = data.data[0];
 		(angular.equals(HospitalService.user.type, "donor")) ? requestHospital(true) : requestHospital(false);
 	}, function(err){
 		console.log(err);
@@ -27,7 +27,6 @@ angular.module('myApp').controller('order_detailsCtrl',[
 			id = $scope.orderData.donated_by;
       $scope.show = "DONOR"
 		}
-		console.log('<<<<<<<<<<<<<<<<<<<<<<<<<< statusm, id', status, id);
 		$http.get(prefix_url + 'hospital/' + id).then(function(data){
 			data = data.data;
        		$scope.orderData.contact_details = {
@@ -42,9 +41,8 @@ angular.module('myApp').controller('order_detailsCtrl',[
 	}
 
 	$scope.statusUpdate = function(newStatus){
-    console.log('<<<<<<<<<< statusUpdate', $scope.orderData);
    		var params = {
-   			id : id,
+   			id : $scope.orderData._id,
    			status : newStatus,
         products : $scope.orderData.products,
         date : $scope.orderData.date,

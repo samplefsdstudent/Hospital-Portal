@@ -74,7 +74,7 @@
               <div class="row">
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
-                    <span class="description-percentage text-red"><i class="fa fa-caret-left"></i> {{(getAmount(orders, 'rejected')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-red"><i class="fa fa-caret-left"></i> {{(getAmount(orders, 'rejected')/getAmount(orders, ''))* 100 | number : 2}}%</span>
                     <h5 class="description-header">${{getAmount(orders, 'rejected')}}</h5>
                     <span class="description-text">Rejected ORDERS</span>
                   </div>
@@ -83,7 +83,7 @@
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
-                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> {{(getAmount(orders, 'pending')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> {{(getAmount(orders, 'pending')/getAmount(orders, ''))* 100 | number : 2}}%</span>
                     <h5 class="description-header">${{getAmount(orders, 'pending')}}</h5>
                     <span class="description-text">PENDING ORDERS</span>
                   </div>
@@ -92,7 +92,7 @@
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
-                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100 | number : 2}}%</span>
                     <h5 class="description-header">${{getAmount(orders, 'approved')}}</h5>
                     <span class="description-text">APPROVED ORDERS</span>
                   </div>
@@ -101,7 +101,7 @@
                 <!-- /.col -->
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block">
-                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100}}%</span>
+                    <span class="description-percentage text-aqua"><i class="fa fa-caret-down"></i> {{(getAmount(orders, 'approved')/getAmount(orders, ''))* 100 | number : 2}}%</span>
                     <h5 class="description-header">{{orders.length}}</h5>
                     <span class="description-text">TOTAL ORDERS</span>
                   </div>
@@ -149,14 +149,17 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr ng-repeat="order in orders track by $index">
+                  <tr ng-repeat="order in orders as filterOrders track by $index">
                     <td>{{$index + 1}}</td>
-                    <td><a ui-sref="secure.order_details({id : order._id})">{{order.ref_id}}</a></td>
+                    <td><a ui-sref="secure.order_details({id : order.ref_id})">{{order.ref_id}}</a></td>
                     <td>{{order.products[0].name}}</td>
                     <td>${{order.products[0].price}}</td>
                     <td>{{order.products[0].quantity}}</td>
                     <td>{{order.products[0].description}}</td>
                     <td><span class="label" ng-class="(order.status == 'approved') ? 'label-success' : (order.status == 'pending') ? 'label-warning' : (order.status == 'rejected') ? 'label-danger' : '' ">{{order.status | capitalize}}</span></td>
+                  </tr>
+                  <tr>
+                    <td ng-if="!filterOrders.length" colspan="9" style="padding: 25px;text-align: center;font-size: 13px;">No Order Found</td>
                   </tr>
                   </tbody>
                 </table>
