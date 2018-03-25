@@ -15,7 +15,6 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab-switch">
 						<form ng-submit="next(1)">
-							<h2>You have {{orders.length}} orders in your account.</h2>
 							<div class="menu col-sm-12" ng-show="orders.length">
 							<!-- ng-class using filter gives active class on click on anchor in the li element -->
 								<ul class="nav nav-tabs list-inline" style="margin: 10px 11% 20px;">
@@ -31,7 +30,7 @@
 								</ul>
 								<!-- unordered list end here -->
 							</div>
-							<div class="col-sm-12 table-responsive">
+							<div class="col-sm-12 table-responsive" ng-if="orders">
 								<table class="table  table-bordered">
 									<thead ng-if="orders.length">
 										<tr>
@@ -44,7 +43,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="product in orders | filter: filter track by $index">
+										<tr ng-repeat="product in orders | filter: filter as filterOrders track by $index">
 											<td class="text-center">{{product.ref_id}}</td>
 											<td>
 												<a href="#">
@@ -61,6 +60,13 @@
 											</td>
 											<td class="text-center">${{product.products[0].price * product.products[0].quantity}}</td>
 											<td class="text-center"><a ui-sref="secure.order_details({id : product.ref_id})"><i class="icofont icofont-eye-alt" style="font-size: 25px;"></i></a></td>
+										</tr>
+										<tr ng-if="!filterOrders.length">
+											<td colspan="7">
+												<div class="buttons text-center">
+													<p>No {{filter.status | capitalize}} Order Found</p>
+												</div>
+											</td>
 										</tr>
 										<tr ng-if="!orders.length">
 											<td colspan="5">
