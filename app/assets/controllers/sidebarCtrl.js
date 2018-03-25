@@ -6,7 +6,8 @@ angular.module('myApp').controller('sidebarCtrl',[
   'user',
   'HospitalService',
   '$window',
-  '$state', function($anchorScroll,$scope,$http,prefix_url,user,HospitalService,$window,$state){
+  'toastr',
+  '$state', function($anchorScroll,$scope,$http,prefix_url,user,HospitalService,$window,toastr,$state){
 	$anchorScroll();
 	if(angular.equals(user, 'requester')){
 		$scope.access = [true,true,false,true,false,true,true,false,true,true];
@@ -19,6 +20,7 @@ angular.module('myApp').controller('sidebarCtrl',[
 	$scope.userData.image = $scope.userData.image || '../../assets/images/user.png';
 	$scope.logout = function(){
 		$window.localStorage.clear();
+		toastr.success('Logged Out.', 'Success');
 		$state.go('app.home');
 	}  
 

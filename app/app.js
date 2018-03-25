@@ -2,7 +2,7 @@
 var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimate', 'toastr','ngSanitize', 'ngCsv'])
  .value('prefix_url','https://hospital-fsd.herokuapp.com/api/')
   //.value('prefix_url','http://hospital-portal-samplefsdstudent250400.codeanyapp.com:3000/api/')
- // .value('prefix_url','http://localhost:5000/api/')
+ //.value('prefix_url','http://localhost:5000/api/')
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $locationProvider,$urlRouterProvider, $httpProvider) {
     $locationProvider.html5Mode({
         enabled: true,
@@ -278,7 +278,7 @@ var myApp = angular.module('myApp', ['ui.router','angular-img-cropper','ngAnimat
 .filter('capitalize', function() {
   return function(input) {
    if(input){
-        return (typeof input === 'number') ? input : (input.toString().match(/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/)) ? input = input.getDate() + '-' + (input.getMonth() + 1) + '-' + input.getFullYear() :  (input.split('_').length != 2) ? input.split('_')[0][0].toUpperCase() + input.substr(1, input.length)  : input.split('_')[0][0].toUpperCase() + input.split('_')[0].substr(1, input.split('_')[0].length) + " " + input.split('_')[1][0].toUpperCase() + input.split('_')[1].substr(1, input.split('_')[1].length);
+        return (typeof input === 'number') ? input : (input.toString().match(/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/)) ? input = new Date(input).getDate() + '-' + (new Date(input).getMonth() + 1) + '-' + new Date(input).getFullYear() :  (input.split('_').length != 2) ? input.split('_')[0][0].toUpperCase() + input.substr(1, input.length)  : input.split('_')[0][0].toUpperCase() + input.split('_')[0].substr(1, input.split('_')[0].length) + " " + input.split('_')[1][0].toUpperCase() + input.split('_')[1].substr(1, input.split('_')[1].length);
    }
   }
 })

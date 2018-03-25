@@ -97,6 +97,7 @@
                     <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
                       <label class="input-group-addon" for="input-sort">Limit :    </label>
                       <select id="input-show" class="form-control selectpicker bs-select-hidden" ng-model="limitOrder">
+                        <option value="5">5</option>
                         <option value="10" selected="selected">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -198,6 +199,7 @@
                     <div class="form-group input-group input-group-sm" style="margin-bottom: 0px;">
                       <label class="input-group-addon" for="input-sort">Limit :    </label>
                       <select id="input-show" class="form-control selectpicker bs-select-hidden" ng-model="limitEquip">
+                        <option value="5">5</option>
                         <option value="10" selected="selected">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
@@ -242,7 +244,7 @@
                     <td>{{$index + 1}}</td>
                     <td>{{getDate(item._id) | date}}</td>
                      <td><img ng-src="{{item.image}}" alt="image" title="{{order.products[0].name}}" class="img-responsive" /></td>
-                    <td><a ui-sref="secure.order_details({id : order._id})">{{item.name}}</a></td>
+                    <td><a>{{item.name}}</a></td>
                     <td>${{item.price}}</td>
                     <td>{{item.quantity}}</td>
                     <td ng-if="requester || admin">{{item.donated_by.name || '-'}}</td>
