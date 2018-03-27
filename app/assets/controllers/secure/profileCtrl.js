@@ -65,7 +65,6 @@ angular.module('myApp').controller('profileCtrl',[
 		$scope.userData.created_on = new Date($scope.userData.created_on);
 	}else{
 		$scope.status = true;
-		$scope.userData.created_on = new Date(HospitalService.hospital.created_on);
 		$scope.userData  = HospitalService.hospital;
 		$scope.userData.image = $scope.userData.image || '../assets/images/user.png';
 		$scope.userData.created_on = new Date($scope.userData.created_on);

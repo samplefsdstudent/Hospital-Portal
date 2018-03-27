@@ -1,0 +1,157 @@
+{
+	"id": "917f5d7d-5018-49ca-a610-aa15c3c45522",
+	"name": "Hospital Portal",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [],
+	"folders_order": [
+		"c1d14f20-dabb-4d5a-92b0-48babdb2c3f5",
+		"a304fa12-35b9-46ed-83dd-368ff0c53daa"
+	],
+	"folders": [
+		{
+			"id": "c1d14f20-dabb-4d5a-92b0-48babdb2c3f5",
+			"name": "Auth",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "917f5d7d-5018-49ca-a610-aa15c3c45522",
+			"folder": null,
+			"order": [
+				"9b4d83e3-282d-47ed-b366-4cb054fa3395",
+				"7540bb72-d7f6-4eeb-a9b3-130607b95a06",
+				"bb5dfd1f-8424-43e9-8c28-86477d0a1004"
+			],
+			"folders_order": []
+		},
+		{
+			"id": "a304fa12-35b9-46ed-83dd-368ff0c53daa",
+			"name": "Hospital",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "917f5d7d-5018-49ca-a610-aa15c3c45522",
+			"folder": null,
+			"order": [
+				"c588e2f5-b438-4677-ab12-39b1ddd67140",
+				"0e1aa5e6-bdc1-4098-a3d9-d805fede8cc5",
+				"36f6d82f-c17b-4597-82be-b0e7c8f36f2b"
+			],
+			"folders_order": []
+		}
+	],
+	"requests": [
+		{
+			"id": "0e1aa5e6-bdc1-4098-a3d9-d805fede8cc5",
+			"name": "Update",
+			"url": "http://localhost:5000/api/hospitals",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "a304fa12-35b9-46ed-83dd-368ff0c53daa",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "36f6d82f-c17b-4597-82be-b0e7c8f36f2b",
+			"name": "Hospital Details",
+			"url": "http://localhost:5000/api/hospital?id=1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": [],
+			"folder": "a304fa12-35b9-46ed-83dd-368ff0c53daa",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7540bb72-d7f6-4eeb-a9b3-130607b95a06",
+			"name": "Signup",
+			"url": "http://localhost:5000/api/signup",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "c1d14f20-dabb-4d5a-92b0-48babdb2c3f5",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "9b4d83e3-282d-47ed-b366-4cb054fa3395",
+			"name": "Login",
+			"url": "http://localhost:5000/api/login",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "c1d14f20-dabb-4d5a-92b0-48babdb2c3f5",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "bb5dfd1f-8424-43e9-8c28-86477d0a1004",
+			"name": "Change Password",
+			"url": "http://localhost:5000/api/password/change",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "c1d14f20-dabb-4d5a-92b0-48babdb2c3f5",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "c588e2f5-b438-4677-ab12-39b1ddd67140",
+			"name": "List",
+			"url": "",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "a304fa12-35b9-46ed-83dd-368ff0c53daa",
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
